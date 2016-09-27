@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <title>osotemiWeb</title>
+    <meta name="osotemi" content="">
+    <title>osotemiWeb|<?php if($_GET['module']){ echo $_GET['module'];}else{ echo "Homepage";} ?></title>
     <link href="view/css/bootstrap.min.css" rel="stylesheet">
     <link href="view/css/font-awesome.min.css" rel="stylesheet">
     <link href="view/css/prettyPhoto.css" rel="stylesheet">

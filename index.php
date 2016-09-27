@@ -1,11 +1,13 @@
 <?php 
-	require_once("view/inc/header.html"); 
+	//
+	session_start();
+	$_SESSION['result-avatar'] = array();
+	//
+	require_once("view/inc/header.php"); 
 	require_once("view/inc/menu.php");
-	
+	//
 	include ("utils/utils.inc.php");
 	
-	session_start();
-
 	if (!isset($_GET['module'])) {
 		require_once("modules/main/controller/controller_main.class.php");
 	} else	if ( (isset($_GET['module'])) && (!isset($_GET['view'])) ){
@@ -15,5 +17,7 @@
 	} else {
 		require_once("view/page/error404.php");
 	}
+	//
 	require_once("view/inc/bottom.html");	
+	//
 	require_once("view/inc/footer.html");
