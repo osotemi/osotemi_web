@@ -12,21 +12,21 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class= <?php if($_GET['module'] == "main"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=main">Home</a>
-                    </li>    
+                    </li>
                     <li class= <?php if($_GET['module'] == "pricing"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=pricing">Pricing</a>
-                    </li>    
-                    <li class= <?php if($_GET['module'] == "services"){ echo "active";}else{ echo "";} ?> > 
+                    </li>
+                    <li class= <?php if($_GET['module'] == "services"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=services">Services</a>
                     </li>
                     <li class= <?php if($_GET['module'] == "portfolio"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=portfolio">Portfolio</a>
-                    </li>    
+                    </li>
                     <li class= <?php if($_GET['module'] == "contact"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=contact">Contact</a>
-                    </li>    
+                    </li>
                     <li class= <?php if($_GET['module'] == "products"){ echo "active";}else{ echo "";} ?> >
-                        <a href="index.php?module=products">Products</a>
+                        <a href="index.php?module=products&view=create_products">Products</a>
                     </li>
                 </ul>
             </div>

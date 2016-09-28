@@ -34,11 +34,11 @@ function validate_product() {
         ),
     );
     $result = filter_input_array(INPUT_POST, $filter);
-    
+
     //no filter
     $result['season'] = $_POST['season'];
     $result['category'] = $_POST['category'];
-    
+
     if ($result['discharge_date'] && $result['expiry_date']) {
         //compare date of birth with title_date
         $dates = valida_dates($_POST['discharge_date'], $_POST['expiry_date']);
@@ -48,12 +48,12 @@ function validate_product() {
             $valid = false;
         }
     }
-    
+
     if(count($_POST['category']) <= 1){
         $error['category'] = "Please, select 2 or more categories";
         $valid = false;
     }
-    
+
     if ($result != null && $result) {
 
 
@@ -66,11 +66,11 @@ function validate_product() {
             $error['description'] = 'Description must have more than 2 characters and less than 180';
             $valid = false;
         }
-        
+
         if (!$result['discharge_date']) {
             if($_POST['discharge_date'] == ""){
                 $error['discharge_date'] = "Any product must have a discharge date";
-                $valid = false;  
+                $valid = false;
             }else{
                 $error['discharge_date'] = 'Error format date (mm/dd/yyyy)';
                 $valid = false;
@@ -80,7 +80,7 @@ function validate_product() {
         if (!$result['expiry_date']) {
             if($_POST['expiry_date'] == ""){
                 $error['expiry_date'] = "This camp can't empty";
-                $valid = false;  
+                $valid = false;
             }else{
             $error['expiry_date'] = 'Error format date (mm/dd/yyyy)';
             $valid = false;
@@ -104,11 +104,11 @@ function validate_product() {
         }
         */
 
-        
+
     } else {
         $valid = false;
     };
-   
+
     $return = array('result' => $valid, 'error' => $error, 'data' => $result);
     //echo var_dump($valid);
     //debugPHP($return);
