@@ -93,9 +93,9 @@ jQuery.fn.fill_or_clean = function () {
 };//function
 
 //Solution to : "Uncaught Error: Dropzone already attached."
-//Dropzone.autoDiscover = false;
+
 $(document).ready(function () {
-    console.log("entra en ready");
+    Dropzone.autoDiscover = false;
     //Datepicker///////////////////////////
     $(function (){
       $("#discharge_date").datepicker({
@@ -122,36 +122,6 @@ $(document).ready(function () {
 
     //Control de seguridad para evitar que al volver atrás de la pantalla results a create, no nos imprima los datos
 
-    //Control de seguridad para evitar que al volver atrás de la pantalla results a create, no nos imprima los datos
-    $.get("modules/products/controller/controller_products.class.php?load_data=true",
-        function (response) {
-            //alert(response.user);
-            if (response.products === "") {
-                $("#product_name").val('');
-                /*
-                var inputElements = document.getElementsByClassName('messageCheckbox');
-                for (var i = 0; i < inputElements.length; i++) {
-                    if (inputElements[i].checked) {
-                        inputElements[i].checked = false;
-                    }
-                }*/
-                //siempre que creemos un plugin debemos llamarlo, sino no funcionará
-                $(this).fill_or_clean();
-            } else {
-                $("#product_name").val( response.products.product_name);
-                /*
-                var interests = response.user.interests;
-                var inputElements = document.getElementsByClassName('messageCheckbox');
-                for (var i = 0; i < interests.length; i++) {
-                    for (var j = 0; j < inputElements.length; j++) {
-                        if(interests[i] ===inputElements[j] )
-                            inputElements[j].checked = true;
-                    }
-                }
-                */
-            }
-        }, "json");
-
 
 
     //Dropzone function //////////////////////////////////
@@ -161,14 +131,15 @@ $(document).ready(function () {
         maxFileSize: 1000,
         dictResponseError: "An error has occurred on the server",
         acceptedFiles: 'image/*,.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.rar,application/pdf,.psd',
-        init: function () {
+        init: function () {//Maneja barra de carga y mensaje
             this.on("success", function (file, response) {
-                //alert(response);
-                $("#progress").show();
+                
+                console.log(response);
+                /*$("#progress").show();
                 $("#bar").width('100%');
                 $("#percent").html('100%');
                 $('.msg').text('').removeClass('msg_error');
-                $('.msg').text('Success Upload image!!').addClass('msg_ok').animate({'right': '300px'}, 300);
+                $('.msg').text('Success Upload image!!').addClass('msg_ok').animate({'right': '300px'}, 300);*/
             });
         },
         complete: function (file) {
@@ -186,12 +157,15 @@ $(document).ready(function () {
                 url: "modules/products/controller/controller_products.class.php?delete=true",
                 data: "filename=" + name,
                 success: function (data) {
-                    $("#progress").hide();
+                    /*$("#progress").hide();
                     $('.msg').text('').removeClass('msg_ok');
                     $('.msg').text('').removeClass('msg_error');
                     $("#e_avatar").html("");
+*/
+                    //var json = JSON.parse(data);
 
-                    var json = JSON.parse(data);
+                    console.log(data);
+                    /*
                     if (json.res === true) {
                         var element;
                         if ((element == file.previewElement) != null) {
@@ -208,6 +182,7 @@ $(document).ready(function () {
                             false;
                         }
                     }
+                    */
                 }
             });
         }
@@ -276,6 +251,7 @@ function validate_products(){
 
 
     $(".error").remove();
+      /*
     //product name error handler
     if ($("#product_name").val() == "" || $("#product_name").val() == "Introduce product name") {
         $("#product_name").focus().after("<span class='error'>Introduce product name</span>");
@@ -286,7 +262,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    /*
+
     //description error handler
     else if ($("#description").val() == "" || $("#description").val() == "Short product description") {
         $("#description").focus().after("<span class='error'>Introduce a short description of the product</span>");
