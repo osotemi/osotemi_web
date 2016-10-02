@@ -134,12 +134,12 @@ $(document).ready(function () {
         init: function () {//Maneja barra de carga y mensaje
             this.on("success", function (file, response) {
                 
-                console.log(response);
-                /*$("#progress").show();
+                //console.log(response);
+                $("#progress").show();
                 $("#bar").width('100%');
                 $("#percent").html('100%');
                 $('.msg').text('').removeClass('msg_error');
-                $('.msg').text('Success Upload image!!').addClass('msg_ok').animate({'right': '300px'}, 300);*/
+                $('.msg').text('Success Upload image!!').addClass('msg_ok').animate({'right': '300px'}, 300);
             });
         },
         complete: function (file) {
@@ -151,21 +151,25 @@ $(document).ready(function () {
             //alert("Error subiendo el archivo " + file.name);
         },
         removedfile: function (file, serverFileName) {
-            var name = file.name;
+            
+            var name = file.previewElement.name;
+            console.log(name);
             $.ajax({
                 type: "POST",
                 url: "modules/products/controller/controller_products.class.php?delete=true",
-                data: "filename=" + name,
+                data: "filename="+name,
                 success: function (data) {
-                    /*$("#progress").hide();
+                    //console.log(data);
+                    //console.log(file.res);
+                    $("#progress").hide();
                     $('.msg').text('').removeClass('msg_ok');
                     $('.msg').text('').removeClass('msg_error');
                     $("#e_avatar").html("");
-*/
-                    //var json = JSON.parse(data);
 
-                    console.log(data);
-                    /*
+                    var json = JSON.parse(data);
+
+                    console.log(json);
+                    
                     if (json.res === true) {
                         var element;
                         if ((element == file.previewElement) != null) {
@@ -182,7 +186,7 @@ $(document).ready(function () {
                             false;
                         }
                     }
-                    */
+                    
                 }
             });
         }
@@ -332,7 +336,7 @@ function validate_products(){
         function (response) {
             console.log(response);
             console.log(response.product_name);
-            //console.log(response.redirect3.product_name);
+            console.log(response.avatar);
 
         }, "json").fail(function (xhr) {
             console.log(xhr.responseJSON);

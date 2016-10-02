@@ -1,0 +1,49 @@
+[02-Oct-2016 15:16:53 UTC] PHP Warning:  include(/home/ubuntu/workspace/des.osotemiweb/utils/upload.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php on line 3
+[02-Oct-2016 15:16:53 UTC] PHP Stack trace:
+[02-Oct-2016 15:16:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:16:53 UTC] PHP Warning:  include(): Failed opening '/home/ubuntu/workspace/des.osotemiweb/utils/upload.php' for inclusion (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php on line 3
+[02-Oct-2016 15:16:53 UTC] PHP Stack trace:
+[02-Oct-2016 15:16:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:16:53 UTC] PHP Fatal error:  Call to undefined function upload_files() in /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php on line 41
+[02-Oct-2016 15:16:53 UTC] PHP Stack trace:
+[02-Oct-2016 15:16:53 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:18:32 UTC] PHP Warning:  move_uploaded_file(/home/ubuntu/workspace/des.osotemi/media/1165835167-perfilOsotemi.png): failed to open stream: No such file or directory in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 72
+[02-Oct-2016 15:18:32 UTC] PHP Stack trace:
+[02-Oct-2016 15:18:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:18:32 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:18:32 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:72
+[02-Oct-2016 15:18:32 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpYBFJLU' to '/home/ubuntu/workspace/des.osotemi/media/1165835167-perfilOsotemi.png' in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 72
+[02-Oct-2016 15:18:32 UTC] PHP Stack trace:
+[02-Oct-2016 15:18:32 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:18:32 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:18:32 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:72
+[02-Oct-2016 15:21:12 UTC] PHP Warning:  move_uploaded_file(/home/ubuntu/workspace/des.osotemi/media/1112677687-perfilOsotemi.png): failed to open stream: No such file or directory in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 72
+[02-Oct-2016 15:21:12 UTC] PHP Stack trace:
+[02-Oct-2016 15:21:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:21:12 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:21:12 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:72
+[02-Oct-2016 15:21:12 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpNqIZCb' to '/home/ubuntu/workspace/des.osotemi/media/1112677687-perfilOsotemi.png' in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 72
+[02-Oct-2016 15:21:12 UTC] PHP Stack trace:
+[02-Oct-2016 15:21:12 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:21:12 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:21:12 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:72
+[02-Oct-2016 15:37:33 UTC] PHP Warning:  move_uploaded_file(/home/ubuntu/workspace/osotemi_web/media/1837965245-perfilOsotemi.png): failed to open stream: Permission denied in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 71
+[02-Oct-2016 15:37:33 UTC] PHP Stack trace:
+[02-Oct-2016 15:37:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:37:33 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:37:33 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:71
+[02-Oct-2016 15:37:33 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpHlTBOA' to '/home/ubuntu/workspace/osotemi_web/media/1837965245-perfilOsotemi.png' in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 71
+[02-Oct-2016 15:37:33 UTC] PHP Stack trace:
+[02-Oct-2016 15:37:33 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:37:33 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:37:33 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:71
+[02-Oct-2016 15:45:55 UTC] PHP Warning:  move_uploaded_file(/home/ubuntu/workspace/osotemi_web/media/1188619105-perfilOsotemi.png): failed to open stream: Permission denied in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 71
+[02-Oct-2016 15:45:55 UTC] PHP Stack trace:
+[02-Oct-2016 15:45:55 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:45:55 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:45:55 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:71
+[02-Oct-2016 15:45:55 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpwh3tmV' to '/home/ubuntu/workspace/osotemi_web/media/1188619105-perfilOsotemi.png' in /home/ubuntu/workspace/osotemi_web/utils/upload.php on line 71
+[02-Oct-2016 15:45:55 UTC] PHP Stack trace:
+[02-Oct-2016 15:45:55 UTC] PHP   1. {main}() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:0
+[02-Oct-2016 15:45:55 UTC] PHP   2. upload_files() /home/ubuntu/workspace/osotemi_web/modules/products/controller/controller_products.class.php:41
+[02-Oct-2016 15:45:55 UTC] PHP   3. move_uploaded_file() /home/ubuntu/workspace/osotemi_web/utils/upload.php:71
