@@ -152,7 +152,7 @@ $(document).ready(function () {
         },
         removedfile: function (file, serverFileName) {
             
-            var name = file.previewElement.name;
+            var name = file.name;
             console.log(name);
             $.ajax({
                 type: "POST",
@@ -168,11 +168,11 @@ $(document).ready(function () {
 
                     var json = JSON.parse(data);
 
-                    console.log(json);
+                    //console.log(json);
                     
                     if (json.res === true) {
                         var element;
-                        if ((element == file.previewElement) != null) {
+                        if ((element = file.previewElement) != null) {
                             element.parentNode.removeChild(file.previewElement);
                             //alert("Imagen eliminada: " + name);
                         } else {
@@ -180,7 +180,7 @@ $(document).ready(function () {
                         }
                     } else { //json.res == false, elimino la imagen también
                         var element;
-                        if ((element == file.previewElement) != null) {
+                        if ((element = file.previewElement) != null) {
                             element.parentNode.removeChild(file.previewElement);
                         } else {
                             false;
@@ -334,9 +334,12 @@ function validate_products(){
         $.post('modules/products/controller/controller_products.class.php',
                 {discharge_products_json: data_products_JSON},
         function (response) {
-            console.log(response);
-            console.log(response.product_name);
-            console.log(response.avatar);
+            //console.log(response);
+            //console.log(response.product_name);
+            //console.log(response.avatar);
+            if (response.success) {
+                window.location.href = response.redirect;
+            }
 
         }, "json").fail(function (xhr) {
             console.log(xhr.responseJSON);

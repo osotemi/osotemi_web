@@ -6,23 +6,9 @@
         </div> 
         <div class="row contact-wrap"> 
             <div class="status alert alert-success" style="display: none"></div>
-            <?php
-            $product = $_SESSION['product'];
-            $message = $_SESSION['message'];
-
-            foreach ($product as $indice => $valor) {
-                if ($indice == 'category') {
-                    echo "<br><b>Interests:</b><br>";
-                    $category = $product['category'];
-                    foreach ($category as $indice => $valor) {
-                        echo "<b>---> $indice</b>: $valor<br>";
-                    }
-                } else {
-                    echo "<br><b>$indice</b>: $valor";
-                }
-            }
-            echo "<br>" . "<b style='color:green'>" . $message;
-            ?>
+            <div id="content"></div>
+            <script type="text/javascript" src="modules/products/view/js/list_products.js" ></script>
+            
         </div><!--/.row-->
     </div><!--/.container-->
 </section><!--/#contact-page-->

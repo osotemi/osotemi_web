@@ -3,9 +3,10 @@ function load_products_ajax() {
     $.ajax({
         type: 'GET',
         url: "modules/products/controller/controller_products.class.php?load=true",
-        //dataType: 'json', 
+        dataType: 'json', 
         async: false
     }).success(function (data) {
+        //console.log("load products ajax")
         var json = JSON.parse(data);
         
         //alert(json.user.usuario);
@@ -67,8 +68,8 @@ function list_products(data) {
     
     var name = document.createElement("div");
     name.innerHTML = "name = ";
-    name.innerHTML += data.user.name;
-    
+    name.innerHTML += data.user.product_name;
+    /*
     var last_name = document.createElement("div");
     last_name.innerHTML = "last_name = ";
     last_name.innerHTML += data.user.last_name;
@@ -106,7 +107,7 @@ function list_products(data) {
     for(var i =0;i < data.user.interests.length;i++){
     interests.innerHTML += " - "+data.user.interests[i];
     }
-    
+    */
     //arreglar ruta IMATGE!!!!!
     
     var cad = data.user.avatar;
@@ -120,7 +121,7 @@ function list_products(data) {
     div_user.appendChild(parrafo);
     parrafo.appendChild(msje);
     parrafo.appendChild(name);
-    parrafo.appendChild(last_name);
+    /*parrafo.appendChild(last_name);
     parrafo.appendChild(date_birthday);
     parrafo.appendChild(title_date);
     parrafo.appendChild(address);
@@ -128,7 +129,7 @@ function list_products(data) {
     parrafo.appendChild(user);
     parrafo.appendChild(pass);   
     parrafo.appendChild(email);
-    parrafo.appendChild(interests);
+    parrafo.appendChild(interests);*/
     content.appendChild(div_user);
     content.appendChild(img);
 }
