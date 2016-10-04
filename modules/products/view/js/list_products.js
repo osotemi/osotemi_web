@@ -59,8 +59,7 @@ $(document).ready(function () {
 });
 
 function list_products(data) {
-    //alert(data.user.avatar);
-    console.log(data);
+    alert(data.product);
     var content = document.getElementById("content");
     var div_product = document.createElement("div");
     var parrafo = document.createElement("p");

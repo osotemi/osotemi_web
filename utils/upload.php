@@ -71,18 +71,18 @@ function upload_files() {
         if ($copiarFichero) {
             if (!move_uploaded_file($_FILES['file']['tmp_name'], $upfile)) {
                 $error .= "<p>Error al subir la imagen.</p>";
-                return $return=array('resultado'=>false,'error'=>$error,'datos'=>"");
+                return $return=array('resultado'=>false,'error'=>$error,'data'=>"");
             }
             //We need edit $upfile because now i don't need absolute route.
             $upfile ='media/'.$nombreFichero;
-            return $return=array('resultado'=>true , 'error'=>$error,'datos'=>$upfile);
+            return $return=array('resultado'=>true , 'error'=>$error,'data'=>$upfile);
         }
         if($_FILES['file']['error'] !== 0) { //Assignarem a l'us default-avatar
             $upfile = '/osotemi_web/media/default-avatar.png';
-            return $return=array('resultado'=>true,'error'=>$error,'datos'=>$upfile);
+            return $return=array('resultado'=>true,'error'=>$error,'data'=>$upfile);
         }
     }else{
-        return $return=array('resultado'=>false,'error'=>$error,'datos'=>"");
+        return $return=array('resultado'=>false,'error'=>$error,'data'=>"");
     }
 }
 

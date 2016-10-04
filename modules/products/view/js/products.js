@@ -133,8 +133,6 @@ $(document).ready(function () {
         acceptedFiles: 'image/*,.jpeg,.jpg,.png,.gif,.JPEG,.JPG,.PNG,.GIF,.rar,application/pdf,.psd',
         init: function () {//Maneja barra de carga y mensaje
             this.on("success", function (file, response) {
-                
-                //console.log(response);
                 $("#progress").show();
                 $("#bar").width('100%');
                 $("#percent").html('100%');
@@ -153,14 +151,11 @@ $(document).ready(function () {
         removedfile: function (file, serverFileName) {
             
             var name = file.name;
-            //console.log(name);
             $.ajax({
                 type: "POST",
                 url: "modules/products/controller/controller_products.class.php?delete=true",
                 data: "filename=" + name,
                 success: function (data) {
-                    //console.log(data);
-                    //console.log(file.res);
                     $("#progress").hide();
                     $('.msg').text('').removeClass('msg_ok');
                     $('.msg').text('').removeClass('msg_error');
@@ -168,8 +163,6 @@ $(document).ready(function () {
 
                     var json = JSON.parse(data);
 
-                    //console.log(json);
-                    
                     if (json.res === true) {
                         var element;
                         if ((element = file.previewElement) != null) {
@@ -321,10 +314,6 @@ function validate_products(){
     }
     */
 
-    //->yomogan comented  $("#form_products").submit();
-    //->yomogan comented $("#form_products").attr("action", "index.php?module=products");
-
-    console.log("Antes de que se envian los datos al servidor");
     //Si ha ido todo bien, se envian los datos al servidor
     if (result) {
         var data = {"product_name": product_name};
@@ -335,7 +324,7 @@ function validate_products(){
                 {discharge_products_json: data_products_JSON},
         function (response) {
             if (response.success) {
-                window.location.href = response.redirect;//redirect = result_products || 
+                window.location.href = response.redirect;//redirect = result_products ||  
             }
         }, "json").fail(function (xhr) {
             console.log(xhr.responseJSON);

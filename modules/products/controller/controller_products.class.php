@@ -16,16 +16,16 @@ function discharge_products() {
 	$result = validate_product($productsJSON);
 	
     if (empty($_SESSION['result_avatar'])) {
-        $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'datos' => 'media/default-avatar.png');
+        $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'data' => 'media/default-avatar.png');
     }
 
     $result_avatar = $_SESSION['result_avatar'];
 	
 	//if(($result['resultado']) && ($result_avatar['resultado'])){
 	$arrArgument = array(
-        'product_name' => ucfirst($result['datos']['product_name']),
+        'product_name' => ucfirst($result['data']['product_name']),
         
-        'avatar' => $result_avatar['datos']
+        'avatar' => $result_avatar['data']
     );
 
     $mensaje = "User has been successfully registered";
@@ -37,7 +37,7 @@ function discharge_products() {
 
     $jsondata["success"] = true;
     $jsondata["redirect"] = $callback;
-    echo json_encode($jsondata);//recogido por product.js -> function validate products -> function(response)
+    echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
     exit;	
 }
 
@@ -62,7 +62,7 @@ if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
 }
 
 ///////////////////////////
-if (isset($_GET["load"]) && $_GET["load"] == true) {
+if (isset($_GET["load"]) && $_GET["load"] == true) {//call by list_products -> load_products_ajax
     $jsondata = array();
     if (isset($_SESSION['product'])) {
         //echo debug($_SESSION['product']);
@@ -73,7 +73,7 @@ if (isset($_GET["load"]) && $_GET["load"] == true) {
         $jsondata["msje"] = $_SESSION['msje'];
     }
     close_session();
-    echo json_encode($jsondata);
+    echo json_encode($jsondata);//go to list_products -> load_products_ajax
     exit;
 }
 	
