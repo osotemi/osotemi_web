@@ -7,8 +7,6 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{2,30}$/')
         ),
-        //no testeado
-        /*
         'description' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{2,230}$/')
@@ -33,29 +31,9 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^[0-99 ]1$/i')
         ),
-        */
     );
-    $result = filter_input_array($value, $filter);
-
-    //no filter
-    $result['season'] = $_POST['season'];
-    $result['category'] = $_POST['category'];
-
-    if ($result['discharge_date'] && $result['expiry_date']) {
-        //compare date of birth with title_date
-        $dates = valida_dates($_POST['discharge_date'], $_POST['expiry_date']);
-
-        if (!$dates) {
-            $error['discharge_date'] = "Expiry date can't be greater than discharge date";
-            $valid = false;
-        }
-    }
-
-    if(count($_POST['category']) <= 1){
-        $error['category'] = "Please, select 2 or more categories";
-        $valid = false;
-    }
-
+    $result = filter_var_array($value, $filter);
+    
     if ($result != null && $result) {
 
 
@@ -100,21 +78,36 @@ function validate_product( $value ) {
             $valid = false;
         }
         
+        if ($result['discharge_date'] && $result['expiry_date']) {
+            $dates = valida_dates($_POST['discharge_date'], $_POST['expiry_date']);
+    
+            if (!$dates) {
+                $error['discharge_date'] = "Expiry date can't be greater than discharge date";
+                $valid = false;
+            }
+        }
+    
+        if(count($_POST['category']) <= 1){
+            $error['category'] = "Please, select 2 or more categories";
+            $valid = false;
+        }
+        
+        
         if (!$result['discount_percent']) {
             $error['discount_percent'] = "Discount must be between 0 and 99";
             $valid = false;
         }
+        
+        $result['season'] = $_POST['season'];
+        $result['category'] = $_POST['category'];
+
         */
-
-
     } else {
         $valid = false;
     };
 
     $return = array('result' => $valid, 'error' => $error, 'data' => $result);
-    //echo var_dump($valid);
-    //debugPHP($return);
-    //die();
+    
     return $return;
 }
 

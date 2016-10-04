@@ -1,12 +1,14 @@
 //////////////////////////////////////////////////////////////// 
 function load_products_ajax() {
+    //console.log("Are in list_products");
+    //console.log(data);
     $.ajax({
         type: 'GET',
         url: "modules/products/controller/controller_products.class.php?load=true",
-        dataType: 'json', 
+        //dataType: 'json', 
         async: false
     }).success(function (data) {
-        //console.log("load products ajax")
+        
         var json = JSON.parse(data);
         
         //alert(json.user.usuario);
@@ -58,17 +60,18 @@ $(document).ready(function () {
 
 function list_products(data) {
     //alert(data.user.avatar);
+    console.log(data);
     var content = document.getElementById("content");
-    var div_user = document.createElement("div");
+    var div_product = document.createElement("div");
     var parrafo = document.createElement("p");
 
     var msje = document.createElement("div");
     msje.innerHTML = "msje = ";
     msje.innerHTML += data.msje;
     
-    var name = document.createElement("div");
-    name.innerHTML = "name = ";
-    name.innerHTML += data.user.product_name;
+    var product_name = document.createElement("div");
+    product_name.innerHTML = "Product name = ";
+    product_name.innerHTML += data.product.product_name;
     /*
     var last_name = document.createElement("div");
     last_name.innerHTML = "last_name = ";
@@ -110,7 +113,7 @@ function list_products(data) {
     */
     //arreglar ruta IMATGE!!!!!
     
-    var cad = data.user.avatar;
+    var cad = data.product.avatar;
     //console.log(cad);
     //var cad = cad.toLowerCase();
     var img = document.createElement("div");
@@ -118,9 +121,9 @@ function list_products(data) {
     img.innerHTML = html;
     //alert(html);
 
-    div_user.appendChild(parrafo);
+    div_product.appendChild(parrafo);
     parrafo.appendChild(msje);
-    parrafo.appendChild(name);
+    parrafo.appendChild(product_name);
     /*parrafo.appendChild(last_name);
     parrafo.appendChild(date_birthday);
     parrafo.appendChild(title_date);
@@ -130,6 +133,6 @@ function list_products(data) {
     parrafo.appendChild(pass);   
     parrafo.appendChild(email);
     parrafo.appendChild(interests);*/
-    content.appendChild(div_user);
+    content.appendChild(div_product);
     content.appendChild(img);
 }

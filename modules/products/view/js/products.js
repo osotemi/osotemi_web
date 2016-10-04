@@ -153,11 +153,11 @@ $(document).ready(function () {
         removedfile: function (file, serverFileName) {
             
             var name = file.name;
-            console.log(name);
+            //console.log(name);
             $.ajax({
                 type: "POST",
                 url: "modules/products/controller/controller_products.class.php?delete=true",
-                data: "filename="+name,
+                data: "filename=" + name,
                 success: function (data) {
                     //console.log(data);
                     //console.log(file.res);
@@ -330,17 +330,13 @@ function validate_products(){
         var data = {"product_name": product_name};
 
         var data_products_JSON = JSON.stringify(data);
-
+        console.log(data);
         $.post('modules/products/controller/controller_products.class.php',
                 {discharge_products_json: data_products_JSON},
         function (response) {
-            //console.log(response);
-            //console.log(response.product_name);
-            //console.log(response.avatar);
             if (response.success) {
-                window.location.href = response.redirect;
+                window.location.href = response.redirect;//redirect = result_products || 
             }
-
         }, "json").fail(function (xhr) {
             console.log(xhr.responseJSON);
         });

@@ -54,7 +54,7 @@ function upload_files() {
     if (is_uploaded_file($_FILES['file']['tmp_name'])){
         if (is_file($_FILES['file']['tmp_name'])) {
             $idUnico = rand();
-            $nombreFichero = $idUnico."-".$_FILES['file']['name'];
+            $nombreFichero = $idUnico . "-" . $_FILES['file']['name'];
             //$_FILES['file']['name'] = $nombreFichero;
             $copiarFichero = true;
             // I use absolute route to move_uploaded_file because this happens when i run ajax
@@ -69,7 +69,7 @@ function upload_files() {
     if ($error == "") {
         //return $return=array('file_tmp_name'=>$_FILES['file']['tmp_name'],'upfile'=>$upfile);
         if ($copiarFichero) {
-            if (!move_uploaded_file($_FILES['file']['tmp_name'],$upfile)) {
+            if (!move_uploaded_file($_FILES['file']['tmp_name'], $upfile)) {
                 $error .= "<p>Error al subir la imagen.</p>";
                 return $return=array('resultado'=>false,'error'=>$error,'datos'=>"");
             }
@@ -88,10 +88,9 @@ function upload_files() {
 
 function remove_files(){
 	$name = $_POST["filename"];
-	echo json_encode($name);
-	exit;
-	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'.$name)){
-		unlink($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'.$name);
+	
+	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'. $name)){
+		unlink($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'. $name);
 		return true;
 	}else{
 		return false;
