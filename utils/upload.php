@@ -55,7 +55,7 @@ function upload_files() {
         if (is_file($_FILES['file']['tmp_name'])) {
             $idUnico = rand();
             $nombreFichero = $idUnico . "-" . $_FILES['file']['name'];
-            //$_FILES['file']['name'] = $nombreFichero;
+            $_SESSION['filename'] = $nombreFichero;
             $copiarFichero = true;
             // I use absolute route to move_uploaded_file because this happens when i run ajax
             $upfile = $_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'.$nombreFichero;
@@ -87,7 +87,7 @@ function upload_files() {
 }
 
 function remove_files(){
-	$name = $_POST["filename"];
+	$name = $_SESSION['filename'];
 	
 	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'. $name)){
 		unlink($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'. $name);

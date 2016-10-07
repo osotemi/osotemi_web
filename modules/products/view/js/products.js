@@ -102,7 +102,7 @@ $(document).ready(function () {
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '1915:2016',
+        yearRange: '2015:2016',
 
       });
 
@@ -110,7 +110,7 @@ $(document).ready(function () {
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '1915:2016',
+        yearRange: '2016:2020',
 
       });
     });
@@ -195,7 +195,6 @@ $(document).ready(function () {
 
     //realizamos funciones para que sea más práctico nuestro formulario
     $("#product_name").keyup(function () {
-        console.log("Entra en keyup");
         if ($(this).val() != "" && string_reg.test($(this).val())) {
             $(".error").fadeOut();
             return false;
@@ -248,7 +247,7 @@ function validate_products(){
 
 
     $(".error").remove();
-      /*
+      
     //product name error handler
     if ($("#product_name").val() == "" || $("#product_name").val() == "Introduce product name") {
         $("#product_name").focus().after("<span class='error'>Introduce product name</span>");
@@ -259,7 +258,7 @@ function validate_products(){
         result = false;
         return false;
     }
-
+    /*
     //description error handler
     else if ($("#description").val() == "" || $("#description").val() == "Short product description") {
         $("#description").focus().after("<span class='error'>Introduce a short description of the product</span>");
@@ -319,15 +318,69 @@ function validate_products(){
         var data = {"product_name": product_name};
 
         var data_products_JSON = JSON.stringify(data);
-        console.log(data);
+        console.log(data_products_JSON);
         $.post('modules/products/controller/controller_products.class.php',
                 {discharge_products_json: data_products_JSON},
         function (response) {
+            console.log(response);
+            
             if (response.success) {
                 window.location.href = response.redirect;//redirect = result_products ||  
             }
         }, "json").fail(function (xhr) {
             console.log(xhr.responseJSON);
+            if (xhr.responseJSON.error.product_name)
+                $("#product_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.name + "</span>");
+            /*
+            if (xhr.responseJSON.error.last_name)
+                $("#last_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.last_name + "</span>");
+
+            if (xhr.responseJSON.error.birth_date)
+                $("#birth_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.birth_date + "</span>");
+
+            if (xhr.responseJSON.error.title_date)
+                $("#title_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.title_date + "</span>");
+
+            if (xhr.responseJSON.error.address)
+                $("#address").focus().after("<span  class='error1'>" + xhr.responseJSON.error.address + "</span>");
+
+            if (xhr.responseJSON.error.user)
+                $("#user").focus().after("<span  class='error1'>" + xhr.responseJSON.error.user + "</span>");
+
+            if (xhr.responseJSON.error.pass)
+                $("#pass").focus().after("<span  class='error1'>" + xhr.responseJSON.error.pass + "</span>");
+
+            if (xhr.responseJSON.error.conf_pass)
+                $("#conf_pass").focus().after("<span  class='error1'>" + xhr.responseJSON.error.conf_pass + "</span>");
+
+            if (xhr.responseJSON.error.email)
+                $("#email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.email + "</span>");
+
+            if (xhr.responseJSON.error.conf_email)
+                $("#conf_email").focus().after("<span class='error1'>" + xhr.responseJSON.error.conf_email + "</span>");
+
+            if (xhr.responseJSON.error.en_lvl)
+                $("#en_lvl").focus().after("<span  class='error1'>" + xhr.responseJSON.error.en_lvl + "</span>");
+
+            if (xhr.responseJSON.error.interests)
+                $("#e_interests").focus().after("<span  class='error1'>" + xhr.responseJSON.error.interests + "</span>");
+
+            if (xhr.responseJSON.error_avatar)
+                $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");
+
+            if (xhr.responseJSON.success1) {
+                if (xhr.responseJSON.img_avatar !== "/PhpProject1/media/default-avatar.png") {
+                    //$("#progress").show();
+                    //$("#bar").width('100%');
+                    //$("#percent").html('100%');
+                    //$('.msg').text('').removeClass('msg_error');
+                    //$('.msg').text('Success Upload image!!').addClass('msg_ok').animate({ 'right' : '300px' }, 300);
+                }
+            } else {
+                $("#progress").hide();
+                $('.msg').text('').removeClass('msg_ok');
+                $('.msg').text('Error Upload image!!').addClass('msg_error').animate({'right': '300px'}, 300);
+            }*/
         });
     }
 

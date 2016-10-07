@@ -14,31 +14,55 @@ function discharge_products() {
   	$productsJSON = json_decode($_POST["discharge_products_json"], true);
   	
 	$result = validate_product($productsJSON);
-	
+	//echo json_encode($result);
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'data' => 'media/default-avatar.png');
     }
-
+    
     $result_avatar = $_SESSION['result_avatar'];
-	
-	//if(($result['resultado']) && ($result_avatar['resultado'])){
-	$arrArgument = array(
-        'product_name' => ucfirst($result['data']['product_name']),
+    //$jsondata["success"] = true;
+    //$jsondata['resultado']= $result;
+    //$jsondata['result_avatar']= $result_avatar['resultado'];
+    //echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
+    //exit;
+    
+	if(($result) && ($result_avatar['resultado'])){
+	    
+    	$arrArgument = array(
+            'product_name' => ucfirst($result['data']['product_name']),
+            
+            'avatar' => $result_avatar['data']
+        );
+    
+        $mensaje = "User has been successfully registered";
+    
+        //redirigir a controlador de vista con los datos de $arrArgument y $mensaje
+        $_SESSION['product'] = $arrArgument;
+        $_SESSION['msje'] = $mensaje;
+        $callback = "index.php?module=products&view=result_products";
+    
+        $jsondata["success"] = true;
+        $jsondata["redirect"] = $callback;
+        echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
+        exit;
+    }
+    else{
         
-        'avatar' => $result_avatar['data']
-    );
+        $jsondata["success"] = false;
+        $jsondata["error"] = $result['error'];
+        $jsondata["error_avatar"] = $result_avatar['error'];
 
-    $mensaje = "User has been successfully registered";
-
-    //redirigir a controlador de vista con los datos de $arrArgument y $mensaje
-    $_SESSION['product'] = $arrArgument;
-    $_SESSION['msje'] = $mensaje;
-    $callback = "index.php?module=products&view=result_products";
-
-    $jsondata["success"] = true;
-    $jsondata["redirect"] = $callback;
-    echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
-    exit;	
+        $jsondata["success1"] = false;
+        if ($result_avatar['resultado']) {
+            $jsondata["success1"] = true;
+            $jsondata["img_avatar"] = $result_avatar['data'];
+        }
+        header('HTTP/1.0 400 Bad error');
+        echo json_encode($jsondata);
+        
+    }
+    
+    
 }
 
 //////////////////////////
@@ -50,8 +74,7 @@ if (isset($_GET["delete"]) && $_GET["delete"] == true) {
     } else {
         echo json_encode(array("res" => false));
     }
-	//echo json_encode($result);
-	//exit;
+	
 }
 
 
@@ -82,4 +105,19 @@ function close_session() {
     unset($_SESSION['msje']);
     $_SESSION = array(); // Destruye todas las variables de la sesión
     session_destroy(); // Destruye la sesión
+}
+
+/////////////////////////////////////////////////// load_data
+if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
+    $jsondata = array();
+
+    if (isset($_SESSION['product'])) {
+        $jsondata["product"] = $_SESSION['product'];
+        echo json_encode($jsondata);
+        exit;
+    } else {
+        $jsondata["product"] = "";
+        echo json_encode($jsondata);
+        exit;
+    }
 }

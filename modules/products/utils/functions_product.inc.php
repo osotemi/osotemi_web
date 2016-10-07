@@ -114,8 +114,8 @@ function validate_product( $value ) {
 // validate dates of product
 function valida_dates($discharge_day, $expiry_day) {
 
-    $discharge_day = date("d/m/Y", strtotime($discharge_day));
-    $expiry_day = date("d/m/Y", strtotime($expiry_day));
+    $discharge_day = date("dd/mm/YYYY", strtotime($discharge_day));
+    $expiry_day = date("dd/mm/YYYY", strtotime($expiry_day));
 
     list($dia_one, $mes_one, $anio_one) = split('/', $discharge_day);
     list($dia_two, $mes_two, $anio_two) = split('/', $expiry_day);
