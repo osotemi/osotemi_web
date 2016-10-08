@@ -16,7 +16,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#product_name").attr("value", "Introduce product name");
             }
         });
-        /*
+        
         //description textarea handler
         if ($("#description").attr("value") == "") {
             $("#description").attr("value", "Short product description");
@@ -31,7 +31,8 @@ jQuery.fn.fill_or_clean = function () {
                 $("#description").val("Short product description");
             }
         });
-        //description discharge date handler
+        /*
+        //discharge date handler
         if ($("#discharge_date").attr("value") == "") {
             $("#discharge_date").attr("value", "mm/dd/yyyy");
             $("#discharge_date").focus(function () {
@@ -236,41 +237,41 @@ function validate_products(){
     var result = true;
     //Get form elements by id
     var product_name = document.getElementById('product_name').value;
-
+    var description = document.getElementById('description').value;
 
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
-    var string_reg = /^[A-Za-z0-9]{2,30}$/;
-    var textarea_reg = /^[0-9A-Za-z]{4,120}$/;
+    var string_reg = /^[\sA-Za-z0-9]{2,30}$/;
+    var textarea_reg = /^[\s0-9A-Za-z]{5,230}$/;
     var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var phone_reg = /^\+\d{2,3}\s[689]{1}\d{2}\s\d{3}\s\d{3}$/;
 
 
     $(".error").remove();
-      
+    console.log($("#description").val());  
     //product name error handler
     if ($("#product_name").val() == "" || $("#product_name").val() == "Introduce product name") {
         $("#product_name").focus().after("<span class='error'>Introduce product name</span>");
         result = false;
         return false;
     } else if (!string_reg.test($("#product_name").val())) {
-        $("#product_name").focus().after("<span class='error'>Name must be 2 to 30 letters</span>");
+        $("#product_name").focus().after("<span class='error'>Name must be 2 to 30 characters</span>");
         result = false;
         return false;
     }
-    /*
+    
     //description error handler
     else if ($("#description").val() == "" || $("#description").val() == "Short product description") {
         $("#description").focus().after("<span class='error'>Introduce a short description of the product</span>");
         result = false;
         return false;
-    } else if (!textarea_reg.test($("#description").val())) {
-        $("#description").focus().after("<span class='error'>Description must be 5 to 180 letters</span>");
+    } else if (!textarea_reg.test($("#description").val())) {// $("#description").val().length < 12 || $("#description").val().length > 230
+        $("#description").focus().after("<span class='error'>Description must be 5 to 230 characters</span>");
         result = false;
         return false;
     }
+    /*
     //discharge_date error handler
-
     else if ($("#discharge_date").val() == "" || $("#discharge_date").val() == "mm/dd/yyyy") {
         $("#discharge_date").focus().after("<span class='error'>mm/dd/yyyy</span>");
         result = false;
@@ -315,7 +316,7 @@ function validate_products(){
 
     //Si ha ido todo bien, se envian los datos al servidor
     if (result) {
-        var data = {"product_name": product_name};
+        var data = {"product_name": product_name, "description": description};
 
         var data_products_JSON = JSON.stringify(data);
         console.log(data_products_JSON);
@@ -331,10 +332,10 @@ function validate_products(){
             console.log(xhr.responseJSON);
             if (xhr.responseJSON.error.product_name)
                 $("#product_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.product_name + "</span>");
-            /*
+            
             if (xhr.responseJSON.error.description)
                 $("#description").focus().after("<span  class='error1'>" + xhr.responseJSON.error.description + "</span>");
-
+            /*
             if (xhr.responseJSON.error.discharge_date)
                 $("#discharge_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discharge_date + "</span>");
 

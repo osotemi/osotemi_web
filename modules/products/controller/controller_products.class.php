@@ -30,6 +30,7 @@ function discharge_products() {
 	    
     	$arrArgument = array(
             'product_name' => ucfirst($result['data']['product_name']),
+            'description' => $result['data']['description'],
             
             'avatar' => $result_avatar['data']
         );

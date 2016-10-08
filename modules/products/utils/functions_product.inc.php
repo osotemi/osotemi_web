@@ -9,7 +9,7 @@ function validate_product( $value ) {
         ),
         'description' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => array('regexp' => '/^\D{2,230}$/')
+            'options' => array('regexp' => '/^\D{5,230}$/')
         ),
         'discharge_date' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
@@ -41,12 +41,12 @@ function validate_product( $value ) {
             $error['product_name'] = 'Product name must be 2 to 20 letters';
             $valid = false;
         }
-        /*
+        
         if (!$result['description']) {
-            $error['description'] = 'Description must have more than 2 characters and less than 180';
+            $error['description'] = 'Description must have more than 5 characters and less than 230';
             $valid = false;
         }
-
+        /*
         if (!$result['discharge_date']) {
             if($_POST['discharge_date'] == ""){
                 $error['discharge_date'] = "Any product must have a discharge date";

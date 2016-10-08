@@ -71,11 +71,11 @@ function list_products(data) {
     var product_name = document.createElement("div");
     product_name.innerHTML = "Product name = ";
     product_name.innerHTML += data.product.product_name;
-    /*
-    var last_name = document.createElement("div");
-    last_name.innerHTML = "last_name = ";
-    last_name.innerHTML += data.user.last_name;
     
+    var description = document.createElement("div");
+    description.innerHTML = "description = ";
+    description.innerHTML += data.product.description;
+    /*
     var date_birthday = document.createElement("div");
     date_birthday.innerHTML = "date_birthday = ";
     date_birthday.innerHTML += data.user.birth_date;
@@ -123,8 +123,8 @@ function list_products(data) {
     div_product.appendChild(parrafo);
     parrafo.appendChild(msje);
     parrafo.appendChild(product_name);
-    /*parrafo.appendChild(last_name);
-    parrafo.appendChild(date_birthday);
+    parrafo.appendChild(description);
+    /*parrafo.appendChild(date_birthday);
     parrafo.appendChild(title_date);
     parrafo.appendChild(address);
     parrafo.appendChild(en_lvl);
