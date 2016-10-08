@@ -75,11 +75,11 @@ function list_products(data) {
     var description = document.createElement("div");
     description.innerHTML = "description = ";
     description.innerHTML += data.product.description;
-    /*
-    var date_birthday = document.createElement("div");
-    date_birthday.innerHTML = "date_birthday = ";
-    date_birthday.innerHTML += data.user.birth_date;
     
+    var discharge_date = document.createElement("div");
+    discharge_date.innerHTML = "discharge_date = ";
+    discharge_date.innerHTML += data.product.discharge_date;
+    /*
     var title_date = document.createElement("div");
     title_date.innerHTML = "title_date = ";
     title_date.innerHTML += data.user.title_date;
@@ -124,8 +124,8 @@ function list_products(data) {
     parrafo.appendChild(msje);
     parrafo.appendChild(product_name);
     parrafo.appendChild(description);
-    /*parrafo.appendChild(date_birthday);
-    parrafo.appendChild(title_date);
+    parrafo.appendChild(discharge_date);
+    /*parrafo.appendChild(title_date);
     parrafo.appendChild(address);
     parrafo.appendChild(en_lvl);
     parrafo.appendChild(user);

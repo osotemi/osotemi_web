@@ -31,7 +31,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#description").val("Short product description");
             }
         });
-        /*
+        
         //discharge date handler
         if ($("#discharge_date").attr("value") == "") {
             $("#discharge_date").attr("value", "mm/dd/yyyy");
@@ -46,6 +46,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#discharge_date").attr("value", "mm/dd/yyyy");
             }
         });
+        /*
         //description discharge date handler
         if ($("#expiry_date").attr("value") == "") {
             $("#expiry_date").attr("value", "mm/dd/yyyy");
@@ -100,7 +101,8 @@ $(document).ready(function () {
     //Datepicker///////////////////////////
     $(function (){
       $("#discharge_date").datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'mm/dd/yy',
+        defaultDate: 'today',
         changeMonth: true,
         changeYear: true,
         yearRange: '2015:2016',
@@ -108,7 +110,7 @@ $(document).ready(function () {
       });
 
       $("#expiry_date").datepicker({
-        dateFormat: 'dd/mm/yy',
+        dateFormat: 'mm/dd/yy',
         changeMonth: true,
         changeYear: true,
         yearRange: '2016:2020',
@@ -238,6 +240,7 @@ function validate_products(){
     //Get form elements by id
     var product_name = document.getElementById('product_name').value;
     var description = document.getElementById('description').value;
+    var discharge_date = document.getElementById('discharge_date').value;
 
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
@@ -270,7 +273,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    /*
+    
     //discharge_date error handler
     else if ($("#discharge_date").val() == "" || $("#discharge_date").val() == "mm/dd/yyyy") {
         $("#discharge_date").focus().after("<span class='error'>mm/dd/yyyy</span>");
@@ -282,6 +285,7 @@ function validate_products(){
         result = false;
         return false;
     }
+    /*
     //expiry_date error handler
     else if ($("#expiry_date").val() == "" || $("#expiry_date").val() == "mm/dd/yyyy") {
         $("#expiry_date").focus().after("<span class='error'>mm/dd/yyyy</span>");
@@ -316,7 +320,7 @@ function validate_products(){
 
     //Si ha ido todo bien, se envian los datos al servidor
     if (result) {
-        var data = {"product_name": product_name, "description": description};
+        var data = {"product_name": product_name, "description": description, "discharge_date": discharge_date};
 
         var data_products_JSON = JSON.stringify(data);
         console.log(data_products_JSON);
@@ -335,10 +339,10 @@ function validate_products(){
             
             if (xhr.responseJSON.error.description)
                 $("#description").focus().after("<span  class='error1'>" + xhr.responseJSON.error.description + "</span>");
-            /*
+            
             if (xhr.responseJSON.error.discharge_date)
                 $("#discharge_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discharge_date + "</span>");
-
+            /*
             if (xhr.responseJSON.error.expiry_date)
                 $("#expiry_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.expiry_date + "</span>");
 
@@ -356,7 +360,7 @@ function validate_products(){
 
             if (xhr.responseJSON.error.discount_percent)
                 $("#discount_percent").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discount_percent + "</span>");
-
+            */
             if (xhr.responseJSON.error_avatar)
                 $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");
 
@@ -372,7 +376,7 @@ function validate_products(){
                 $("#progress").hide();
                 $('.msg').text('').removeClass('msg_ok');
                 $('.msg').text('Error Upload image!!').addClass('msg_error').animate({'right': '300px'}, 300);
-            }*/
+            }
         });
     }
 

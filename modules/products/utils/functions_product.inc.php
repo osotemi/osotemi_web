@@ -46,7 +46,7 @@ function validate_product( $value ) {
             $error['description'] = 'Description must have more than 5 characters and less than 230';
             $valid = false;
         }
-        /*
+        
         if (!$result['discharge_date']) {
             if($_POST['discharge_date'] == ""){
                 $error['discharge_date'] = "Any product must have a discharge date";
@@ -56,7 +56,7 @@ function validate_product( $value ) {
                 $valid = false;
             }
         }
-
+        /*
         if (!$result['expiry_date']) {
             if($_POST['expiry_date'] == ""){
                 $error['expiry_date'] = "This camp can't empty";
@@ -114,11 +114,11 @@ function validate_product( $value ) {
 // validate dates of product
 function valida_dates($discharge_day, $expiry_day) {
 
-    $discharge_day = date("dd/mm/YYYY", strtotime($discharge_day));
-    $expiry_day = date("dd/mm/YYYY", strtotime($expiry_day));
+    $discharge_day = date("mm/dd/YYYY", strtotime($discharge_day));
+    $expiry_day = date("mm/dd/YYYY", strtotime($expiry_day));
 
-    list($dia_one, $mes_one, $anio_one) = split('/', $discharge_day);
-    list($dia_two, $mes_two, $anio_two) = split('/', $expiry_day);
+    list($mes_one, $dia_one, $anio_one) = split('/', $discharge_day);
+    list($mes_two, $dia_two, $anio_two) = split('/', $expiry_day);
 
     $dateOne = new DateTime($anio_one . "/" . $mes_one . "/" . $dia_one);
     $dateTwo = new DateTime($anio_two . "/" . $mes_two . "/" . $dia_two);
