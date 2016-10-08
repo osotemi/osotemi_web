@@ -71,7 +71,7 @@
                 <!-- Product categories -->
                 <div class="form-group">
                     <p style="text-align:left;">Product category</p>
-                    <input style="text-align:left;" name="category[0]" type="checkbox" />Electronics<br>
+                    <input id="category" style="text-align:left;" name="category[0]" type="checkbox" />Electronics<br>
           					<input style="text-align:left;" name="category[1]" type="checkbox" />Home appliances<br>
           					<input style="text-align:left;" name="category[2]" type="checkbox" />Electronic games<br>
           					<input style="text-align:left;" name="category[3]" type="checkbox" />Smart appliances<br>
@@ -87,7 +87,7 @@
                 <!--If has discount, how much? -->
                 <div class="form-group">
                     <p style="text-align:left;">Product discount percent</p>
-                    <input name="discount_percent" class="form-control" placeholder="Discount percent" type="text" id="discount_percent">
+                    <input id="discount_percent" name="discount_percent" class="form-control" placeholder="Discount percent" type="text" id="discount_percent">
                 </div>
                 <br />
                 <br />

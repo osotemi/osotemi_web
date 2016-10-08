@@ -330,40 +330,31 @@ function validate_products(){
         }, "json").fail(function (xhr) {
             console.log(xhr.responseJSON);
             if (xhr.responseJSON.error.product_name)
-                $("#product_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.name + "</span>");
+                $("#product_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.product_name + "</span>");
             /*
-            if (xhr.responseJSON.error.last_name)
-                $("#last_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.last_name + "</span>");
+            if (xhr.responseJSON.error.description)
+                $("#description").focus().after("<span  class='error1'>" + xhr.responseJSON.error.description + "</span>");
 
-            if (xhr.responseJSON.error.birth_date)
-                $("#birth_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.birth_date + "</span>");
+            if (xhr.responseJSON.error.discharge_date)
+                $("#discharge_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discharge_date + "</span>");
 
-            if (xhr.responseJSON.error.title_date)
-                $("#title_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.title_date + "</span>");
+            if (xhr.responseJSON.error.expiry_date)
+                $("#expiry_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.expiry_date + "</span>");
 
-            if (xhr.responseJSON.error.address)
-                $("#address").focus().after("<span  class='error1'>" + xhr.responseJSON.error.address + "</span>");
+            if (xhr.responseJSON.error.provider_email)
+                $("#provider_email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.provider_email + "</span>");
 
-            if (xhr.responseJSON.error.user)
-                $("#user").focus().after("<span  class='error1'>" + xhr.responseJSON.error.user + "</span>");
+            if (xhr.responseJSON.error.season)
+                $("#season").focus().after("<span  class='error1'>" + xhr.responseJSON.error.season + "</span>");
 
-            if (xhr.responseJSON.error.pass)
-                $("#pass").focus().after("<span  class='error1'>" + xhr.responseJSON.error.pass + "</span>");
+            if (xhr.responseJSON.error.category)
+                $("#category").focus().after("<span  class='error1'>" + xhr.responseJSON.error.category + "</span>");
 
-            if (xhr.responseJSON.error.conf_pass)
-                $("#conf_pass").focus().after("<span  class='error1'>" + xhr.responseJSON.error.conf_pass + "</span>");
+            if (xhr.responseJSON.error.discount)
+                $("#discount").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discount + "</span>");
 
-            if (xhr.responseJSON.error.email)
-                $("#email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.email + "</span>");
-
-            if (xhr.responseJSON.error.conf_email)
-                $("#conf_email").focus().after("<span class='error1'>" + xhr.responseJSON.error.conf_email + "</span>");
-
-            if (xhr.responseJSON.error.en_lvl)
-                $("#en_lvl").focus().after("<span  class='error1'>" + xhr.responseJSON.error.en_lvl + "</span>");
-
-            if (xhr.responseJSON.error.interests)
-                $("#e_interests").focus().after("<span  class='error1'>" + xhr.responseJSON.error.interests + "</span>");
+            if (xhr.responseJSON.error.discount_percent)
+                $("#discount_percent").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discount_percent + "</span>");
 
             if (xhr.responseJSON.error_avatar)
                 $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");
