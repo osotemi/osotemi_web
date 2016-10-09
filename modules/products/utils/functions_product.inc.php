@@ -66,7 +66,7 @@ function validate_product( $value ) {
             $valid = false;
             }
         }
-        /*
+        
         if (!$result['provider_email']) {
             $error['provider_email'] = 'error format email (example@example.com)';
             $valid = false;
@@ -78,8 +78,7 @@ function validate_product( $value ) {
             $valid = false;
         }
         
-        
-    
+        /*
         if(count($_POST['category']) <= 1){
             $error['category'] = "Please, select 2 or more categories";
             $valid = false;

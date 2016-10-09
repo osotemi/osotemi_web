@@ -73,21 +73,21 @@ function list_products(data) {
     product_name.innerHTML += data.product.product_name;
     
     var description = document.createElement("div");
-    description.innerHTML = "description = ";
+    description.innerHTML = "Description = ";
     description.innerHTML += data.product.description;
     
     var discharge_date = document.createElement("div");
-    discharge_date.innerHTML = "discharge_date = ";
+    discharge_date.innerHTML = "Discharge date = ";
     discharge_date.innerHTML += data.product.discharge_date;
     
     var expiry_date = document.createElement("div");
-    expiry_date.innerHTML = "expiry_date = ";
+    expiry_date.innerHTML = "Expiry date = ";
     expiry_date.innerHTML += data.product.expiry_date;
-    /*
-    var address = document.createElement("div");
-    address.innerHTML = "address = ";
-    address.innerHTML += data.user.address;
     
+    var provider_email = document.createElement("div");
+    provider_email.innerHTML = "provider_email = ";
+    provider_email.innerHTML += data.product.provider_email;
+    /*
     var user = document.createElement("div");
     user.innerHTML = "user = ";
     user.innerHTML += data.user.user;
@@ -126,8 +126,8 @@ function list_products(data) {
     parrafo.appendChild(description);
     parrafo.appendChild(discharge_date);
     parrafo.appendChild(expiry_date);
-    /*parrafo.appendChild(address);
-    parrafo.appendChild(en_lvl);
+    parrafo.appendChild(provider_email);
+    /*parrafo.appendChild(en_lvl);
     parrafo.appendChild(user);
     parrafo.appendChild(pass);   
     parrafo.appendChild(email);

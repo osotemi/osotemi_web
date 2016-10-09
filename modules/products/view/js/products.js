@@ -292,6 +292,7 @@ function validate_products(){
     var description = document.getElementById('description').value;
     var discharge_date = document.getElementById('discharge_date').value;
     var expiry_date = document.getElementById('expiry_date').value;
+    var provider_email = document.getElementById('provider_email').value;
 
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
@@ -347,7 +348,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    /*
+    
     //provider_email error handler
     if ($("#provider_email").val() == "" || $("#provider_email").val() == "Introduce provider email") {
         $("#provider_email").focus().after("<span class='error'>Introduce provider email</span>");
@@ -358,6 +359,7 @@ function validate_products(){
         result = false;
         return false;
     }
+    /*
     //provider_phone error handler
     if ($("#provider_phone").val() == "" || $("#provider_phone").val() == "Provider phone number") {
         $("#provider_phone").focus().after("<span class='error'>Provider phone number</span>");
@@ -397,10 +399,10 @@ function validate_products(){
             
             if (xhr.responseJSON.error.expiry_date)
                 $("#expiry_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.expiry_date + "</span>");
-            /*
+            
             if (xhr.responseJSON.error.provider_email)
                 $("#provider_email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.provider_email + "</span>");
-
+            /*
             if (xhr.responseJSON.error.season)
                 $("#season").focus().after("<span  class='error1'>" + xhr.responseJSON.error.season + "</span>");
 
