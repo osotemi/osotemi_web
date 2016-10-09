@@ -15,6 +15,7 @@ function discharge_products() {
   	
 	$result = validate_product($productsJSON);
 	//echo json_encode($result);
+	//exit;
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'data' => 'media/default-avatar.png');
     }
@@ -32,6 +33,8 @@ function discharge_products() {
             'product_name' => ucfirst($result['data']['product_name']),
             'description' => $result['data']['description'],
             'discharge_date' => $result['data']['discharge_date'], 
+            'expiry_date' => $result['data']['expiry_date'],
+            
             'avatar' => $result_avatar['data']
         );
     

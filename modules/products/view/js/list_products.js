@@ -79,11 +79,11 @@ function list_products(data) {
     var discharge_date = document.createElement("div");
     discharge_date.innerHTML = "discharge_date = ";
     discharge_date.innerHTML += data.product.discharge_date;
-    /*
-    var title_date = document.createElement("div");
-    title_date.innerHTML = "title_date = ";
-    title_date.innerHTML += data.user.title_date;
     
+    var expiry_date = document.createElement("div");
+    expiry_date.innerHTML = "expiry_date = ";
+    expiry_date.innerHTML += data.product.expiry_date;
+    /*
     var address = document.createElement("div");
     address.innerHTML = "address = ";
     address.innerHTML += data.user.address;
@@ -125,8 +125,8 @@ function list_products(data) {
     parrafo.appendChild(product_name);
     parrafo.appendChild(description);
     parrafo.appendChild(discharge_date);
-    /*parrafo.appendChild(title_date);
-    parrafo.appendChild(address);
+    parrafo.appendChild(expiry_date);
+    /*parrafo.appendChild(address);
     parrafo.appendChild(en_lvl);
     parrafo.appendChild(user);
     parrafo.appendChild(pass);   

@@ -56,7 +56,7 @@ function validate_product( $value ) {
                 $valid = false;
             }
         }
-        /*
+       
         if (!$result['expiry_date']) {
             if($_POST['expiry_date'] == ""){
                 $error['expiry_date'] = "This camp can't empty";
@@ -66,7 +66,7 @@ function validate_product( $value ) {
             $valid = false;
             }
         }
-
+        /*
         if (!$result['provider_email']) {
             $error['provider_email'] = 'error format email (example@example.com)';
             $valid = false;
@@ -78,14 +78,7 @@ function validate_product( $value ) {
             $valid = false;
         }
         
-        if ($result['discharge_date'] && $result['expiry_date']) {
-            $dates = valida_dates($_POST['discharge_date'], $_POST['expiry_date']);
-    
-            if (!$dates) {
-                $error['discharge_date'] = "Expiry date can't be greater than discharge date";
-                $valid = false;
-            }
-        }
+        
     
         if(count($_POST['category']) <= 1){
             $error['category'] = "Please, select 2 or more categories";
@@ -101,7 +94,18 @@ function validate_product( $value ) {
         $result['season'] = $_POST['season'];
         $result['category'] = $_POST['category'];
 
+        
+        return $result;
         */
+        if ($result['discharge_date'] && $result['expiry_date']) {
+            $dates = valida_dates($result['discharge_date'], $result['expiry_date']);
+            
+            if (!$dates) {
+                $error['discharge_date'] = "Expiry date can't be greater than discharge date";
+                $valid = false;
+            }
+        }
+        
     } else {
         $valid = false;
     };
@@ -113,15 +117,15 @@ function validate_product( $value ) {
 
 // validate dates of product
 function valida_dates($discharge_day, $expiry_day) {
-
-    $discharge_day = date("mm/dd/YYYY", strtotime($discharge_day));
-    $expiry_day = date("mm/dd/YYYY", strtotime($expiry_day));
+    //conole.log( $discharge_day + "" + $expiry_day);
+    $discharge_day = date("m/d/Y", strtotime($discharge_day));
+    $expiry_day = date("m/d/Y", strtotime($expiry_day));
 
     list($mes_one, $dia_one, $anio_one) = split('/', $discharge_day);
     list($mes_two, $dia_two, $anio_two) = split('/', $expiry_day);
 
-    $dateOne = new DateTime($anio_one . "/" . $mes_one . "/" . $dia_one);
-    $dateTwo = new DateTime($anio_two . "/" . $mes_two . "/" . $dia_two);
+    $dateOne = new DateTime($anio_one . "-" . $mes_one . "-" . $dia_one);
+    $dateTwo = new DateTime($anio_two . "-" . $mes_two . "-" . $dia_two);
 
     if ($dateOne <= $dateTwo) {
         return true;

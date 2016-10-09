@@ -46,7 +46,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#discharge_date").attr("value", "mm/dd/yyyy");
             }
         });
-        /*
+        
         //description discharge date handler
         if ($("#expiry_date").attr("value") == "") {
             $("#expiry_date").attr("value", "mm/dd/yyyy");
@@ -61,6 +61,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#expiry_date").attr("value", "mm/dd/yyyy");
             }
         });
+        /*
         //provider_email discharge date handler
         if ($("#provider_email").attr("value") == "") {
             $("#provider_email").attr("value", "Introduce provider email");
@@ -105,7 +106,7 @@ $(document).ready(function () {
         defaultDate: 'today',
         changeMonth: true,
         changeYear: true,
-        yearRange: '2015:2016',
+        yearRange: '2016:today',
 
       });
 
@@ -113,7 +114,7 @@ $(document).ready(function () {
         dateFormat: 'mm/dd/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: '2016:2020',
+        yearRange: 'today:2020',
 
       });
     });
@@ -241,6 +242,7 @@ function validate_products(){
     var product_name = document.getElementById('product_name').value;
     var description = document.getElementById('description').value;
     var discharge_date = document.getElementById('discharge_date').value;
+    var expiry_date = document.getElementById('expiry_date').value;
 
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
@@ -251,7 +253,7 @@ function validate_products(){
 
 
     $(".error").remove();
-    console.log($("#description").val());  
+    console.log($("#discharge_date").val());  
     //product name error handler
     if ($("#product_name").val() == "" || $("#product_name").val() == "Introduce product name") {
         $("#product_name").focus().after("<span class='error'>Introduce product name</span>");
@@ -276,7 +278,7 @@ function validate_products(){
     
     //discharge_date error handler
     else if ($("#discharge_date").val() == "" || $("#discharge_date").val() == "mm/dd/yyyy") {
-        $("#discharge_date").focus().after("<span class='error'>mm/dd/yyyy</span>");
+        $("#discharge_date").focus().after("<span class='error'>the discharge date of the product is necessary</span>");
         result = false;
         return false;
     } else if (!date_reg.test($("#discharge_date").val())) {
@@ -285,10 +287,10 @@ function validate_products(){
         result = false;
         return false;
     }
-    /*
+    
     //expiry_date error handler
     else if ($("#expiry_date").val() == "" || $("#expiry_date").val() == "mm/dd/yyyy") {
-        $("#expiry_date").focus().after("<span class='error'>mm/dd/yyyy</span>");
+        $("#expiry_date").focus().after("<span class='error'>The expiry date of the product is necessary</span>");
         result = false;
         return false;
     } else if (!date_reg.test($("#expiry_date").val())) {
@@ -296,6 +298,7 @@ function validate_products(){
         result = false;
         return false;
     }
+    /*
     //provider_email error handler
     if ($("#provider_email").val() == "" || $("#provider_email").val() == "Introduce provider email") {
         $("#provider_email").focus().after("<span class='error'>Introduce provider email</span>");
@@ -320,10 +323,10 @@ function validate_products(){
 
     //Si ha ido todo bien, se envian los datos al servidor
     if (result) {
-        var data = {"product_name": product_name, "description": description, "discharge_date": discharge_date};
+        var data = {"product_name": product_name, "description": description, "discharge_date": discharge_date, "expiry_date": expiry_date};
 
         var data_products_JSON = JSON.stringify(data);
-        console.log(data_products_JSON);
+        //console.log(data_products_JSON);
         $.post('modules/products/controller/controller_products.class.php',
                 {discharge_products_json: data_products_JSON},
         function (response) {
@@ -342,10 +345,10 @@ function validate_products(){
             
             if (xhr.responseJSON.error.discharge_date)
                 $("#discharge_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discharge_date + "</span>");
-            /*
+            
             if (xhr.responseJSON.error.expiry_date)
                 $("#expiry_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.expiry_date + "</span>");
-
+            /*
             if (xhr.responseJSON.error.provider_email)
                 $("#provider_email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.provider_email + "</span>");
 
