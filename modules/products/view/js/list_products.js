@@ -87,29 +87,24 @@ function list_products(data) {
     var provider_email = document.createElement("div");
     provider_email.innerHTML = "provider_email = ";
     provider_email.innerHTML += data.product.provider_email;
-    /*
-    var user = document.createElement("div");
-    user.innerHTML = "user = ";
-    user.innerHTML += data.user.user;
     
-    var pass = document.createElement("div");
-    pass.innerHTML = "pass = ";
-    pass.innerHTML += data.user.pass;
-
-    var email = document.createElement("div");
-    email.innerHTML = "email = ";
-    email.innerHTML += data.user.email;
+    var provider_phone = document.createElement("div");
+    provider_phone.innerHTML = "Provider phone = ";
+    provider_phone.innerHTML += data.product.provider_phone;
     
-    var en_lvl = document.createElement("div");
-    en_lvl.innerHTML = "en_lvl = ";
-    en_lvl.innerHTML += data.user.en_lvl;
+    var season = document.createElement("div");
+    season.innerHTML = "Season = " + data.product.season;
+    //for(var i =0;i < data.product.season.length;i++){
+    //    season.innerHTML += data.product.season[i];
+    //}
     
-    var interests = document.createElement("div");
-    interests.innerHTML = "interests = ";
-    for(var i =0;i < data.user.interests.length;i++){
-    interests.innerHTML += " - "+data.user.interests[i];
+    var category = document.createElement("div");
+    category.innerHTML = "Category = ";
+    console.log(data.product.category);
+    for(var i =0;i < data.product.category.length;i++){
+        category.innerHTML += " - "+data.product.category[i];
     }
-    */
+    
     //arreglar ruta IMATGE!!!!!
     
     var cad = data.product.avatar;
@@ -127,11 +122,11 @@ function list_products(data) {
     parrafo.appendChild(discharge_date);
     parrafo.appendChild(expiry_date);
     parrafo.appendChild(provider_email);
-    /*parrafo.appendChild(en_lvl);
-    parrafo.appendChild(user);
-    parrafo.appendChild(pass);   
-    parrafo.appendChild(email);
-    parrafo.appendChild(interests);*/
+    parrafo.appendChild(provider_phone);
+    /*parrafo.appendChild(user);
+    parrafo.appendChild(pass);*/  
+    parrafo.appendChild(category);
+    parrafo.appendChild(season);
     content.appendChild(div_product);
     content.appendChild(img);
 }

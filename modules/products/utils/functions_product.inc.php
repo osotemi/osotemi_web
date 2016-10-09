@@ -78,7 +78,7 @@ function validate_product( $value ) {
             $valid = false;
         }
         
-        /*
+        
         if(count($_POST['category']) <= 1){
             $error['category'] = "Please, select 2 or more categories";
             $valid = false;
@@ -89,13 +89,8 @@ function validate_product( $value ) {
             $error['discount_percent'] = "Discount must be between 0 and 99";
             $valid = false;
         }
-        
-        $result['season'] = $_POST['season'];
-        $result['category'] = $_POST['category'];
+       
 
-        
-        return $result;
-        */
         if ($result['discharge_date'] && $result['expiry_date']) {
             $dates = valida_dates($result['discharge_date'], $result['expiry_date']);
             
@@ -108,6 +103,9 @@ function validate_product( $value ) {
     } else {
         $valid = false;
     };
+     
+    $result['season'] = $value['season'];
+    $result['category'] = $value['category'];
 
     $return = array('result' => $valid, 'error' => $error, 'data' => $result);
     

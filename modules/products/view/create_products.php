@@ -63,20 +63,20 @@
                 <div class="form-group">
                     <p style="text-align:left;">Product season</p>
                     <input type="radio" id="season" name="season" value="Winter" >Winter</input>
-          					<input type="radio" id="season" name="season" value="Spring" >Spring</input>
-          					<input type="radio" id="season" name="season" value="Summer" >Summer</input>
-          					<input type="radio" id="season" name="season" value="Autumn" >Autumn</input>
-          					<input type="radio" id="season" name="season" value="Navidad" >Navidad</input>
+          					<input type="radio" id="season" name="season" value="Spring" class="radioBox">Spring</input>
+          					<input type="radio" id="season" name="season" value="Summer" class="radioBox">Summer</input>
+          					<input type="radio" id="season" name="season" value="Autumn" class="radioBox">Autumn</input>
+          					<input type="radio" id="season" name="season" value="Navidad" class="radioBox">Navidad</input>
           					<div id="e_season"></div>
                 </div>
                 <!-- Product categories -->
                 <div class="form-group">
                     <p style="text-align:left;">Product category</p>
-                    <input id="category" style="text-align:left;" name="category[0]" type="checkbox" />Electronics<br>
-          					<input style="text-align:left;" name="category[1]" type="checkbox" />Home appliances<br>
-          					<input style="text-align:left;" name="category[2]" type="checkbox" />Electronic games<br>
-          					<input style="text-align:left;" name="category[3]" type="checkbox" />Smart appliances<br>
-          					<input style="text-align:left;" name="category[4]" type="checkbox" />Other<br>
+                            <input style="text-align:left;" name="category[0]" type="checkbox" class="checkBox" value="Electronics"/>Electronics<br>
+          					<input style="text-align:left;" name="category[1]" type="checkbox" class="checkBox" value="Home appliances"/>Home appliances<br>
+          					<input style="text-align:left;" name="category[2]" type="checkbox" class="checkBox" value="Electronic games"/>Electronic games<br>
+          					<input style="text-align:left;" name="category[3]" type="checkbox" class="checkBox" value="Smart appliances"/>Smart appliances<br>
+          					<input style="text-align:left;" name="category[4]" type="checkbox" class="checkBox" value="Other"/>Other<br>
           					<div id="e_category"></div>
                 </div>
                 <!--Ask if has discount -->

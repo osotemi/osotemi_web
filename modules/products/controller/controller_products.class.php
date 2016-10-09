@@ -21,11 +21,12 @@ function discharge_products() {
     }
     
     $result_avatar = $_SESSION['result_avatar'];
+    
     //$jsondata["success"] = true;
     //$jsondata['resultado']= $result;
     //$jsondata['result_avatar']= $result_avatar['resultado'];
-    echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
-    exit;
+    //echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
+    //exit;
     
 	if(($result) && ($result_avatar['resultado'])){
 	    
@@ -35,10 +36,13 @@ function discharge_products() {
             'discharge_date' => $result['data']['discharge_date'], 
             'expiry_date' => $result['data']['expiry_date'],
             'provider_email' => $result['data']['provider_email'],
+            'provider_phone' => $result['data']['provider_phone'],
+            'season' => $result['data']['season'],
+            'category' => $result['data']['category'],
             
             'avatar' => $result_avatar['data']
         );
-    
+        
         $mensaje = "User has been successfully registered";
     
         //redirigir a controlador de vista con los datos de $arrArgument y $mensaje
