@@ -61,7 +61,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#expiry_date").attr("value", "mm/dd/yyyy");
             }
         });
-        /*
+        
         //provider_email discharge date handler
         if ($("#provider_email").attr("value") == "") {
             $("#provider_email").attr("value", "Introduce provider email");
@@ -76,6 +76,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#provider_email").attr("value", "Introduce provider email");
             }
         });
+        /*
         //provider_phone discharge date handler
         if ($("#provider_phone").attr("value") == "") {
             $("#provider_phone").attr("value", "Provider phone number");
@@ -125,9 +126,57 @@ $(document).ready(function () {
     });
 
     //Control de seguridad para evitar que al volver atrás de la pantalla results a create, no nos imprima los datos
-
-
-
+    $.get("modules/products/controller/controller_products.class.php?load_data=true",
+        function (response) {
+            //alert(response.product);
+            if (response.product === "") {
+                $("#product_name").val('');
+                $("#description").val('');
+                $("#discharge_date").val('');
+                $("#expiry_date").val('');
+                $("#provider_email").val('');
+                $("#provider_phone").val('');
+                var inputSeason = document.getElementsByClassName('season');
+                for (var i = 0; i < inputSeason.length; i++) {
+                    if (inputSeason[i].checked) {
+                        inputSeason[i].checked = false;
+                    }
+                }
+                var inputCategory = document.getElementsByClassName('category');
+                for (var i = 0; i < inputCategory.length; i++) {
+                    if (inputCategory[i].checked) {
+                        inputCategory[i].checked = false;
+                    }
+                }
+                
+                //siempre que creemos un plugin debemos llamarlo, sino no funcionará
+                $(this).fill_or_clean();
+                } else {
+                    $("#product_name").val( response.product.product_name);
+                    $("#description").val( response.product.description);
+                    $("#discharge_date").val( response.product.discharge_date);
+                    $("#expiry_date").val( response.product.expiry_date);
+                    $("#provider_email").val( response.product.provider_email);
+                    $("#provider_phone").val( response.product.provider_phone);
+                    
+                    var season = response.product.season;
+                    var inputSeason = document.getElementsByClassName('season');
+                    for (var i = 0; i < season.length; i++) {
+                        for (var j = 0; j < inputSeason.length; j++) {
+                            if(season[i] ===inputSeason[j] )
+                                inputSeason[j].checked = true;
+                        }
+                    }
+                    var category = response.product.category;
+                    var inputCategory = document.getElementsByClassName('category');
+                    for (var i = 0; i < category.length; i++) {
+                        for (var j = 0; j < inputCategory.length; j++) {
+                            if(category[i] ===inputCategory[j] )
+                                inputCategory[j].checked = true;
+                        }
+                    }
+                }
+            }, "json");
     //Dropzone function //////////////////////////////////
     $("#dropzone").dropzone({
         url: "modules/products/controller/controller_products.class.php?upload=true",
