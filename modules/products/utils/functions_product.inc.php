@@ -1,5 +1,6 @@
 <?php
 function validate_product( $value ) {
+    
     $error = array();
     $valid = true;
     $filter = array(
@@ -7,10 +8,17 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{2,30}$/')
         ),
+        /*
+        'price' => array(
+            'filter' => FILTER_VALIDATE_REGEXP,
+            'options' => array('regexp' => '/^\d{1,8}[.]?(\d{1,2}?)$/')
+        ),
+        
         'description' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{5,230}$/')
         ),
+        */
         'discharge_date' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/')
@@ -23,16 +31,25 @@ function validate_product( $value ) {
             'filter' => FILTER_CALLBACK,
             'options' => 'valida_email'
         ),
+        /*
         'provider_phone' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\+\d{2,3}\s[689]{1}\d{2}\s\d{3}\s\d{3}$/')
         ),
+        */
         'discount_percent' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^[0-99 ]1$/i')
         ),
     );
+    
     $result = filter_var_array($value, $filter);
+    
+    if(count($value['category']) <= 1){
+        $error['category'] = "Please, select 2 or more categories";
+        $valid = false;
+    } 
+    
     
     if ($result != null && $result) {
 
@@ -41,12 +58,12 @@ function validate_product( $value ) {
             $error['product_name'] = 'Product name must be 2 to 20 letters';
             $valid = false;
         }
-        
+        /*
         if (!$result['description']) {
             $error['description'] = 'Description must have more than 5 characters and less than 230';
             $valid = false;
         }
-        
+        */
         if (!$result['discharge_date']) {
             if($_POST['discharge_date'] == ""){
                 $error['discharge_date'] = "Any product must have a discharge date";
@@ -59,7 +76,7 @@ function validate_product( $value ) {
        
         if (!$result['expiry_date']) {
             if($_POST['expiry_date'] == ""){
-                $error['expiry_date'] = "This camp can't empty";
+                $error['expiry_date'] = "This field can't be empty";
                 $valid = false;
             }else{
             $error['expiry_date'] = 'Error format date (mm/dd/yyyy)';
@@ -72,24 +89,21 @@ function validate_product( $value ) {
             $valid = false;
         }
 
-
+        /*
         if (!$result['provider_phone']) {
             $error['provider_phone'] = 'Phone must be 9 to 12 characters';
             $valid = false;
         }
-        
-        
-        if(count($_POST['category']) <= 1){
-            $error['category'] = "Please, select 2 or more categories";
+        */
+        if (!$result['price']) {
+            $error['price'] = 'Price must be between 0 and 99999999';
             $valid = false;
         }
-        
         
         if (!$result['discount_percent']) {
             $error['discount_percent'] = "Discount must be between 0 and 99";
             $valid = false;
         }
-       
 
         if ($result['discharge_date'] && $result['expiry_date']) {
             $dates = valida_dates($result['discharge_date'], $result['expiry_date']);
@@ -103,7 +117,10 @@ function validate_product( $value ) {
     } else {
         $valid = false;
     };
-     
+    
+    $result['description'] = $value['description'];
+    $result['provider_phone'] = $value['provider_phone'];
+    $result['price'] = $value['price'];
     $result['season'] = $value['season'];
     $result['category'] = $value['category'];
 
@@ -125,7 +142,7 @@ function valida_dates($discharge_day, $expiry_day) {
     $dateTwo = new DateTime($anio_two . "-" . $mes_two . "-" . $dia_two);
 
     if ($dateOne <= $dateTwo) {
-        return true;
+        return false;
     }
     return false;
 }

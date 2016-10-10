@@ -59,7 +59,6 @@ $(document).ready(function () {
 });
 
 function list_products(data) {
-    alert(data.product);
     var content = document.getElementById("content");
     var div_product = document.createElement("div");
     var parrafo = document.createElement("p");
@@ -71,6 +70,10 @@ function list_products(data) {
     var product_name = document.createElement("div");
     product_name.innerHTML = "Product name = ";
     product_name.innerHTML += data.product.product_name;
+    
+    var price = document.createElement("div");
+    price.innerHTML = "Price = ";
+    price.innerHTML += data.product.price + " €";
     
     var description = document.createElement("div");
     description.innerHTML = "Description = ";
@@ -100,9 +103,9 @@ function list_products(data) {
     
     var category = document.createElement("div");
     category.innerHTML = "Category = ";
-    console.log(data.product.category);
+    //console.log(data.product.category);
     for(var i =0;i < data.product.category.length;i++){
-        category.innerHTML += " - "+data.product.category[i];
+        category.innerHTML += "<br> - "+data.product.category[i];
     }
     
     //arreglar ruta IMATGE!!!!!
@@ -118,6 +121,7 @@ function list_products(data) {
     div_product.appendChild(parrafo);
     parrafo.appendChild(msje);
     parrafo.appendChild(product_name);
+    parrafo.appendChild(price);
     parrafo.appendChild(description);
     parrafo.appendChild(discharge_date);
     parrafo.appendChild(expiry_date);

@@ -47,7 +47,7 @@ jQuery.fn.fill_or_clean = function () {
             }
         });
         
-        //description discharge date handler
+        //description discharge data handler
         if ($("#expiry_date").attr("value") == "") {
             $("#expiry_date").attr("value", "mm/dd/yyyy");
             $("#expiry_date").focus(function () {
@@ -62,7 +62,7 @@ jQuery.fn.fill_or_clean = function () {
             }
         });
         
-        //provider_email discharge date handler
+        //provider_email discharge data handler
         if ($("#provider_email").attr("value") == "") {
             $("#provider_email").attr("value", "Introduce provider email");
             $("#provider_email").focus(function () {
@@ -77,7 +77,7 @@ jQuery.fn.fill_or_clean = function () {
             }
         });
         
-        //provider_phone discharge date handler
+        //provider_phone discharge data handler
         if ($("#provider_phone").attr("value") == "") {
             $("#provider_phone").attr("value", "Provider phone number");
             $("#provider_phone").focus(function () {
@@ -89,6 +89,21 @@ jQuery.fn.fill_or_clean = function () {
         $("#provider_phone").blur(function () {
             if ($("#provider_phone").attr("value") == "") {
                 $("#provider_phone").attr("value", "Provider phone number");
+            }
+        });
+        
+        //price discharge data handler
+        if ($("#price").attr("value") == "") {
+            $("#price").attr("value", "0€");
+            $("#price").focus(function () {
+                if ($("#price").attr("value") == "0€") {
+                    $("#price").attr("value", "");
+                }
+            });
+        }
+        $("#price").blur(function () {
+            if ($("#price").attr("value") == "") {
+                $("#price").attr("value", "Price");
             }
         });
         
@@ -107,15 +122,16 @@ $(document).ready(function () {
         defaultDate: 'today',
         changeMonth: true,
         changeYear: true,
-        yearRange: '2016:today',
+        minDate: -30, maxDate: +15,
 
       });
 
       $("#expiry_date").datepicker({
         dateFormat: 'mm/dd/yy',
+        defaultDate: +30,
         changeMonth: true,
         changeYear: true,
-        yearRange: 'today:2020',
+        minDate: +0, maxDate: "+6M",
 
       });
     });
@@ -131,18 +147,19 @@ $(document).ready(function () {
             //alert(response.product);
             if (response.product === "") {
                 $("#product_name").val('');
+                $("#price").val('');
                 $("#description").val('');
                 $("#discharge_date").val('');
                 $("#expiry_date").val('');
                 $("#provider_email").val('');
                 $("#provider_phone").val('');
-                var inputSeason = document.getElementsByClassName('season');
+                var inputSeason = document.getElementsByClassName('radioBox');
                 for (var i = 0; i < inputSeason.length; i++) {
                     if (inputSeason[i].checked) {
                         inputSeason[i].checked = false;
                     }
                 }
-                var inputCategory = document.getElementsByClassName('category');
+                var inputCategory = document.getElementsByClassName('checkBox');
                 for (var i = 0; i < inputCategory.length; i++) {
                     if (inputCategory[i].checked) {
                         inputCategory[i].checked = false;
@@ -153,6 +170,7 @@ $(document).ready(function () {
                 $(this).fill_or_clean();
             } else {
                 $("#product_name").val( response.product.product_name);
+                $("#price").val(response.product.price);
                 $("#description").val( response.product.description);
                 $("#discharge_date").val( response.product.discharge_date);
                 $("#expiry_date").val( response.product.expiry_date);
@@ -245,6 +263,7 @@ $(document).ready(function () {
     var textarea_reg = /^[0-9A-Za-z]{4,120}$/;
     var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var phone_reg = /^(\+\d{2,3}\s)?[689]{1}\d{2}[\s]?\d{3}[\s]?\d{3}$/;
+    var price_reg = /^[/d]{1,8}[.]?([\d]{1,2}?)$/;
 
     //realizamos funciones para que sea más práctico nuestro formulario
     $("#product_name").keyup(function () {
@@ -253,7 +272,14 @@ $(document).ready(function () {
             return false;
         }
     });
-
+    
+    $("#price").keyup(function () {
+        if ($(this).val() != "" && price_reg.test($(this).val())) {
+            $(".error").fadeOut();
+            return false;
+        }
+    });
+    
     $("#textarea_reg").keyup(function () {
         if ($(this).val() != "" && textarea_reg.test($(this).val())) {
             $(".error").fadeOut();
@@ -281,6 +307,8 @@ $(document).ready(function () {
             return false;
         }
     });
+    
+    
 
 });
 
@@ -289,6 +317,7 @@ function validate_products(){
     var result = true;
     //Get form elements by id
     var product_name = document.getElementById('product_name').value;
+    var price = document.getElementById('price').value;
     var description = document.getElementById('description').value;
     var discharge_date = document.getElementById('discharge_date').value;
     var expiry_date = document.getElementById('expiry_date').value;
@@ -302,27 +331,30 @@ function validate_products(){
             season = inputSeason[i].value;
         }
     }
-    console.log(season);
     //Checkbox
     var category = [];
     var inputCategory = document.getElementsByClassName('checkBox');
-    var j = 0;
+    var category_numb = 0;
     for (var i = 0; i < inputCategory.length; i++) {
         if (inputCategory[i].checked) {
-            category[j] = inputCategory[i].value;
-            j++;
+            category[category_numb] = inputCategory[i].value;
+            category_numb++;
         }
     }
-    console.log(category);
+    
+   
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
     var string_reg = /^[\sA-Za-z0-9]{2,30}$/;
     var textarea_reg = /^[\s0-9A-Za-z]{5,230}$/;
     var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var phone_reg = /^(\+\d{2,3}\s)?[689]{1}\d{2}\s\d{3}\s\d{3}$/;
+    var price_reg = /^[/d]{1,8}[.]?([\d]{1,2}?)$/;
 
-
+    console.log(category_numb);
     $(".error").remove();
+    
+    
     //product name error handler
     if ($("#product_name").val() == "" || $("#product_name").val() == "Introduce product name") {
         $("#product_name").focus().after("<span class='error'>Introduce product name</span>");
@@ -334,8 +366,19 @@ function validate_products(){
         return false;
     }
     
+    //product name error handler
+    if ($("#price").val() == "" || $("#price").val() == "0€") {
+        $("#price").focus().after("<span class='error'>Product must have a price</span>");
+        result = false;
+        return false;
+    } else if (!string_reg.test($("#price").val())) {
+        $("#price").focus().after("<span class='error'>Price must be between 0 and 99999999</span>");
+        result = false;
+        return false;
+    }
+    
     //description error handler
-    else if ($("#description").val() == "" || $("#description").val() == "Short product description") {
+    if ($("#description").val() == "" || $("#description").val() == "Short product description") {
         $("#description").focus().after("<span class='error'>Introduce a short description of the product</span>");
         result = false;
         return false;
@@ -389,27 +432,36 @@ function validate_products(){
         result = false;
         return false;
     }
+    //Checkbox error handler
+    if(category_numb<=1){
+        $("#e_category").focus().after("<span class='error'>At less 2 categories</span>");
+        result = false;
+        return false;
+    }
+    
     
     //Si ha ido todo bien, se envian los datos al servidor
     if (result) {
-        var data = {"product_name": product_name, "description": description, "discharge_date": discharge_date, 
+        var data = {"product_name": product_name, "price": price, "description": description, "discharge_date": discharge_date, 
         "expiry_date": expiry_date, "provider_email": provider_email, "provider_phone": provider_phone, 
         "season": season, "category": category };
-        
         var data_products_JSON = JSON.stringify(data);
-        //console.log(data_products_JSON);
+        
         $.post('modules/products/controller/controller_products.class.php',
                 {discharge_products_json: data_products_JSON},
         function (response) {
-            console.log(response);
+            //console.log(response);
             
             if (response.success) {
                 window.location.href = response.redirect;//redirect = result_products ||  
             }
         }, "json").fail(function (xhr) {
-            console.log(xhr.responseJSON);
+            //console.log(xhr.responseJSON);
             if (xhr.responseJSON.error.product_name)
                 $("#product_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.product_name + "</span>");
+                
+            if (xhr.responseJSON.error.price)
+                $("#price").focus().after("<span  class='error1'>" + xhr.responseJSON.error.price + "</span>");
             
             if (xhr.responseJSON.error.description)
                 $("#description").focus().after("<span  class='error1'>" + xhr.responseJSON.error.description + "</span>");
@@ -430,7 +482,7 @@ function validate_products(){
                 $("#season").focus().after("<span  class='error1'>" + xhr.responseJSON.error.season + "</span>");
             
             if (xhr.responseJSON.error.category)
-                $("#category").focus().after("<span  class='error1'>" + xhr.responseJSON.error.category + "</span>");
+                $("#e_category").focus().after("<span  class='error1'>" + xhr.responseJSON.error.category + "</span>");
             
             if (xhr.responseJSON.error_avatar)
                 $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");

@@ -14,20 +14,19 @@ function discharge_products() {
   	$productsJSON = json_decode($_POST["discharge_products_json"], true);
   	
 	$result = validate_product($productsJSON);
-	//echo json_encode($result);
-	//exit;
+
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'data' => 'media/default-avatar.png');
     }
     
     $result_avatar = $_SESSION['result_avatar'];
-    
-    //$jsondata["success"] = true;
-    //$jsondata['resultado']= $result;
-    //$jsondata['result_avatar']= $result_avatar['resultado'];
-    //echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
-    //exit;
-    
+    /*
+    $jsondata["success"] = true;
+    $jsondata['resultado']= $result;
+    $jsondata['result_avatar']= $result_avatar['resultado'];
+    echo json_encode($jsondata);
+    exit;
+    */
 	if(($result) && ($result_avatar['resultado'])){
 	    
     	$arrArgument = array(
@@ -39,6 +38,7 @@ function discharge_products() {
             'provider_phone' => $result['data']['provider_phone'],
             'season' => $result['data']['season'],
             'category' => $result['data']['category'],
+            'price' => $result['data']['price'],
             
             'avatar' => $result_avatar['data']
         );

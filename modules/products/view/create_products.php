@@ -26,8 +26,12 @@
             <fieldset class="registration-form">
                 <!--Product name input-->
                 <div class="form-group">
-                    <input type="text" id = "product_name" name="product_name" placeholder="Introduce product name" class="form-control" >
+                    <input type="text" id = "product_name" name="product_name" placeholder="Introduce product name" class="form-control" > 
                     <div id="e_name"></div>
+                </div>
+                <div class="form-group">
+                    <p style="text-align:left;">Price</p>
+                    <input id="price" name="price" class="form-control" placeholder="0€" type="text" >
                 </div>
                 <!--TextArea description-->
                 <div class="form-group">
@@ -62,34 +66,38 @@
                 <!--Product season -->
                 <div class="form-group">
                     <p style="text-align:left;">Product season</p>
-                    <input type="radio" id="season" name="season" value="Winter" >Winter</input>
-          					<input type="radio" id="season" name="season" value="Spring" class="radioBox">Spring</input>
-          					<input type="radio" id="season" name="season" value="Summer" class="radioBox">Summer</input>
-          					<input type="radio" id="season" name="season" value="Autumn" class="radioBox">Autumn</input>
-          					<input type="radio" id="season" name="season" value="Navidad" class="radioBox">Navidad</input>
-          					<div id="e_season"></div>
+                    <input type="radio" id="season" name="season" value="Winter" class="radioBox">Winter</input>
+  					<input type="radio" id="season" name="season" value="Spring" class="radioBox">Spring</input><br>
+  					<input type="radio" id="season" name="season" value="Summer" class="radioBox">Summer</input><br>
+  					<input type="radio" id="season" name="season" value="Autumn" class="radioBox">Autumn</input><br>
+  					<input type="radio" id="season" name="season" value="Navidad" class="radioBox">Navidad</input><br>
+  					<input type="radio" id="season" name="season" value="All" class="radioBox" checked="checked">All</input><br>
+  					<div id="e_season"></div>
                 </div>
                 <!-- Product categories -->
                 <div class="form-group">
-                    <p style="text-align:left;">Product category</p>
-                            <input style="text-align:left;" name="category[0]" type="checkbox" class="checkBox" value="Electronics"/>Electronics<br>
-          					<input style="text-align:left;" name="category[1]" type="checkbox" class="checkBox" value="Home appliances"/>Home appliances<br>
-          					<input style="text-align:left;" name="category[2]" type="checkbox" class="checkBox" value="Electronic games"/>Electronic games<br>
-          					<input style="text-align:left;" name="category[3]" type="checkbox" class="checkBox" value="Smart appliances"/>Smart appliances<br>
-          					<input style="text-align:left;" name="category[4]" type="checkbox" class="checkBox" value="Other"/>Other<br>
-          					<div id="e_category"></div>
+                    <p style="align:left;">Product category</p>
+                    <input style="text-align:left;" name="category[0]" type="checkbox" class="checkBox" value="Electronics"/>Electronics<br>
+  					<input style="text-align:left;" name="category[1]" type="checkbox" class="checkBox" value="Home appliances"/>Home appliances<br>
+  					<input style="text-align:left;" name="category[2]" type="checkbox" class="checkBox" value="Electronic games"/>Electronic games<br>
+  					<input style="text-align:left;" name="category[3]" type="checkbox" class="checkBox" value="Smart appliances"/>Smart appliances<br>
+  					<input style="text-align:left;" name="category[4]" type="checkbox" class="checkBox" value="Other"/>Other<br>
+  					<div id="e_category"></div>
                 </div>
-                <!--Ask if has discount -->
+                <!--Ask if has discount 
                 <div class="form-group">
                     <p style="text-align:left;">Product discount</p>
                     <input type="radio" id="discount" name="discount" value="yes"  >Yes</input>
 					          <input type="radio" id="discount" name="discount" value="no" >No</input>
                 </div>
-                <!--If has discount, how much? -->
+                -->
+                <!--If has discount, how much? 
+                
                 <div class="form-group">
                     <p style="text-align:left;">Product discount percent</p>
                     <input id="discount_percent" name="discount_percent" class="form-control" placeholder="Discount percent" type="text" id="discount_percent">
                 </div>
+                -->
                 <br />
                 <br />
                 <div class="form-group" id="progress">
