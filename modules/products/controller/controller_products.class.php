@@ -1,6 +1,6 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT'] . "/osotemi_web/modules/products/utils/functions_product.inc.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/osotemi_web/utils/upload.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/modules/products/utils/functions_product.inc.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
 session_start();
 
 ///////////////////////////////////
@@ -12,13 +12,13 @@ if ((isset($_POST['discharge_products_json']))) {
 function discharge_products() {
   	$jsondata = array();
   	$productsJSON = json_decode($_POST["discharge_products_json"], true);
-  	
+
 	$result = validate_product($productsJSON);
 
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'data' => 'media/default-avatar.png');
     }
-    
+
     $result_avatar = $_SESSION['result_avatar'];
     /*
     $jsondata["success"] = true;
@@ -28,35 +28,35 @@ function discharge_products() {
     exit;
     */
 	if(($result) && ($result_avatar['resultado'])){
-	    
+
     	$arrArgument = array(
             'product_name' => ucfirst($result['data']['product_name']),
             'description' => $result['data']['description'],
-            'discharge_date' => $result['data']['discharge_date'], 
+            'discharge_date' => $result['data']['discharge_date'],
             'expiry_date' => $result['data']['expiry_date'],
             'provider_email' => $result['data']['provider_email'],
             'provider_phone' => $result['data']['provider_phone'],
             'season' => $result['data']['season'],
             'category' => $result['data']['category'],
             'price' => $result['data']['price'],
-            
+
             'avatar' => $result_avatar['data']
         );
-        
+
         $mensaje = "User has been successfully registered";
-    
+
         //redirigir a controlador de vista con los datos de $arrArgument y $mensaje
         $_SESSION['product'] = $arrArgument;
         $_SESSION['msje'] = $mensaje;
         $callback = "index.php?module=products&view=result_products";
-    
+
         $jsondata["success"] = true;
         $jsondata["redirect"] = $callback;
         echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
         exit;
     }
     else{
-        
+
         $jsondata["success"] = false;
         $jsondata["error"] = $result['error'];
         $jsondata["error_avatar"] = $result_avatar['error'];
@@ -68,10 +68,10 @@ function discharge_products() {
         }
         header('HTTP/1.0 400 Bad error');
         echo json_encode($jsondata);
-        
+
     }
-    
-    
+
+
 }
 
 //////////////////////////
@@ -83,7 +83,7 @@ if (isset($_GET["delete"]) && $_GET["delete"] == true) {
     } else {
         echo json_encode(array("res" => false));
     }
-	
+
 }
 
 
@@ -108,7 +108,7 @@ if (isset($_GET["load"]) && $_GET["load"] == true) {//call by list_products -> l
     echo json_encode($jsondata);//go to list_products -> load_products_ajax
     exit;
 }
-	
+
 function close_session() {
     unset($_SESSION['product']);
     unset($_SESSION['msje']);

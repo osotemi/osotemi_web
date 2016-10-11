@@ -12,13 +12,13 @@ function upload_files() {
     if(!isset($_FILES['file'])) {
         $error .=  'No existe $_FILES[file] <br>';
     }
-    
+
     $imagen = $_FILES['file']['tmp_name'];
     $nom_fitxer= $_FILES['file']['name'];
     $mida_fitxer=$_FILES['file']['size'];
     $tipus_fitxer=$_FILES['file']['type'];
     $error_fitxer=$_FILES['file']['error'];
-    
+
     if ($error_fitxer>0) { // El error 0 quiere decir que se subió el archivo correctamente
         switch ($error_fitxer){
             case 1: $error .=  'Fitxer major que upload_max_filesize <br>'; break;
@@ -27,11 +27,11 @@ function upload_files() {
             //case 4: $error .=  'No has pujat cap fitxer <br>';break; //assignarem a l'us default-avatar
         }
     }
-    
+
     if ($_FILES['file']['size'] > 55000 ){
         $error .=  "Large File Size <br>";
     }
-    
+
     if ($_FILES['file']['name'] !== "") {
         ////////////////////////////////////////////////////////////////////////////
         @$extension = strtolower(end(explode('.', $_FILES['file']['name']))); // Obtenemos la extensión, en minúsculas para poder comparar
@@ -48,9 +48,9 @@ function upload_files() {
         if ($width > 150 || $height > 150){
             $error .=   "Maximum width and height exceeded. Please upload images below 100x100 px size <br>";
         }
-    } 
-    
-    $upfile = $_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'.$_FILES['file']['name'];
+    }
+
+    $upfile = $_SERVER['DOCUMENT_ROOT'].'/media/'.$_FILES['file']['name'];
     if (is_uploaded_file($_FILES['file']['tmp_name'])){
         if (is_file($_FILES['file']['tmp_name'])) {
             $idUnico = rand();
@@ -58,13 +58,13 @@ function upload_files() {
             $_SESSION['filename'] = $nombreFichero;
             $copiarFichero = true;
             // I use absolute route to move_uploaded_file because this happens when i run ajax
-            $upfile = $_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'.$nombreFichero;
+            $upfile = $_SERVER['DOCUMENT_ROOT'].'/media/'.$nombreFichero;
             //return $return=array('fich_name'=>$nombreFichero,'copi_fich'=>$copiarFichero,'upfile'=>$upfile);
         }else{
             $error .=   "Invalid File...";
         }
     }
-    
+
     $i=0;
     if ($error == "") {
         //return $return=array('file_tmp_name'=>$_FILES['file']['tmp_name'],'upfile'=>$upfile);
@@ -78,7 +78,7 @@ function upload_files() {
             return $return=array('resultado'=>true , 'error'=>$error,'data'=>$upfile);
         }
         if($_FILES['file']['error'] !== 0) { //Assignarem a l'us default-avatar
-            $upfile = '/osotemi_web/media/default-avatar.png';
+            $upfile = '/media/default-avatar.png';
             return $return=array('resultado'=>true,'error'=>$error,'data'=>$upfile);
         }
     }else{
@@ -88,9 +88,9 @@ function upload_files() {
 
 function remove_files(){
 	$name = $_SESSION['filename'];
-	
-	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'. $name)){
-		unlink($_SERVER['DOCUMENT_ROOT'].'/osotemi_web/media/'. $name);
+
+	if(file_exists($_SERVER['DOCUMENT_ROOT'].'/media/'. $name)){
+		unlink($_SERVER['DOCUMENT_ROOT'].'/media/'. $name);
 		return true;
 	}else{
 		return false;

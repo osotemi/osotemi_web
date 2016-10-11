@@ -26,7 +26,7 @@
             <fieldset class="registration-form">
                 <!--Product name input-->
                 <div class="form-group">
-                    <input type="text" id = "product_name" name="product_name" placeholder="Introduce product name" class="form-control" > 
+                    <input type="text" id = "product_name" name="product_name" placeholder="Introduce product name" class="form-control" >
                     <div id="e_name"></div>
                 </div>
                 <div class="form-group">
@@ -84,15 +84,15 @@
   					<input style="text-align:left;" name="category[4]" type="checkbox" class="checkBox" value="Other"/>Other<br>
   					<div id="e_category"></div>
                 </div>
-                <!--Ask if has discount 
+                <!--Ask if has discount
                 <div class="form-group">
                     <p style="text-align:left;">Product discount</p>
                     <input type="radio" id="discount" name="discount" value="yes"  >Yes</input>
 					          <input type="radio" id="discount" name="discount" value="no" >No</input>
                 </div>
                 -->
-                <!--If has discount, how much? 
-                
+                <!--If has discount, how much?
+
                 <div class="form-group">
                     <p style="text-align:left;">Product discount percent</p>
                     <input id="discount_percent" name="discount_percent" class="form-control" placeholder="Discount percent" type="text" id="discount_percent">
