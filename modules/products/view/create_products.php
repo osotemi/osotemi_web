@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <!--Provincias -->
                 </div>
-                <!--Provide3r email field -->
+                <!--Provider email field -->
                 <div class="form-group">
                     <input type="text" id="provider_email" name="provider_email" class="form-control" placeholder="Introduce provider email">
                     <div id="e_email"></div>

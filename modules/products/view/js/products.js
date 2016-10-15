@@ -16,7 +16,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#product_name").attr("value", "Introduce product name");
             }
         });
-        
+
         //description textarea handler
         if ($("#description").attr("value") == "") {
             $("#description").attr("value", "Short product description");
@@ -31,7 +31,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#description").val("Short product description");
             }
         });
-        
+
         //discharge date handler
         if ($("#discharge_date").attr("value") == "") {
             $("#discharge_date").attr("value", "mm/dd/yyyy");
@@ -46,7 +46,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#discharge_date").attr("value", "mm/dd/yyyy");
             }
         });
-        
+
         //description discharge data handler
         if ($("#expiry_date").attr("value") == "") {
             $("#expiry_date").attr("value", "mm/dd/yyyy");
@@ -61,7 +61,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#expiry_date").attr("value", "mm/dd/yyyy");
             }
         });
-        
+
         //provider_email discharge data handler
         if ($("#provider_email").attr("value") == "") {
             $("#provider_email").attr("value", "Introduce provider email");
@@ -76,7 +76,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#provider_email").attr("value", "Introduce provider email");
             }
         });
-        
+
         //provider_phone discharge data handler
         if ($("#provider_phone").attr("value") == "") {
             $("#provider_phone").attr("value", "Provider phone number");
@@ -91,7 +91,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#provider_phone").attr("value", "Provider phone number");
             }
         });
-        
+
         //price discharge data handler
         if ($("#price").attr("value") == "") {
             $("#price").attr("value", "0€");
@@ -106,7 +106,7 @@ jQuery.fn.fill_or_clean = function () {
                 $("#price").attr("value", "Price");
             }
         });
-        
+
     });//each
     return this;
 };//function
@@ -165,7 +165,7 @@ $(document).ready(function () {
                         inputCategory[i].checked = false;
                     }
                 }
-                
+
                 //siempre que creemos un plugin debemos llamarlo, sino no funcionará
                 $(this).fill_or_clean();
             } else {
@@ -176,7 +176,7 @@ $(document).ready(function () {
                 $("#expiry_date").val( response.product.expiry_date);
                 $("#provider_email").val( response.product.provider_email);
                 $("#provider_phone").val( response.product.provider_phone);
-                
+
                 var season = response.product.season;
                 var inputSeason = document.getElementsByClassName('season');
                 for (var i = 0; i < season.length; i++) {
@@ -220,7 +220,7 @@ $(document).ready(function () {
             //alert("Error subiendo el archivo " + file.name);
         },
         removedfile: function (file, serverFileName) {
-            
+
             var name = file.name;
             $.ajax({
                 type: "POST",
@@ -250,7 +250,7 @@ $(document).ready(function () {
                             false;
                         }
                     }
-                    
+
                 }
             });
         }
@@ -272,14 +272,14 @@ $(document).ready(function () {
             return false;
         }
     });
-    
+
     $("#price").keyup(function () {
         if ($(this).val() != "" && price_reg.test($(this).val())) {
             $(".error").fadeOut();
             return false;
         }
     });
-    
+
     $("#textarea_reg").keyup(function () {
         if ($(this).val() != "" && textarea_reg.test($(this).val())) {
             $(".error").fadeOut();
@@ -307,8 +307,8 @@ $(document).ready(function () {
             return false;
         }
     });
-    
-    
+
+
 
 });
 
@@ -341,8 +341,8 @@ function validate_products(){
             category_numb++;
         }
     }
-    
-   
+
+
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
     var string_reg = /^[\sA-Za-z0-9]{2,30}$/;
@@ -351,10 +351,10 @@ function validate_products(){
     var phone_reg = /^(\+\d{2,3}\s)?[689]{1}\d{2}\s\d{3}\s\d{3}$/;
     var price_reg = /^[/d]{1,8}[.]?([\d]{1,2}?)$/;
 
-    console.log(category_numb);
+    console.log(price);
     $(".error").remove();
-    
-    
+
+
     //product name error handler
     if ($("#product_name").val() == "" || $("#product_name").val() == "Introduce product name") {
         $("#product_name").focus().after("<span class='error'>Introduce product name</span>");
@@ -365,7 +365,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    
+
     //product name error handler
     if ($("#price").val() == "" || $("#price").val() == "0€") {
         $("#price").focus().after("<span class='error'>Product must have a price</span>");
@@ -376,7 +376,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    
+
     //description error handler
     if ($("#description").val() == "" || $("#description").val() == "Short product description") {
         $("#description").focus().after("<span class='error'>Introduce a short description of the product</span>");
@@ -387,7 +387,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    
+
     //discharge_date error handler
     else if ($("#discharge_date").val() == "" || $("#discharge_date").val() == "mm/dd/yyyy") {
         $("#discharge_date").focus().after("<span class='error'>the discharge date of the product is necessary</span>");
@@ -399,7 +399,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    
+
     //expiry_date error handler
     else if ($("#expiry_date").val() == "" || $("#expiry_date").val() == "mm/dd/yyyy") {
         $("#expiry_date").focus().after("<span class='error'>The expiry date of the product is necessary</span>");
@@ -410,7 +410,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    
+
     //provider_email error handler
     if ($("#provider_email").val() == "" || $("#provider_email").val() == "Introduce provider email") {
         $("#provider_email").focus().after("<span class='error'>Introduce provider email</span>");
@@ -421,7 +421,7 @@ function validate_products(){
         result = false;
         return false;
     }
-    
+
     //provider_phone error handler
     if ($("#provider_phone").val() == "" || $("#provider_phone").val() == "Provider phone number") {
         $("#provider_phone").focus().after("<span class='error'>Provider phone number</span>");
@@ -438,52 +438,52 @@ function validate_products(){
         result = false;
         return false;
     }
-    
-    
+
+
     //Si ha ido todo bien, se envian los datos al servidor
     if (result) {
-        var data = {"product_name": product_name, "price": price, "description": description, "discharge_date": discharge_date, 
-        "expiry_date": expiry_date, "provider_email": provider_email, "provider_phone": provider_phone, 
+        var data = {"product_name": product_name, "price": price, "description": description, "discharge_date": discharge_date,
+        "expiry_date": expiry_date, "provider_email": provider_email, "provider_phone": provider_phone,
         "season": season, "category": category };
         var data_products_JSON = JSON.stringify(data);
-        
+
         $.post('modules/products/controller/controller_products.class.php',
                 {discharge_products_json: data_products_JSON},
         function (response) {
             //console.log(response);
-            
+
             if (response.success) {
-                window.location.href = response.redirect;//redirect = result_products ||  
+                window.location.href = response.redirect;//redirect = result_products ||
             }
         }, "json").fail(function (xhr) {
             //console.log(xhr.responseJSON);
             if (xhr.responseJSON.error.product_name)
                 $("#product_name").focus().after("<span  class='error1'>" + xhr.responseJSON.error.product_name + "</span>");
-                
+
             if (xhr.responseJSON.error.price)
                 $("#price").focus().after("<span  class='error1'>" + xhr.responseJSON.error.price + "</span>");
-            
+
             if (xhr.responseJSON.error.description)
                 $("#description").focus().after("<span  class='error1'>" + xhr.responseJSON.error.description + "</span>");
-            
+
             if (xhr.responseJSON.error.discharge_date)
                 $("#discharge_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.discharge_date + "</span>");
-            
+
             if (xhr.responseJSON.error.expiry_date)
                 $("#expiry_date").focus().after("<span  class='error1'>" + xhr.responseJSON.error.expiry_date + "</span>");
-            
+
             if (xhr.responseJSON.error.provider_email)
                 $("#provider_email").focus().after("<span  class='error1'>" + xhr.responseJSON.error.provider_email + "</span>");
-            
+
             if (xhr.responseJSON.error.provider_phone)
                 $("#provider_phone").focus().after("<span  class='error1'>" + xhr.responseJSON.error.provider_phone + "</span>");
-                
+
             if (xhr.responseJSON.error.season)
                 $("#season").focus().after("<span  class='error1'>" + xhr.responseJSON.error.season + "</span>");
-            
+
             if (xhr.responseJSON.error.category)
                 $("#e_category").focus().after("<span  class='error1'>" + xhr.responseJSON.error.category + "</span>");
-            
+
             if (xhr.responseJSON.error_avatar)
                 $("#dropzone").focus().after("<span  class='error1'>" + xhr.responseJSON.error_avatar + "</span>");
 

@@ -1,6 +1,6 @@
 <?php
 function validate_product( $value ) {
-    
+
     $error = array();
     $valid = true;
     $filter = array(
@@ -13,7 +13,7 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\d{1,8}[.]?(\d{1,2}?)$/')
         ),
-        
+
         'description' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{5,230}$/')
@@ -42,15 +42,15 @@ function validate_product( $value ) {
             'options' => array('regexp' => '/^[0-99 ]1$/i')
         ),
     );
-    
+
     $result = filter_var_array($value, $filter);
-    
+
     if(count($value['category']) <= 1){
         $error['category'] = "Please, select 2 or more categories";
         $valid = false;
-    } 
-    
-    
+    }
+
+
     if ($result != null && $result) {
 
 
@@ -73,7 +73,7 @@ function validate_product( $value ) {
                 $valid = false;
             }
         }
-       
+
         if (!$result['expiry_date']) {
             if($_POST['expiry_date'] == ""){
                 $error['expiry_date'] = "This field can't be empty";
@@ -83,7 +83,7 @@ function validate_product( $value ) {
             $valid = false;
             }
         }
-        
+
         if (!$result['provider_email']) {
             $error['provider_email'] = 'error format email (example@example.com)';
             $valid = false;
@@ -99,7 +99,7 @@ function validate_product( $value ) {
             $error['price'] = 'Price must be between 0 and 99999999';
             $valid = false;
         }
-        
+
         if (!$result['discount_percent']) {
             $error['discount_percent'] = "Discount must be between 0 and 99";
             $valid = false;
@@ -107,17 +107,17 @@ function validate_product( $value ) {
 
         if ($result['discharge_date'] && $result['expiry_date']) {
             $dates = valida_dates($result['discharge_date'], $result['expiry_date']);
-            
+
             if (!$dates) {
                 $error['discharge_date'] = "Expiry date can't be greater than discharge date";
                 $valid = false;
             }
         }
-        
+
     } else {
         $valid = false;
     };
-    
+
     $result['description'] = $value['description'];
     $result['provider_phone'] = $value['provider_phone'];
     $result['price'] = $value['price'];
@@ -125,7 +125,7 @@ function validate_product( $value ) {
     $result['category'] = $value['category'];
 
     $return = array('result' => $valid, 'error' => $error, 'data' => $result);
-    
+
     return $return;
 }
 
@@ -135,11 +135,11 @@ function valida_dates($discharge_day, $expiry_day) {
     $discharge_day = date("m/d/Y", strtotime($discharge_day));
     $expiry_day = date("m/d/Y", strtotime($expiry_day));
 
-    list($mes_one, $dia_one, $anio_one) = split('/', $discharge_day);
-    list($mes_two, $dia_two, $anio_two) = split('/', $expiry_day);
+    $discharge_day_arr = explode('/', $discharge_day);
+    $expiry_day_arr = explode('/', $expiry_day);
 
-    $dateOne = new DateTime($anio_one . "-" . $mes_one . "-" . $dia_one);
-    $dateTwo = new DateTime($anio_two . "-" . $mes_two . "-" . $dia_two);
+    $dateOne = new DateTime($discharge_day_arr[2] . "-" . $discharge_day_arr[0] . "-" . $discharge_day_arr[1]);
+    $dateTwo = new DateTime($expiry_day_arr[2] . "-" . $expiry_day_arr[0] . "-" . $expiry_day_arr[1]);
 
     if ($dateOne <= $dateTwo) {
         return false;
