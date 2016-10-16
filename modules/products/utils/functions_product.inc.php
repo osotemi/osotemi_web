@@ -13,12 +13,12 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^[\W\d]*(\.\d{1})?\d{0,1}$/')
         ),
-        /*
+
         'description' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => array('regexp' => '/^\D{5,230}$/')
+            'options' => array('regexp' => '/^[\s0-9A-Za-z]{5,230}$/')
         ),
-        */
+
         'discharge_date' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/')
@@ -63,12 +63,12 @@ function validate_product( $value ) {
             $error['price'] = 'Price must be a number with maxim 2 decimal number';
             $valid = false;
         }
-        /*
+
         if (!$result['description']) {
             $error['description'] = 'Description must have more than 5 characters and less than 230';
             $valid = false;
         }
-        */
+        
         if (!$result['discharge_date']) {
             if($_POST['discharge_date'] == ""){
                 $error['discharge_date'] = "Any product must have a discharge date";
