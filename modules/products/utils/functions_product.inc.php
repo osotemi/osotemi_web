@@ -31,12 +31,12 @@ function validate_product( $value ) {
             'filter' => FILTER_CALLBACK,
             'options' => 'valida_email'
         ),
-        /*
+
         'provider_phone' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => array('regexp' => '/^\+\d{2,3}\s[689]{1}\d{2}\s\d{3}\s\d{3}$/')
+            'options' => array('regexp' => '/^(\+\d{2,3}\s)?[689]{1}\d{2}\s\d{3}\s\d{3}$/')
         ),
-        */
+
         'discount_percent' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^[0-99 ]1$/i')
@@ -50,6 +50,15 @@ function validate_product( $value ) {
         $valid = false;
     }
 
+
+    if ($result['discharge_date'] && $result['expiry_date']) {
+        $valid_dates = valida_dates($result['discharge_date'], $result['expiry_date']);
+
+        if (!$valid_dates) {
+            $error['discharge_date'] = "Expiry date can't be greater than discharge date";
+            $valid = false;
+        }
+    }
 
     if ($result != null && $result) {
 
@@ -68,7 +77,7 @@ function validate_product( $value ) {
             $error['description'] = 'Description must have more than 5 characters and less than 230';
             $valid = false;
         }
-        
+
         if (!$result['discharge_date']) {
             if($_POST['discharge_date'] == ""){
                 $error['discharge_date'] = "Any product must have a discharge date";
@@ -94,34 +103,21 @@ function validate_product( $value ) {
             $valid = false;
         }
 
-        /*
         if (!$result['provider_phone']) {
             $error['provider_phone'] = 'Phone must be 9 to 12 characters';
             $valid = false;
         }
-        */
 
         if (!$result['discount_percent']) {
             $error['discount_percent'] = "Discount must be between 0 and 99";
             $valid = false;
         }
 
-        if ($result['discharge_date'] && $result['expiry_date']) {
-            $dates = valida_dates($result['discharge_date'], $result['expiry_date']);
-
-            if (!$dates) {
-                $error['discharge_date'] = "Expiry date can't be greater than discharge date";
-                $valid = false;
-            }
-        }
 
     } else {
         $valid = false;
     };
 
-    $result['description'] = $value['description'];
-    $result['provider_phone'] = $value['provider_phone'];
-    //$result['price'] = $value['price'];
     $result['season'] = $value['season'];
     $result['category'] = $value['category'];
 
@@ -142,8 +138,8 @@ function valida_dates($discharge_day, $expiry_day) {
     $dateOne = new DateTime($discharge_day_arr[2] . "-" . $discharge_day_arr[0] . "-" . $discharge_day_arr[1]);
     $dateTwo = new DateTime($expiry_day_arr[2] . "-" . $expiry_day_arr[0] . "-" . $expiry_day_arr[1]);
 
-    if ($dateOne <= $dateTwo) {
-        return false;
+    if ($dateOne < $dateTwo) {
+        return true;
     }
     return false;
 }
