@@ -31,6 +31,7 @@ function discharge_products() {
 
     	$arrArgument = array(
             'product_name' => ucfirst($result['data']['product_name']),
+            'price' => $result['data']['price'],
             'description' => $result['data']['description'],
             'discharge_date' => $result['data']['discharge_date'],
             'expiry_date' => $result['data']['expiry_date'],
@@ -38,7 +39,6 @@ function discharge_products() {
             'provider_phone' => $result['data']['provider_phone'],
             'season' => $result['data']['season'],
             'category' => $result['data']['category'],
-            'price' => $result['data']['price'],
 
             'avatar' => $result_avatar['data']
         );
