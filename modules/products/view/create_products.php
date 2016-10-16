@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group">
                     <p style="text-align:left;">Price</p>
-                    <input id="price" name="price" class="form-control" placeholder="0€" type="text" >
+                    <input type="text" id="price" name="price" class="form-control" placeholder="0€"  >
                 </div>
                 <!--TextArea description-->
                 <div class="form-group">

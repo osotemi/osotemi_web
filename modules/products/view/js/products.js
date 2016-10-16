@@ -260,10 +260,10 @@ $(document).ready(function () {
     //Patterns
     var date_reg = /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/;
     var string_reg = /^[A-Za-z0-9]{2,30}$/;
-    var textarea_reg = /^[0-9A-Za-z]{4,120}$/;
+    var textarea_reg = /^[\s0-9A-Za-z]{4,120}$/;
     var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var phone_reg = /^(\+\d{2,3}\s)?[689]{1}\d{2}[\s]?\d{3}[\s]?\d{3}$/;
-    var price_reg = /^[/d]{1,8}[.]?([\d]{1,2}?)$/;
+    var price_reg = /^[\W\d]*(\.\d{1})?\d{0,1}$/;
 
     //realizamos funciones para que sea más práctico nuestro formulario
     $("#product_name").keyup(function () {
@@ -349,7 +349,7 @@ function validate_products(){
     var textarea_reg = /^[\s0-9A-Za-z]{5,230}$/;
     var email_reg = /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
     var phone_reg = /^(\+\d{2,3}\s)?[689]{1}\d{2}\s\d{3}\s\d{3}$/;
-    var price_reg = /^[/d]{1,8}[.]?([\d]{1,2}?)$/;
+    var price_reg = /^[\W\d]*(\.\d{1})?\d{0,1}$/;
 
     console.log(price);
     $(".error").remove();
@@ -371,8 +371,8 @@ function validate_products(){
         $("#price").focus().after("<span class='error'>Product must have a price</span>");
         result = false;
         return false;
-    } else if (!string_reg.test($("#price").val())) {
-        $("#price").focus().after("<span class='error'>Price must be between 0 and 99999999</span>");
+    } else if (!price_reg.test($("#price").val())) {
+        $("#price").focus().after("<span class='error'>Price must be a decimal number two-digit precision</span>");
         result = false;
         return false;
     }

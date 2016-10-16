@@ -8,12 +8,12 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{2,30}$/')
         ),
-        /*
+
         'price' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => array('regexp' => '/^\d{1,8}[.]?(\d{1,2}?)$/')
+            'options' => array('regexp' => '/^[\W\d]*(\.\d{1})?\d{0,1}$/')
         ),
-
+        /*
         'description' => array(
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^\D{5,230}$/')
@@ -58,6 +58,11 @@ function validate_product( $value ) {
             $error['product_name'] = 'Product name must be 2 to 20 letters';
             $valid = false;
         }
+
+        if (!$result['price']) {
+            $error['price'] = 'Price must be a number with maxim 2 decimal number';
+            $valid = false;
+        }
         /*
         if (!$result['description']) {
             $error['description'] = 'Description must have more than 5 characters and less than 230';
@@ -95,10 +100,6 @@ function validate_product( $value ) {
             $valid = false;
         }
         */
-        if (!$result['price']) {
-            $error['price'] = 'Price must be between 0 and 99999999';
-            $valid = false;
-        }
 
         if (!$result['discount_percent']) {
             $error['discount_percent'] = "Discount must be between 0 and 99";
@@ -120,7 +121,7 @@ function validate_product( $value ) {
 
     $result['description'] = $value['description'];
     $result['provider_phone'] = $value['provider_phone'];
-    $result['price'] = $value['price'];
+    //$result['price'] = $value['price'];
     $result['season'] = $value['season'];
     $result['category'] = $value['category'];
 
