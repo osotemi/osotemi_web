@@ -30,7 +30,7 @@
                     <div id="e_name"></div>
                 </div>
                 <div class="form-group">
-                    <p style="text-align:left;">Price</p>
+                    <label>Price</label>
                     <input type="text" id="price" name="price" class="form-control" placeholder="0€"  >
                 </div>
                 <!--TextArea description-->
@@ -63,9 +63,30 @@
                     <input id="provider_phone" name = "provider_phone" type="text"  class="form-control" placeholder="Provider phone number">
                     <div id="e_provider_phone"></div>
                 </div>
+                <!--Product country of origin  -->
+                <div class="form-group">
+            			<label for="country">Country</label>
+            			<select id="country" class="form-control">
+            			</select>
+            			<span id="e_country" ></span>
+            		</div>
+                <!--Product province of origin  -->
+            		<div class="form-group">
+            			<label for="province">Community</label>
+            			<select id="province" class="form-control">
+            			</select>
+            			<span id="e_province" ></span>
+            		</div>
+                <!--Product city of origin  -->
+            		<div class="form-group">
+            			<label for="city">City</label>
+            			<select id="city" class="form-control">
+            			</select>
+            			<span id="e_city" ></span>
+            		</div>
                 <!--Product season -->
                 <div class="form-group">
-                    <p style="text-align:left;">Product season</p>
+                    <label>Product season</label><br>
                     <input type="radio" id="season" name="season" value="Winter" class="radioBox">Winter</input><br>
           					<input type="radio" id="season" name="season" value="Spring" class="radioBox">Spring</input><br>
           					<input type="radio" id="season" name="season" value="Summer" class="radioBox">Summer</input><br>
@@ -76,7 +97,7 @@
                 </div>
                 <!-- Product categories -->
                 <div class="form-group">
-                    <p style="align:left;">Product category</p>
+                    <label>Product category</label><br>
                     <input style="text-align:left;" name="category[0]" type="checkbox" class="checkBox" value="Electronics"/>Electronics<br>
           					<input style="text-align:left;" name="category[1]" type="checkbox" class="checkBox" value="Home appliances"/>Home appliances<br>
           					<input style="text-align:left;" name="category[2]" type="checkbox" class="checkBox" value="Electronic games"/>Electronic games<br>

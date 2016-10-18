@@ -66,7 +66,7 @@ function discharge_products() {
         $jsondata["success"] = true;
         $jsondata["redirect"] = $callback;
         echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
-        
+
         exit;
     }
     else{
@@ -82,10 +82,7 @@ function discharge_products() {
         }
         header('HTTP/1.0 400 Bad error', true, 404);
         echo json_encode($jsondata);
-
     }
-
-
 }
 
 //////////////////////////
@@ -145,4 +142,58 @@ if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
         echo json_encode($jsondata);
         exit;
     }
+}
+/////////////////////////////////////////////////// load_pais
+	if(  (isset($_GET["load_countries"])) && ($_GET["load_countries"] == true)  ){
+		$json = array();
+
+    	$url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
+
+		$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+		$json = loadModel($path_model, "product_model.class.singleton", "obtain_countries", $url);
+
+		if($json){
+			echo $json;
+			exit;
+		}else{
+			$json = "error";
+			echo $json;
+			exit;
+		}
+	}
+  /////////////////////////////////////////////////// load_provincias
+	if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
+		$jsondata = array();
+        $json = array();
+
+		$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+		$json = loadModel($path_model, "product_model", "obtain_provinces");
+
+		if($json){
+			$jsondata["provinces"] = $json;
+			echo json_encode($jsondata);
+			exit;
+		}else{
+			$jsondata["provinces"] = "error";
+			echo json_encode($jsondata);
+			exit;
+		}
+	}
+/////////////////////////////////////////////////// load_poblaciones
+if(  isset($_POST['idPoblac']) ){
+    $jsondata = array();
+      $json = array();
+
+	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+	$json = loadModel($path_model, "product_model", "obtain_city", $_POST['idPoblac']);
+
+	if($json){
+		$jsondata["cities"] = $json;
+		echo json_encode($jsondata);
+		exit;
+	}else{
+		$jsondata["cities"] = "error";
+		echo json_encode($jsondata);
+		exit;
+	}
 }
