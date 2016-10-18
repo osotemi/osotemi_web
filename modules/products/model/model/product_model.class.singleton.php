@@ -2,7 +2,7 @@
 
 $path = $_SERVER['DOCUMENT_ROOT'] . '';
 define('SITE_ROOT', $path);
-require(SITE_ROOT . "modules/products/model/BLL/product_bll.class.singleton.php");
+require(SITE_ROOT . "/modules/products/model/BLL/product_bll.class.singleton.php");
 
 class product_model {
 

@@ -1,6 +1,7 @@
 <?php
 include ($_SERVER['DOCUMENT_ROOT'] . "/modules/products/utils/functions_product.inc.php");
 include ($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
+include ($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
 session_start();
 
 ///////////////////////////////////
@@ -43,7 +44,19 @@ function discharge_products() {
             'avatar' => $result_avatar['data']
         );
 
-        $mensaje = "User has been successfully registered";
+        /////////////////insert into BD////////////////////////
+        $arrValue = false;
+        $path_model = $_SERVER['DOCUMENT_ROOT'] . '/modules/products/model/model/';
+        $arrValue = loadModel($path_model, "product_model", "create_product", $arrArgument);
+        //$jsondata["success"] = true;
+        //$jsondata['resultado']= $arrValue;
+        //echo json_encode($jsondata);
+        //die();
+
+        if ($arrValue)
+            $mensaje = "Su registro se ha efectuado correctamente, para finalizar compruebe que ha recibido un correo de validacion y siga sus instrucciones";
+        else
+            $mensaje = "No se ha podido realizar su alta. Intentelo mas tarde";
 
         //redirigir a controlador de vista con los datos de $arrArgument y $mensaje
         $_SESSION['product'] = $arrArgument;
@@ -53,6 +66,7 @@ function discharge_products() {
         $jsondata["success"] = true;
         $jsondata["redirect"] = $callback;
         echo json_encode($jsondata);//go to product.js -> function validate products -> function(response)
+        
         exit;
     }
     else{
@@ -66,7 +80,7 @@ function discharge_products() {
             $jsondata["success1"] = true;
             $jsondata["img_avatar"] = $result_avatar['data'];
         }
-        header('HTTP/1.0 400 Bad error');
+        header('HTTP/1.0 400 Bad error', true, 404);
         echo json_encode($jsondata);
 
     }
@@ -79,10 +93,10 @@ if (isset($_GET["delete"]) && $_GET["delete"] == true) {
 	$_SESSION['result_avatar'] = array();
 	$result = remove_files();
 	if ($result === true) {
-        echo json_encode(array("res" => true));
-    } else {
-        echo json_encode(array("res" => false));
-    }
+      echo json_encode(array("res" => true));
+  } else {
+      echo json_encode(array("res" => false));
+  }
 
 }
 
@@ -91,6 +105,7 @@ if (isset($_GET["delete"]) && $_GET["delete"] == true) {
 if ((isset($_GET["upload"])) && ($_GET["upload"] == true)) {
 	$result_avatar = upload_files();
 	$_SESSION['result_avatar'] = $result_avatar;
+  //echo debug($_SESSION['result_avatar']); //se mostraría en alert(response); de dropzone.js
 }
 
 ///////////////////////////
@@ -99,6 +114,7 @@ if (isset($_GET["load"]) && $_GET["load"] == true) {//call by list_products -> l
     if (isset($_SESSION['product'])) {
         //echo debug($_SESSION['product']);
         $jsondata["product"] = $_SESSION['product'];
+
     }
     if (isset($_SESSION['msje'])) {
         //echo $_SESSION['msje'];

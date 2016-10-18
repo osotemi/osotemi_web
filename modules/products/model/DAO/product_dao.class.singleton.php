@@ -34,7 +34,7 @@ class productDAO {
 
         $sql = "INSERT INTO products(`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`, `season`, `categorie`, `avatar` )"
                 . " VALUES ('$product_name', '$price', '$description',"
-                . " '$discharge_date', '$expiry_date', '$provider_email', '$provider_phone', '$season', '$category', '$avatar')";
+                . " '$discharge_date', '$expiry_date', '$provider_email', '$provider_phone', '$season', '$str_category', '$avatar')";
 
         return $db->ejecutar($sql);
     }
