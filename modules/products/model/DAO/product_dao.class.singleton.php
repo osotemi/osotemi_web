@@ -29,7 +29,7 @@ class productDAO {
         $str_category = "";
 
         foreach ($category as $indice) {
-            $str_category += $indice +":";
+            $str_category .= $indice . ":";
         }
 
         $sql = "INSERT INTO products(`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`, `season`, `categorie`, `avatar` )"
