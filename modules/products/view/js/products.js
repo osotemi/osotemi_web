@@ -265,12 +265,12 @@ $(document).ready(function () {
     $("#city").append('<option value="" selected="selected">Select a city</option>');
     $("#city").prop('disabled', true);
 
-    $("#city").change(function() {
-  		var city = $(this).val();
+    $("#country").change(function() {
+  		var country = $(this).val();
   		var province = $("#province");
   		var city = $("#city");
 
-  		if(city !== 'ES'){
+  		if(country !== 'ES'){
   	         province.prop('disabled', true);
   	         city.prop('disabled', true);
   	         $("#province").empty();
@@ -345,12 +345,13 @@ $(document).ready(function () {
 
 
 function load_countries_v2(cad) {
+    //console.log(data);
     $.getJSON( cad, function(data) {
-      $("#city").empty();
-      $("#city").append('<option value="" selected="selected">Select a city</option>');
+      $("#country").empty();
+      $("#country").append('<option value="" selected="selected">Select a countries</option>');
 
       $.each(data, function (i, valor) {
-        $("#city").append("<option value='" + valor.sISOCode + "'>" + valor.sName + "</option>");
+        $("#country").append("<option value='" + valor.sISOCode + "'>" + valor.sName + "</option>");
       });
     })
     .fail(function() {
@@ -361,11 +362,11 @@ function load_countries_v2(cad) {
 function load_countries_v1() {
     $.get( "modules/products/controller/controller_products.class.php?load_countries=true",
         function( response ) {
-            console.log(response);
+          //console.log( response );
             if(response === 'error'){
                 load_countries_v2("resources/ListOfCountryNamesByName.json");
             }else{
-                load_countries_v2("modules/products/controller/controller_products.class.php?load_city=true"); //oorsprong.org
+                load_countries_v2("modules/products/controller/controller_products.class.php?load_countries=true"); //oorsprong.org
             }
     })
     .fail(function(response) {
@@ -394,24 +395,24 @@ function load_provinces_v1() { //provincesycityes.xml - xpath
     $.get( "modules/products/controller/controller_products.class.php?load_provinces=true",
         function( response ) {
             $("#province").empty();
-	        $("#province").append('<option value="" selected="selected">Select a province</option>');
+	           $("#province").append('<option value="" selected="selected">Select a province</option>');
 
             //alert(response);
             var json = JSON.parse(response);
-		    var provinces=json.provinces;
-		    //alert(provinces);
-		    //console.log(provinces);
+    		    var provinces=json.provinces;
+    		    //alert(provinces);
+    		    //console.log(provinces);
 
-		    //alert(provinces[0].id);
-		    //alert(provinces[0].name);
+    		    //alert(provinces[0].id);
+    		    //alert(provinces[0].name);
 
             if(provinces === 'error'){
                 load_provinces_v2();
             }else{
                 for (var i = 0; i < provinces.length; i++) {
-        		    $("#province").append("<option value='" + provinces[i].id + "'>" + provinces[i].name + "</option>");
+        		    $("#province").append("<option value='" + provinces[i].id + "'>" + provinces[i].nombre + "</option>");
     		    }
-            }
+          }
     })
     .fail(function(response) {
         load_provinces_v2();

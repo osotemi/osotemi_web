@@ -17,6 +17,14 @@
                 return $obj->$function($arrArgument);
             }
         } else {
+            /*
+            $jsondata["success"] = true;
+            $jsondata["position"] = "loadModel->file_don't";
+            $jsondata['resultado']= $model;
+            echo json_encode($jsondata);
+            exit;
+            */
             die($model_name . ' Model Not Found under Model Folder');
         }
+
     }

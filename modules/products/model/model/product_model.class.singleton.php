@@ -14,8 +14,10 @@ class product_model {
     }
 
     public static function getInstance() {
-        if (!(self::$_instance instanceof self))
+        if (!(self::$_instance instanceof self)){
+
             self::$_instance = new self();
+        }
         return self::$_instance;
     }
 

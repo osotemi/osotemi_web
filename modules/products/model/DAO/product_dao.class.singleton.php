@@ -43,22 +43,28 @@ class productDAO {
     }
 
     public function obtain_countries_DAO($url) {
+        //ini_set('display_errors', 1);
         $ch = curl_init();
+        //echo json_encode($ch);
+        //exit;
         curl_setopt ($ch, CURLOPT_URL, $url);
         curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+
         $file_contents = curl_exec($ch);
         curl_close($ch);
 
         return ($file_contents) ? $file_contents : FALSE;
+
     }
 
     public function obtain_provinces_DAO() {
         $json = array();
         $tmp = array();
 
-      	$provinces = simplexml_load_file("../../../resources/provincesandcityes.xml");
+      	$provinces = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . "/resources/provincesandcityes.xml");
       	$result = $provinces->xpath("/lista/provincia/nombre | /lista/provincia/@id");
+
       	for ($i=0; $i<count($result); $i+=2) {
       		$e=$i+1;
       		$provinces=$result[$e];
@@ -68,8 +74,8 @@ class productDAO {
       		);
       		array_push($json, $tmp);
       	}
-            return $json;
-        }
+        return $json;
+    }
 
     public function obtain_cities_DAO($arrArgument) {
         $json = array();

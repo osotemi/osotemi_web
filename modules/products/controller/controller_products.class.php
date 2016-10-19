@@ -14,7 +14,7 @@ function discharge_products() {
   	$jsondata = array();
   	$productsJSON = json_decode($_POST["discharge_products_json"], true);
 
-	$result = validate_product($productsJSON);
+	  $result = validate_product($productsJSON);
 
     if (empty($_SESSION['result_avatar'])) {
         $_SESSION['result_avatar'] = array('resultado' => true, 'error' => "", 'data' => 'media/default-avatar.png');
@@ -51,7 +51,7 @@ function discharge_products() {
         //$jsondata["success"] = true;
         //$jsondata['resultado']= $arrValue;
         //echo json_encode($jsondata);
-        //die();
+        //exit;
 
         if ($arrValue)
             $mensaje = "Su registro se ha efectuado correctamente, para finalizar compruebe que ha recibido un correo de validacion y siga sus instrucciones";
@@ -144,30 +144,32 @@ if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
     }
 }
 /////////////////////////////////////////////////// load_pais
-	if(  (isset($_GET["load_countries"])) && ($_GET["load_countries"] == true)  ){
-		$json = array();
+if(  (isset($_GET["load_countries"])) && ($_GET["load_countries"] == true)  ){
+	$json = array();
 
-    	$url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
+  $url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
 
-		$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-		$json = loadModel($path_model, "product_model.class.singleton", "obtain_countries", $url);
+	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
 
-		if($json){
-			echo $json;
-			exit;
-		}else{
-			$json = "error";
-			echo $json;
-			exit;
-		}
+	$json = loadModel($path_model, "product_model", "obtain_countries", $url);
+
+	if($json){
+		echo $json;
+		exit;
+	}else{
+		$json = "error";
+		echo $json;
+		exit;
 	}
-  /////////////////////////////////////////////////// load_provincias
-	if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
+}
+/////////////////////////////////////////////////// load_provincias
+
+  if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
 		$jsondata = array();
         $json = array();
 
 		$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-		$json = loadModel($path_model, "product_model", "obtain_provinces");
+    $json = loadModel($path_model, "product_model", "obtain_provinces");
 
 		if($json){
 			$jsondata["provinces"] = $json;
@@ -179,7 +181,9 @@ if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
 			exit;
 		}
 	}
+
 /////////////////////////////////////////////////// load_poblaciones
+/*
 if(  isset($_POST['idPoblac']) ){
     $jsondata = array();
       $json = array();
@@ -197,3 +201,4 @@ if(  isset($_POST['idPoblac']) ){
 		exit;
 	}
 }
+*/
