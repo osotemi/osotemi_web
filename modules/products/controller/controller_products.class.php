@@ -164,32 +164,33 @@ if(  (isset($_GET["load_countries"])) && ($_GET["load_countries"] == true)  ){
 }
 /////////////////////////////////////////////////// load_provincias
 
-  if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
-		$jsondata = array();
-        $json = array();
-
-		$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-    $json = loadModel($path_model, "product_model", "obtain_provinces");
-
-		if($json){
-			$jsondata["provinces"] = $json;
-			echo json_encode($jsondata);
-			exit;
-		}else{
-			$jsondata["provinces"] = "error";
-			echo json_encode($jsondata);
-			exit;
-		}
-	}
-
-/////////////////////////////////////////////////// load_poblaciones
-/*
-if(  isset($_POST['idPoblac']) ){
-    $jsondata = array();
+if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
+	$jsondata = array();
       $json = array();
 
 	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
-	$json = loadModel($path_model, "product_model", "obtain_city", $_POST['idPoblac']);
+  $json = loadModel($path_model, "product_model", "obtain_provinces");
+
+	if($json){
+		$jsondata["provinces"] = $json;
+		echo json_encode($jsondata);
+		exit;
+	}else{
+		$jsondata["provinces"] = "error";
+		echo json_encode($jsondata);
+		exit;
+	}
+}
+
+/////////////////////////////////////////////////// load_poblaciones
+
+if(  isset($_POST['idCity']) ){
+
+  $jsondata = array();
+  $json = array();
+
+	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+	$json = loadModel($path_model, "product_model", "obtain_cities", $_POST['idCity']);
 
 	if($json){
 		$jsondata["cities"] = $json;
@@ -201,4 +202,3 @@ if(  isset($_POST['idPoblac']) ){
 		exit;
 	}
 }
-*/

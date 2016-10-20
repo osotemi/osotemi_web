@@ -81,16 +81,16 @@ class productDAO {
         $json = array();
         $tmp = array();
 
-            $filter = (string)$arrArgument;
-          $xml = simplexml_load_file('../../../resources/provincesandcityes.xml');
-        $result = $xml->xpath("/lista/countries[@id='$filter']/localidades");
+        $filter = (string)$arrArgument;
+        $xml = simplexml_load_file($_SERVER['DOCUMENT_ROOT'] . '/resources/provincesandcityes.xml');
+        $result = $xml->xpath("/lista/provincia[@id='$filter']/localidades");
 
-        	for ($i=0; $i<count($result[0]); $i++) {
-        		$tmp = array(
-        			'poblacion' => (string) $result[0]->localidad[$i]
-        		);
-        		array_push($json, $tmp);
-        	}
-            return $json;
+      	for ($i=0; $i<count($result[0]); $i++) {
+      		$tmp = array(
+      			'poblacion' => (string) $result[0]->localidad[$i]
+      		);
+      		array_push($json, $tmp);
+      	}
+        return $json;
     }
   }

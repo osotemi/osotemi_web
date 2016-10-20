@@ -271,21 +271,21 @@ $(document).ready(function () {
   		var city = $("#city");
 
   		if(country !== 'ES'){
-  	         province.prop('disabled', true);
-  	         city.prop('disabled', true);
-  	         $("#province").empty();
+	         province.prop('disabled', true);
+	         city.prop('disabled', true);
+	         $("#province").empty();
   		     $("#city").empty();
   		}else{
-  	         province.prop('disabled', false);
-  	         city.prop('disabled', false);
-  	         load_provinces_v1();
+	         province.prop('disabled', false);
+	         city.prop('disabled', false);
+	         load_provinces_v1();
   		}//fi else
   	});
 
   	$("#province").change(function() {
   		var prov = $(this).val();
   		if(prov > 0){
-  			load_cityes_v1(prov);
+  			load_cities_v1(prov);
   		}else{
   			$("#city").prop('disabled', false);
   		}
@@ -380,11 +380,11 @@ function load_provinces_v2() {
 	    $("#province").empty();
 	    $("#province").append('<option value="" selected="selected">Select a province</option>');
 
-        $(xml).find("province").each(function () {
-            var id = $(this).attr('id');
-            var name = $(this).find('name').text();
-            $("#province").append("<option value='" + id + "'>" + name + "</option>");
-        });
+      $(xml).find("province").each(function () {
+          var id = $(this).attr('id');
+          var name = $(this).find('name').text();
+          $("#province").append("<option value='" + id + "'>" + name + "</option>");
+      });
     })
     .fail(function() {
         alert( "error load_provinces" );
@@ -395,7 +395,7 @@ function load_provinces_v1() { //provincesycityes.xml - xpath
     $.get( "modules/products/controller/controller_products.class.php?load_provinces=true",
         function( response ) {
             $("#province").empty();
-	           $("#province").append('<option value="" selected="selected">Select a province</option>');
+	          $("#province").append('<option value="" selected="selected">Select a province</option>');
 
             //alert(response);
             var json = JSON.parse(response);
@@ -419,45 +419,46 @@ function load_provinces_v1() { //provincesycityes.xml - xpath
     });
 }
 
-function load_cityes_v2(prov) {
+function load_cities_v2(prov) {
     $.get("resources/provincesandcityes.xml", function (xml) {
-		$("#city").empty();
-	    $("#city").append('<option value="" selected="selected">Select a city</option>');
+	    $("#city").empty();
+      $("#city").append('<option value="" selected="selected">Select a city</option>');
 
-		$(xml).find('province[id=' + prov + ']').each(function(){
-    		$(this).find('province').each(function(){
+	    $(xml).find('provincia[id=' + prov + ']').each(function(){
+    		$(this).find('provincia').each(function(){
     			 $("#city").append("<option value='" + $(this).text() + "'>" + $(this).text() + "</option>");
     		});
-        });
-	})
-	.fail(function() {
-        alert( "error load_cityes" );
+      });
+	  })
+  	.fail(function() {
+      console.log(prov);
+      alert( "error load_cityes" );
     });
 }
 
-function load_cityes_v1(prov) { //provincesycityes.xml - xpath
-    var datos = { idPoblac : prov  };
-	$.post("modules/products/controller/controller_products.class.php?load_city=true", datos, function(response) {
-	    //alert(response);
-        var json = JSON.parse(response);
-		var cityes=json.cityes;
-		//alert(cityes);
-		//console.log(cityes);
-		//alert(cityes[0].city);
+function load_cities_v1(prov) { //provincesycityes.xml - xpath
+    var data = { idCity : prov  };
+	  $.post("modules/products/controller/controller_products.class.php", data, function(response) {
+	    alert(response);
+      var json = JSON.parse(response);
+		  var cities=json.cities;
+		  alert(cities);
+		  //console.log(cityes);
+		  //alert(cityes[0].city);
 
-		$("#city").empty();
+  		$("#city").empty();
 	    $("#city").append('<option value="" selected="selected">Select a city</option>');
 
-        if(cityes === 'error'){
-            load_cityes_v2(prov);
-        }else{
-            for (var i = 0; i < cityes.length; i++) {
-        		$("#city").append("<option value='" + cityes[i].city + "'>" + cityes[i].city + "</option>");
+      if(cities === 'error'){
+          load_cities_v2(prov);
+      }else{
+        for (var i = 0; i < cities.length; i++) {
+        	$("#city").append("<option value='" + cities[i].poblacion + "'>" + cities[i].poblacion + "</option>");
     		}
-        }
-	})
-	.fail(function() {
-        load_cityes_v2(prov);
+      }
+    })
+  	.fail(function() {
+      load_cities_v2(prov);
     });
 }
 
