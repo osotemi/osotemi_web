@@ -36,11 +36,6 @@ function validate_product( $value ) {
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => array('regexp' => '/^(\+\d{2,3}\s)?[689]{1}\d{2}\s\d{3}\s\d{3}$/')
         ),
-
-        'discount_percent' => array(
-            'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => array('regexp' => '/^[0-99 ]1$/i')
-        ),
     );
 
     $result = filter_var_array($value, $filter);
@@ -108,15 +103,13 @@ function validate_product( $value ) {
             $valid = false;
         }
 
-        if (!$result['discount_percent']) {
-            $error['discount_percent'] = "Discount must be between 0 and 99";
-            $valid = false;
-        }
-
-
     } else {
         $valid = false;
     };
+    
+    $result['country'] = $value['country'];
+    $result['province'] = $value['province'];
+    $result['city'] = $value['city'];
 
     $result['season'] = $value['season'];
     $result['category'] = $value['category'];

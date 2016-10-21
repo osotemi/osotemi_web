@@ -1,5 +1,5 @@
 CREATE DATABASE  IF NOT EXISTS `osotemi_webDB` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `osotemi_webDB`;
+USE `osotemi_web`;
 -- MySQL dump 10.13  Distrib 5.7.9, for linux-glibc2.5 (x86_64)
 --
 -- Host: localhost    Database: rural_shop
@@ -32,6 +32,9 @@ CREATE TABLE `products` (
   `expiry_date` varchar(10) DEFAULT NULL,
   `provider_email` varchar(100) DEFAULT NULL,
   `provider_phone` varchar(20) DEFAULT NULL,
+  `country` varchar(30) DEFAULT NULL,
+  `province` varchar(30) DEFAULT NULL,
+  `city` varchar(30) DEFAULT NULL,
   `season` varchar(30) DEFAULT NULL,
   `categorie` varchar(100) DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
@@ -46,7 +49,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `products` (`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`, `season`, `categorie`, `avatar` ) VALUES ('First_product','100.11', 'This is the first innsert on database product', '9/10/2016','19/10/2016','firstmail@gmail.com','+34 666 555 444','All','Electronics:Other', '/media/default-avatar.png');
+INSERT INTO `products` (`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`,`country`,`province`,`city`, `season`, `categorie`, `avatar` ) VALUES ('First_product','100.11', 'This is the first innsert on database product', '9/10/2016','19/10/2016','firstmail@gmail.com','+34 666 555 444','España','Valencia','Ontinyent','All','Electronics:Other', '/media/default-avatar.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

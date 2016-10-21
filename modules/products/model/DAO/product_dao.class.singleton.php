@@ -21,10 +21,10 @@ class productDAO {
         $expiry_date = $arrArgument['expiry_date'];
         $provider_email = $arrArgument['provider_email'];
         $provider_phone = $arrArgument['provider_phone'];
-
         $country = $arrArgument['country'];
-    		$provinces = $arrArgument['provinces'];
-    		$poblacion = $arrArgument['poblacion'];
+        $province = $arrArgument['province'];
+        $city = $arrArgument['city'];
+
         $season = $arrArgument['season'];
         $avatar = $arrArgument['avatar'];
 
@@ -35,9 +35,11 @@ class productDAO {
             $str_category .= $indice . ":";
         }
 
-        $sql = "INSERT INTO products(`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`, `season`, `categorie`, `avatar` )"
+        $sql = "INSERT INTO products(`product_name`, `price`, `description`, `discharge_date`, `expiry_date`,"
+                . " `provider_email`, `provider_phone`,`country`,`province`,`city`, `season`, `categorie`, `avatar` )"
                 . " VALUES ('$product_name', '$price', '$description',"
-                . " '$discharge_date', '$expiry_date', '$provider_email', '$provider_phone', '$season', '$str_category', '$avatar')";
+                . " '$discharge_date', '$expiry_date', '$provider_email', '$provider_phone',"
+                . " '$country','$province','$city','$season', '$str_category', '$avatar')";
 
         return $db->ejecutar($sql);
     }

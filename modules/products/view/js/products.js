@@ -348,7 +348,7 @@ function load_countries_v2(cad) {
     //console.log(data);
     $.getJSON( cad, function(data) {
       $("#country").empty();
-      $("#country").append('<option value="" selected="selected">Select a countries</option>');
+      $("#country").append('<option value="" selected="selected">Select a country</option>');
 
       $.each(data, function (i, valor) {
         $("#country").append("<option value='" + valor.sISOCode + "'>" + valor.sName + "</option>");
@@ -473,6 +473,19 @@ function validate_products(){
     var expiry_date = document.getElementById('expiry_date').value;
     var provider_email = document.getElementById('provider_email').value;
     var provider_phone = document.getElementById('provider_phone').value;
+
+    var country_elem = document.getElementById('country');
+    var pos = 0;
+    if( country_elem.selectedIndex>0)
+      var country = country_elem.options[country_elem.selectedIndex].text;
+
+    var province_elem = document.getElementById('province');
+    if( province_elem.selectedIndex>0)
+      var province = province_elem.options[province_elem.selectedIndex].text;
+
+    var city_elem = document.getElementById('city');
+    if( city_elem.selectedIndex>0)
+      var city = city_elem.options[city_elem.selectedIndex].text;
     var season = "";
     var inputSeason = document.getElementsByClassName('radioBox');
     //radioButton
@@ -582,6 +595,23 @@ function validate_products(){
         result = false;
         return false;
     }
+    //Country error handler
+    if ($("#country").val() == "" || $("#country").val() == "Provider phone number") {
+        $("#country").focus().after("<span class='error'>Please, select a country</span>");
+        result = false;
+        return false;
+    } else if ($("#country").val() == "Spain"){
+        if ($("#province").val() == "" || $("#province").val() == "Select a province") {
+            $("#province").focus().after("<span class='error'>Please, select a province</span>");
+            result = false;
+            return false;
+        }
+        else if ($("#city").val() == "" || $("#city").val() == "Select a city") {
+            $("#province").focus().after("<span class='error'>Please, select a city</span>");
+            result = false;
+            return false;
+        }
+    }
     //Checkbox error handler
     if(category_numb<=1){
         $("#e_category").focus().after("<span class='error'>At less 2 categories</span>");
@@ -594,7 +624,7 @@ function validate_products(){
     if (result) {
         var data = {"product_name": product_name, "price": price, "description": description, "discharge_date": discharge_date,
         "expiry_date": expiry_date, "provider_email": provider_email, "provider_phone": provider_phone,
-        "season": season, "category": category };
+        "country": country, "province": province, "city" : city, "season": season, "category": category  };
         var data_products_JSON = JSON.stringify(data);
 
         $.post('modules/products/controller/controller_products.class.php',
@@ -627,6 +657,15 @@ function validate_products(){
 
             if (xhr.responseJSON.error.provider_phone)
                 $("#provider_phone").focus().after("<span  class='error1'>" + xhr.responseJSON.error.provider_phone + "</span>");
+
+            if (xhr.responseJSON.error.country)
+                $("#country").focus().after("<span  class='error1'>" + xhr.responseJSON.error.country + "</span>");
+
+            if (xhr.responseJSON.error.province)
+                $("#province").focus().after("<span  class='error1'>" + xhr.responseJSON.error.province + "</span>");
+
+            if (xhr.responseJSON.error.city)
+                $("#city").focus().after("<span  class='error1'>" + xhr.responseJSON.error.city + "</span>");
 
             if (xhr.responseJSON.error.season)
                 $("#season").focus().after("<span  class='error1'>" + xhr.responseJSON.error.season + "</span>");

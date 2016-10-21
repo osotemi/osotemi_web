@@ -1,16 +1,16 @@
-//////////////////////////////////////////////////////////////// 
+////////////////////////////////////////////////////////////////
 function load_products_ajax() {
     //console.log("Are in list_products");
     //console.log(data);
     $.ajax({
         type: 'GET',
         url: "modules/products/controller/controller_products.class.php?load=true",
-        //dataType: 'json', 
+        //dataType: 'json',
         async: false
     }).success(function (data) {
-        
+
         var json = JSON.parse(data);
-        
+
         //alert(json.user.usuario);
 
         list_products(json);
@@ -32,7 +32,7 @@ function load_users_get_v1() {
     });
 }
 
-//////////////////////////////////////////////////////////////// 
+////////////////////////////////////////////////////////////////
 function load_users_get_v2() {
     var jqxhr = $.get("modules/users/controller/controller_users.class.php?load=true", function (data) {
         var json = JSON.parse(data);
@@ -66,50 +66,62 @@ function list_products(data) {
     var msje = document.createElement("div");
     msje.innerHTML = "msje = ";
     msje.innerHTML += data.msje;
-    
+
     var product_name = document.createElement("div");
     product_name.innerHTML = "Product name = ";
     product_name.innerHTML += data.product.product_name;
-    
+
     var price = document.createElement("div");
     price.innerHTML = "Price = ";
     price.innerHTML += data.product.price + " €";
-    
+
     var description = document.createElement("div");
     description.innerHTML = "Description = ";
     description.innerHTML += data.product.description;
-    
+
     var discharge_date = document.createElement("div");
     discharge_date.innerHTML = "Discharge date = ";
     discharge_date.innerHTML += data.product.discharge_date;
-    
+
     var expiry_date = document.createElement("div");
     expiry_date.innerHTML = "Expiry date = ";
     expiry_date.innerHTML += data.product.expiry_date;
-    
+
     var provider_email = document.createElement("div");
     provider_email.innerHTML = "provider_email = ";
     provider_email.innerHTML += data.product.provider_email;
-    
+
     var provider_phone = document.createElement("div");
     provider_phone.innerHTML = "Provider phone = ";
     provider_phone.innerHTML += data.product.provider_phone;
-    
+
+    var country = document.createElement("div");
+    country.innerHTML = "country = ";
+    country.innerHTML += data.product.country;
+
+    var province = document.createElement("div");
+    province.innerHTML = "province = ";
+    province.innerHTML += data.product.province;
+
+    var city = document.createElement("div");
+    city.innerHTML = "city = ";
+    city.innerHTML += data.product.city;
+
     var season = document.createElement("div");
     season.innerHTML = "Season = " + data.product.season;
     //for(var i =0;i < data.product.season.length;i++){
     //    season.innerHTML += data.product.season[i];
     //}
-    
+
     var category = document.createElement("div");
     category.innerHTML = "Category = ";
     //console.log(data.product.category);
     for(var i =0;i < data.product.category.length;i++){
         category.innerHTML += "<br> - "+data.product.category[i];
     }
-    
+
     //arreglar ruta IMATGE!!!!!
-    
+
     var cad = data.product.avatar;
     //console.log(cad);
     //var cad = cad.toLowerCase();
@@ -127,8 +139,9 @@ function list_products(data) {
     parrafo.appendChild(expiry_date);
     parrafo.appendChild(provider_email);
     parrafo.appendChild(provider_phone);
-    /*parrafo.appendChild(user);
-    parrafo.appendChild(pass);*/  
+    parrafo.appendChild(country);
+    parrafo.appendChild(province);
+    parrafo.appendChild(city);
     parrafo.appendChild(category);
     parrafo.appendChild(season);
     content.appendChild(div_product);

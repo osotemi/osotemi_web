@@ -28,7 +28,7 @@ function discharge_products() {
     echo json_encode($jsondata);
     exit;
     */
-	if(($result) && ($result_avatar['resultado'])){
+	if(($result['result']) && ($result_avatar['resultado'])){
 
     	$arrArgument = array(
             'product_name' => ucfirst($result['data']['product_name']),
@@ -38,6 +38,9 @@ function discharge_products() {
             'expiry_date' => $result['data']['expiry_date'],
             'provider_email' => $result['data']['provider_email'],
             'provider_phone' => $result['data']['provider_phone'],
+            'country' => $result['data']['country'],
+            'province' => $result['data']['province'],
+            'city' => $result['data']['city'],
             'season' => $result['data']['season'],
             'category' => $result['data']['category'],
 
