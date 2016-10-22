@@ -44,6 +44,20 @@ class productDAO {
         return $db->ejecutar($sql);
     }
 
+    public function list_products_DAO($db) {
+        $sql = "SELECT * FROM products";
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
+    public function details_products_DAO($db,$id) {
+        $sql = "SELECT * FROM products WHERE id=".$id;
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
+
+    }
+
     public function obtain_countries_DAO($url) {
         //ini_set('display_errors', 1);
         $ch = curl_init();

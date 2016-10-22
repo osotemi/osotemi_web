@@ -345,7 +345,7 @@ $(document).ready(function () {
 
 
 function load_countries_v2(cad) {
-    //console.log(data);
+    //console.log(cad);
     $.getJSON( cad, function(data) {
       $("#country").empty();
       $("#country").append('<option value="" selected="selected">Select a country</option>');

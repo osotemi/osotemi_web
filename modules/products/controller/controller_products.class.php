@@ -124,14 +124,6 @@ if (isset($_GET["load"]) && $_GET["load"] == true) {//call by list_products -> l
     echo json_encode($jsondata);//go to list_products -> load_products_ajax
     exit;
 }
-
-function close_session() {
-    unset($_SESSION['product']);
-    unset($_SESSION['msje']);
-    $_SESSION = array(); // Destruye todas las variables de la sesión
-    session_destroy(); // Destruye la sesión
-}
-
 /////////////////////////////////////////////////// load_data
 if ((isset($_GET["load_data"])) && ($_GET["load_data"] == true)) {
     $jsondata = array();
@@ -204,4 +196,34 @@ if(  isset($_POST['idCity']) ){
 		echo json_encode($jsondata);
 		exit;
 	}
+}
+
+if ($_GET["idProduct"]) {
+    $id = $_GET["idProduct"];
+    $path_model = SITE_ROOT . '/modules/products/model/model/';
+    $arrValue = loadModel($path_model, "products_model", "details_products",$id);
+
+    if ($arrValue[0]) {
+        loadView('modules/products/view/', 'details_products.php', $arrValue[0]);
+    } else {
+        $message = "NOT FOUND PRODUCT";
+        loadView('view/inc/', '404.php', $message);
+    }
+} else {
+    $path_model = SITE_ROOT . '/modules/products/model/model/';
+    $arrValue = loadModel($path_model, "products_model", "list_products");
+
+    if ($arrValue) {
+        loadView('modules/products/view/', 'list_products.php', $arrValue);
+    } else {
+        $message = "NOT PRODUCTS";
+        loadView('view/inc/', '404.php', $message);
+    }
+}
+///////////////////////////////////////////destroy data
+function close_session() {
+    unset($_SESSION['product']);
+    unset($_SESSION['msje']);
+    $_SESSION = array(); // Destruye todas las variables de la sesión
+    session_destroy(); // Destruye la sesión
 }
