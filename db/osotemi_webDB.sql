@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `products`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `products` (
+  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `product_name` varchar(100) NOT NULL,
   `price` float NOT NULL DEFAULT '0',
   `description` varchar(180) DEFAULT NULL,
@@ -38,9 +39,8 @@ CREATE TABLE `products` (
   `season` varchar(30) DEFAULT NULL,
   `categorie` varchar(100) DEFAULT NULL,
   `avatar` varchar(100) DEFAULT NULL,
-  
-  PRIMARY KEY (`product_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,7 +49,8 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `products` (`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`,`country`,`province`,`city`, `season`, `categorie`, `avatar` ) VALUES ('First_product','100.11', 'This is the first innsert on database product', '9/10/2016','19/10/2016','firstmail@gmail.com','+34 666 555 444','España','Valencia','Ontinyent','All','Electronics:Other', '/media/default-avatar.png');
+INSERT INTO `products` (`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`,`country`,`province`,`city`, `season`, `categorie`, `avatar` )
+VALUES ('First_product','100.11', 'This is the first innsert on database product', '9/10/2016','19/10/2016','firstmail@gmail.com','+34 666 555 444','España','Valencia','Ontinyent','All','Electronics:Other', '/media/default-avatar.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

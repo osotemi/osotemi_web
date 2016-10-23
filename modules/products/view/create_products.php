@@ -97,13 +97,46 @@
                 </div>
                 <!-- Product categories -->
                 <div class="form-group">
-                    <label>Product category</label><br>
-                    <input style="text-align:left;" name="category[0]" type="checkbox" class="checkBox" value="Electronics"/>Electronics<br>
-          					<input style="text-align:left;" name="category[1]" type="checkbox" class="checkBox" value="Home appliances"/>Home appliances<br>
-          					<input style="text-align:left;" name="category[2]" type="checkbox" class="checkBox" value="Electronic games"/>Electronic games<br>
-          					<input style="text-align:left;" name="category[3]" type="checkbox" class="checkBox" value="Smart appliances"/>Smart appliances<br>
-          					<input style="text-align:left;" name="category[4]" type="checkbox" class="checkBox" value="Other"/>Other<br>
-          					<div id="e_category"></div>
+                  <table class="table_check" border="0">
+                    <tr align="center">
+                      <th colspan="2">Schedule menu</th>
+                    </tr>
+                    <tr class="table_check_row">
+                      <td >
+                        <input name="category[0]" type="checkbox" class="checkBox" value="Breakfast"/>Breakfast
+                      </td>
+                      <td >
+                        <input name="category[4]" type="checkbox" class="checkBox" value="Night tea"/>Night tea
+                      </td>
+                    </tr>
+                    <tr class="table_check_row">
+                      <td >
+                        <input name="category[1]" type="checkbox" class="checkBox" value="Lunch"/>Lunch
+                      </td>
+                      <td >
+                        <input name="category[5]" type="checkbox" class="checkBox" value="Evening meal"/>Evening meal
+                      </td>
+                    </tr>
+                    <tr class="table_check_row">
+                      <td >
+                        <input name="category[2]" type="checkbox" class="checkBox" value="Dinner"/>Dinner
+                      </td>
+                      <td >
+                        <input name="category[6]" type="checkbox" class="checkBox" value="Cocktail hour"/>Cocktail hour
+                      </td>
+                    </tr>
+                    <tr class="table_check_row">
+                      <td>
+                        <input name="category[3]" type="checkbox" class="checkBox" value="Tea time"/>Tea time
+                      </td>
+                      <td rowspan="2"><strong>
+                        <input name="category[7]" type="checkbox" class="checkBox" value="All"/>All
+                      </strong></td>
+                    </tr>
+                    <tr class="table_check_row">
+                      <td ><strong><div id="e_category"></div></strong></td>
+                    </tr>
+                  </table>
                 </div>
                 <!--Ask if has discount
                 <div class="form-group">

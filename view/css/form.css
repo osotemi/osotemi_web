@@ -1,4 +1,23 @@
 /****products*/
+.custom-file-upload {
+      background: #ddd;
+      border: 1px solid #aaa;
+	  border-top: 1px solid #ccc;
+	  border-left: 1px solid #ccc;
+	  -moz-border-radius: 3px;
+	  -webkit-border-radius: 3px;
+	  border-radius: 3px;
+	  color: #444;
+	  display: inline-block;
+	  font-size: 12px;
+	  font-weight: bold;
+	  text-decoration: none;
+	  text-shadow: 0 1px rgba(255, 255, 255, .75);
+	  cursor: pointer;
+	  margin-bottom: 20px;
+	  line-height: normal;
+	  padding: 8px 10px;
+}
 .error{
     background-color: #BC1010;
     padding: 8px 10px;
@@ -19,7 +38,7 @@
     left: -16px;
     position:  absolute;
     top: 5px;
-    
+
 }
 .error1{
     background-color: #BC1010;
@@ -41,7 +60,7 @@
     left: -16px;
     position:  absolute;
     top: 5px;
-    
+
 }
 
 .msg{
@@ -62,6 +81,21 @@
     background: red;
 }
 
+.table_check{
+  height: 100%;
+  width: 100%;
+  align: center;
+}
+
+.table_check_head{
+  aling: center;
+}
+
+
+.table_check_row{
+  text-align:left;
+}
+
 input[type="file"] {
     display: none;
 }
@@ -69,22 +103,3 @@ input[type="file"] {
 #progress { position:relative; width:400px; border: 1px solid #ddd; padding: 1px; border-radius: 3px; }
 #bar { background-color: #B4F5B4; width:0%; height:20px; border-radius: 3px; }
 #percent { position:absolute; display:inline-block; top:3px; left:48%; }
-
-.custom-file-upload {
-      background: #ddd;
-      border: 1px solid #aaa;
-	  border-top: 1px solid #ccc;
-	  border-left: 1px solid #ccc;
-	  -moz-border-radius: 3px;
-	  -webkit-border-radius: 3px;
-	  border-radius: 3px;
-	  color: #444;
-	  display: inline-block;
-	  font-size: 12px;
-	  font-weight: bold;
-	  text-decoration: none;
-	  text-shadow: 0 1px rgba(255, 255, 255, .75);
-	  cursor: pointer;
-	  margin-bottom: 20px;
-	  line-height: normal;
-	  padding: 8px 10px; }

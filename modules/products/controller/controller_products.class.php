@@ -1,7 +1,10 @@
 <?php
-include ($_SERVER['DOCUMENT_ROOT'] . "/modules/products/utils/functions_product.inc.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/utils/upload.php");
-include ($_SERVER['DOCUMENT_ROOT'] . "/utils/common.inc.php");
+$path = $_SERVER['DOCUMENT_ROOT'];
+define('SITE_ROOT', $path);
+
+include (SITE_ROOT . "/modules/products/utils/functions_product.inc.php");
+include (SITE_ROOT . "/utils/upload.php");
+include (SITE_ROOT . "/utils/common.inc.php");
 session_start();
 
 ///////////////////////////////////
@@ -49,7 +52,7 @@ function discharge_products() {
 
         /////////////////insert into BD////////////////////////
         $arrValue = false;
-        $path_model = $_SERVER['DOCUMENT_ROOT'] . '/modules/products/model/model/';
+        $path_model = SITE_ROOT . '/modules/products/model/model/';
         $arrValue = loadModel($path_model, "product_model", "create_product", $arrArgument);
         //$jsondata["success"] = true;
         //$jsondata['resultado']= $arrValue;
@@ -144,7 +147,7 @@ if(  (isset($_GET["load_countries"])) && ($_GET["load_countries"] == true)  ){
 
   $url = 'http://www.oorsprong.org/websamples.countryinfo/CountryInfoService.wso/ListOfCountryNamesByName/JSON';
 
-	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+	$path_model=SITE_ROOT.'/modules/products/model/model/';
 
 	$json = loadModel($path_model, "product_model", "obtain_countries", $url);
 
@@ -163,7 +166,7 @@ if(  (isset($_GET["load_provinces"])) && ($_GET["load_provinces"] == true)  ){
 	$jsondata = array();
       $json = array();
 
-	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+	$path_model=SITE_ROOT.'/modules/products/model/model/';
   $json = loadModel($path_model, "product_model", "obtain_provinces");
 
 	if($json){
@@ -184,7 +187,7 @@ if(  isset($_POST['idCity']) ){
   $jsondata = array();
   $json = array();
 
-	$path_model=$_SERVER['DOCUMENT_ROOT'].'/modules/products/model/model/';
+	$path_model=SITE_ROOT.'/modules/products/model/model/';
 	$json = loadModel($path_model, "product_model", "obtain_cities", $_POST['idCity']);
 
 	if($json){
@@ -197,7 +200,7 @@ if(  isset($_POST['idCity']) ){
 		exit;
 	}
 }
-
+/*
 if ($_GET["idProduct"]) {
     $id = $_GET["idProduct"];
     $path_model = SITE_ROOT . '/modules/products/model/model/';
@@ -220,6 +223,7 @@ if ($_GET["idProduct"]) {
         loadView('view/inc/', '404.php', $message);
     }
 }
+*/
 ///////////////////////////////////////////destroy data
 function close_session() {
     unset($_SESSION['product']);
