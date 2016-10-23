@@ -14,10 +14,10 @@
                         <a href="index.php?module=main">Home</a>
                     </li>
                     <li class="dropdown <?php if($_GET['module'] == "products"){ echo "active";}else{ echo "";} ?>">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products<i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?module=products&view=create_products">Create products</a></li>
-                            <li><a href="index.php?module=products">View products</a></li>
+                            <li><a href="index.php?module=products&view=create_products">Create</a></li>
+                            <li><a href="index.php?module=products">View</a></li>
                         </ul>
                     </li>
                     <!--

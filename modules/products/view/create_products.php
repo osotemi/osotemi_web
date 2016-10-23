@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <h1>Registration</h1>
-                <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+                <h1>Create Products</h1>
+                <p>Fill the form to create a product</p>
             </div>
             <div class="col-sm-6">
                 <ul class="breadcrumb pull-right">

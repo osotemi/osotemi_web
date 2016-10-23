@@ -1,9 +1,23 @@
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>View Products</h1>
+                <p>Click on product to see details</p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                    <li><a href="index.php?module=main">Home</a></li>
+                    <li>Products</li>
+                    <li class="active">View</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section><!--/#title-->
 <section >
     <div class="container">
         <div id="list_prod" class="row text-center pad-row">
-            <ol class="breadcrumb">
-                <li class="active" >Products</li>
-            </ol>
             <?php
             if (isset($arrData) && !empty($arrData)) {
                 foreach ($arrData as $product) {

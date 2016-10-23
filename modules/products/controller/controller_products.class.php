@@ -213,7 +213,7 @@ function close_session() {
 if (isset($_GET["idProduct"])) {
     $id = $_GET["idProduct"];
     $path_model = SITE_ROOT . '/modules/products/model/model/';
-    $arrValue = loadModel($path_model, "products_model", "details_products",$id);
+    $arrValue = loadModel($path_model, "product_model", "details_products",$id);
 
     if ($arrValue[0]) {
         loadView('modules/products/view/', 'details_products.php', $arrValue[0]);
@@ -224,7 +224,7 @@ if (isset($_GET["idProduct"])) {
 }
 else{
     $path_model = SITE_ROOT . '/modules/products/model/model/';
-    $arrValue = loadModel($path_model, "products_model", "list_products");
+    $arrValue = loadModel($path_model, "product_model", "list_products");
 
     if ($arrValue) {
         loadView('modules/products/view/', 'list_products.php', $arrValue);
