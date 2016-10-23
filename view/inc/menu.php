@@ -13,6 +13,18 @@
                     <li class= <?php if($_GET['module'] == "main"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=main">Home</a>
                     </li>
+                    <li class="dropdown <?php if($_GET['module'] == "products"){ echo "active";}else{ echo "";} ?>">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="index.php?module=products&view=create_products">Create products</a></li>
+                            <li><a href="index.php?module=products">View products</a></li>
+                        </ul>
+                    </li>
+                    <!--
+                    <li class= <?php/* if($_GET['module'] == "products"){ echo "active";}else{ echo "";} */?> >
+                        <a href="index.php?module=products&view=create_products">Products</a>
+                    </li>
+                    -->
                     <li class= <?php if($_GET['module'] == "pricing"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=pricing">Pricing</a>
                     </li>
@@ -25,9 +37,7 @@
                     <li class= <?php if($_GET['module'] == "contact"){ echo "active";}else{ echo "";} ?> >
                         <a href="index.php?module=contact">Contact</a>
                     </li>
-                    <li class= <?php if($_GET['module'] == "products"){ echo "active";}else{ echo "";} ?> >
-                        <a href="index.php?module=products&view=create_products">Products</a>
-                    </li>
+
                 </ul>
             </div>
         </div>

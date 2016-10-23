@@ -200,8 +200,17 @@ if(  isset($_POST['idCity']) ){
 		exit;
 	}
 }
-/*
-if ($_GET["idProduct"]) {
+
+///////////////////////////////////////////destroy data
+function close_session() {
+    unset($_SESSION['product']);
+    unset($_SESSION['msje']);
+    $_SESSION = array(); // Destruye todas las variables de la sesión
+    session_destroy(); // Destruye la sesión
+}
+/////////////////////////////////////////list_products
+
+if (isset($_GET["idProduct"])) {
     $id = $_GET["idProduct"];
     $path_model = SITE_ROOT . '/modules/products/model/model/';
     $arrValue = loadModel($path_model, "products_model", "details_products",$id);
@@ -212,7 +221,8 @@ if ($_GET["idProduct"]) {
         $message = "NOT FOUND PRODUCT";
         loadView('view/inc/', '404.php', $message);
     }
-} else {
+}
+else{
     $path_model = SITE_ROOT . '/modules/products/model/model/';
     $arrValue = loadModel($path_model, "products_model", "list_products");
 
@@ -222,12 +232,4 @@ if ($_GET["idProduct"]) {
         $message = "NOT PRODUCTS";
         loadView('view/inc/', '404.php', $message);
     }
-}
-*/
-///////////////////////////////////////////destroy data
-function close_session() {
-    unset($_SESSION['product']);
-    unset($_SESSION['msje']);
-    $_SESSION = array(); // Destruye todas las variables de la sesión
-    session_destroy(); // Destruye la sesión
 }

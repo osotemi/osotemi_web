@@ -50,7 +50,7 @@ CREATE TABLE `products` (
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `products` (`product_name`, `price`, `description`, `discharge_date`, `expiry_date`, `provider_email`, `provider_phone`,`country`,`province`,`city`, `season`, `categorie`, `avatar` )
-VALUES ('First_product','100.11', 'This is the first innsert on database product', '9/10/2016','19/10/2016','firstmail@gmail.com','+34 666 555 444','España','Valencia','Ontinyent','All','Electronics:Other', '/media/default-avatar.png');
+VALUES ('First_product','100.11', 'This is the first innsert on database product', '9/10/2016','19/10/2016','firstmail@gmail.com','+34 666 555 444','Spain','Valencia','Ontinyent','All','Electronics:Other', '/media/default-avatar.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
