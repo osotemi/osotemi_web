@@ -8,10 +8,13 @@
             $modelClass = $model_name;
 
             if (!method_exists($modelClass, $function)){
+              throw new Exception();
+              /*
               $message = $function . ' function not found in Model ' . $model_name;
               $arrData = $message;
               require_once 'view/page/error404.php';
               die();
+              */
             }
 
             $obj = $modelClass::getInstance();
@@ -20,18 +23,21 @@
                 return $obj->$function($arrArgument);
             }
         } else {
+            throw new Exception();
             /*
+            //Comprobacion errores
             $jsondata["success"] = true;
             $jsondata["position"] = "loadModel->file_don't";
             $jsondata['resultado']= $model;
             echo json_encode($jsondata);
             exit;
-            */
+
             $message = "Model Not Found under Model Folder";
             $arrData = $message;
             require_once 'view/page/error404.php';
             die();
             die($model_name . ' Model Not Found under Model Folder');
+            */
         }
 
     }
@@ -46,11 +52,20 @@
       				$arrData = $arrPassValue;
       			include_once($view_path);
     		} else {
-      			//die($templateName . ' Template Not Found under View Folder');
+            $log = Log::getInstance();
+            $log->add_log_general("error loadView general", $_GET['module'], "response ".http_response_code()); //$text, $controller, $function
+            $log->add_log_user("error loadView general", "", $_GET['module'], "response ".http_response_code());//$msg, $username = "", $controller, $function
 
+
+            $result = response_code(http_response_code());
+            $arrData = $result;
+            require_once $_SERVER['DOCUMENT_ROOT'].'/view/inc/templates_error/'. "error" .'.php';
+            /*
+            //die($templateName . ' Template Not Found under View Folder');
       			$message = "NO TEMPLATE FOUND";
       			$arrData = $message;
       			require_once 'view/page/error404.php';
       			die();
+            */
     		}
   	}
