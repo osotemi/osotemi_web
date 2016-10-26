@@ -362,7 +362,7 @@ function load_countries_v2(cad) {
 function load_countries_v1() {
     $.get( "modules/products/controller/controller_products.class.php?load_countries=true",
         function( response ) {
-          //console.log( response );
+          console.log( response );
             if(response === 'error'){
                 load_countries_v2("resources/ListOfCountryNamesByName.json");
             }else{

@@ -151,7 +151,10 @@ if(  (isset($_GET["load_countries"])) && ($_GET["load_countries"] == true)  ){
 
 	$json = loadModel($path_model, "product_model", "obtain_countries", $url);
 
+
+
 	if($json){
+     
 		echo $json;
 		exit;
 	}else{
