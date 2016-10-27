@@ -210,3 +210,151 @@ error paint_template_error | 26.11.2015 11:02:52  |  User:   | products | respon
 error paint_template_error | 26.11.2015 11:03:01  |  User:   | products | response200
 error paint_template_error | 26.11.2015 11:03:02  |  User:   | products | response200
 error paint_template_error | 26.11.2015 11:03:03  |  User:   | products | response200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_webmodules/products_FE/model/BLL/products_FE_bll.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 2 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_FE/model/model/products_FE_model.class.singleton.php
+ | 27.10.2016 05:24:11  |  User:   | products_FE | response 200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_FE/model/BLL/products_FE_bll.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 2 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_FE/model/model/products_FE_model.class.singleton.php
+ | 27.10.2016 05:26:19  |  User:   | products_FE | response 200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_webmodel/Db.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_FE/model/BLL/products_FE_bll.class.singleton.php
+ | 27.10.2016 05:27:55  |  User:   | products_FE | response 200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_webmodel/Db.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_FE/model/BLL/products_FE_bll.class.singleton.php
+ | 27.10.2016 05:28:53  |  User:   | products_FE | response 200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_webmodel//Db.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_FE/model/BLL/products_FE_bll.class.singleton.php
+ | 27.10.2016 05:30:20  |  User:   | products_FE | response 200
+ERROR - 503 BD | 27.10.2016 05:31:10  |  User:   |  | response 200
+ERROR - 503 BD | 27.10.2016 05:36:20  |  User:   |  | response 200
+ERROR - 503 BD | 27.10.2016 05:39:02  |  User:   |  | response 200
+error paint_template_error | 27.10.2016 05:39:02  |  User:   | products | response200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:44:23  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:44:23  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:52:46  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:52:46  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:55:56  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:55:56  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:58:59  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 05:58:59  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:01:50  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:01:50  |  User:   | products_FE | response 200
+error loadView general | 27.10.2016 06:01:50  |  User:   |  | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:36:04  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:36:04  |  User:   | products_FE | response 200
+error loadView general | 27.10.2016 06:36:04  |  User:   |  | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:41:02  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:41:02  |  User:   | products_FE | response 200
+error paint_template_error | 27.10.2016 06:41:02  |  User:   | products | response200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:42:46  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:42:46  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:42:46  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:42:46  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:44:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:44:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:44:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:44:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:02  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:02  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:02  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:02  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:32  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:32  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:32  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:45:32  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:48:53  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:48:53  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:48:53  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:48:53  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:28  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:48  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:48  |  User:   | products_FE | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:48  |  User:   | products_FE | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 27.10.2016 06:50:48  |  User:   | products_FE | response 200

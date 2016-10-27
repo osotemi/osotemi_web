@@ -1,5 +1,5 @@
 <?php
-require(SITE_ROOT . "modules/products_FE/model/BLL/products_FE_bll.class.singleton.php");
+require(SITE_ROOT . "/modules/products_FE/model/BLL/products_FE_bll.class.singleton.php");
 
 class products_FE_model {
 

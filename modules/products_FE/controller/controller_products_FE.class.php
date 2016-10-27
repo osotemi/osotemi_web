@@ -2,6 +2,7 @@
 
 //include  with absolute route
 include $_SERVER['DOCUMENT_ROOT'] . '/paths.php';
+include(SITE_ROOT . "/modules/products_FE/utils/utils.inc.php");
 include SITE_ROOT . '/classes/Log.class.singleton.php';
 
 include SITE_ROOT . '/utils/common.inc.php';
@@ -21,7 +22,7 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
 
     try {
         //throw new Exception();
-        $arrValue = loadModel($path_model, "products_FE_model", "total_products");
+        $arrValue = loadModel($path_model, "products_FE_model", "total_products_FE");
         $get_total_rows = $arrValue[0]["total"]; //total records
         $pages = ceil($get_total_rows / $item_per_page); //break total records into pages
     } catch (Exception $e) {
@@ -50,28 +51,67 @@ if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "false")) {
 }
 
 ////////////////////////details_products
-/*
 if (isset($_GET["idProduct"])) {
-    $id = $_GET["idProduct"];
-    $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
-    $arrValue = loadModel($path_model, "product_FE_model", "details_products",$id);
-
-    if ($arrValue[0]) {
-        loadView('modules/products_FE/view/', 'details_products.php', $arrValue[0]);
+    $arrValue = null;
+    //filter if idProduct is a number
+    $result = filter_num_int($_GET["idProduct"]);
+    if ($result['resultado']) {
+        $id = $result['datos'];
     } else {
-        $message = "NOT FOUND PRODUCT";
-        loadView('view/inc/templates_error/', 'error.php', $message);
+        $id = 1;
     }
-}
-else{
-    $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
-    $arrValue = loadModel($path_model, "product_FE_model", "list_products");
+
+    set_error_handler('ErrorHandler');
+    try {
+        //throw new Exception();
+        $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
+        $arrValue = loadModel($path_model, "products_model_FE", "details_products", $id);
+    } catch (Exception $e) {
+        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+    }
+    restore_error_handler();
 
     if ($arrValue) {
-        loadView('modules/products_FE/view/', 'list_products.php', $arrValue);
+        $jsondata["product"] = $arrValue[0];
+	echo json_encode($jsondata);
+        exit;
     } else {
-        $message = "NOT PRODUCTS";
-        loadView('view/inc/templates_error/', 'error.php', $message);
+        showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+    }
+} else {
+
+    $item_per_page = 3;
+
+    //filter to $_POST["page_num"]
+    if (isset($_POST["page_num"])) {
+        $result = filter_num_int($_POST["page_num"]);
+        if ($result['resultado']) {
+            $page_number = $result['datos'];
+        }
+    } else {
+        $page_number = 1;
+    }
+
+    set_error_handler('ErrorHandler');
+    try {
+        //throw new Exception();
+        $position = (($page_number - 1) * $item_per_page);
+
+        $arrArgument = array(
+            'position' => $position,
+            'item_per_page' => $item_per_page
+        );
+
+        $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
+        $arrValue = loadModel($path_model, "products_FE_model", "page_products_FE", $arrArgument);
+    } catch (Exception $e) {
+        showErrorPage(0, "ERROR - 503 BD Unavailable");
+    }
+    restore_error_handler();
+
+    if ($arrValue) {
+        paint_template_products($arrValue);
+    } else {
+        showErrorPage(0, "ERROR - 404 NO PRODUCTS");
     }
 }
-*/

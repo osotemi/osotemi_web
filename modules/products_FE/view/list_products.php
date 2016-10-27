@@ -7,7 +7,7 @@
 </center>
 
 <!-- modal window details_product -->
-<section id="product">
+<section id="products">
 
     <div id="details_prod" hidden>
 

@@ -2,7 +2,7 @@ $(document).ready(function () {
     $.get("modules/products_FE/controller/controller_products_FE.class.php?num_pages=true", function (data, status) {
         var json = JSON.parse(data);
         var pages = json.pages;
-        //console.log(pages);
+        console.log(pages);
 
         $("#results").load("modules/products_FE/controller/controller_products_FE.class.php"); //load initial records
 
