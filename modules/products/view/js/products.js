@@ -362,7 +362,7 @@ function load_countries_v2(cad) {
 function load_countries_v1() {
     $.get( "modules/products/controller/controller_products.class.php?load_countries=true",
         function( response ) {
-          console.log( response );
+          //console.log( response );
             if(response === 'error'){
                 load_countries_v2("resources/ListOfCountryNamesByName.json");
             }else{
@@ -370,7 +370,7 @@ function load_countries_v1() {
             }
     })
     .fail(function(response) {
-        console.log(response);
+        //console.log(response);
         load_countries_v2("resources/ListOfCountryNamesByName.json");
     });
 }
@@ -431,7 +431,7 @@ function load_cities_v2(prov) {
       });
 	  })
   	.fail(function() {
-      console.log(prov);
+      //console.log(prov);
       alert( "error load_cityes" );
     });
 }
@@ -439,10 +439,10 @@ function load_cities_v2(prov) {
 function load_cities_v1(prov) { //provincesycityes.xml - xpath
     var data = { idCity : prov  };
 	  $.post("modules/products/controller/controller_products.class.php", data, function(response) {
-	    alert(response);
+	    //alert(response);
       var json = JSON.parse(response);
 		  var cities=json.cities;
-		  alert(cities);
+		  //alert(cities);
 		  //console.log(cityes);
 		  //alert(cityes[0].city);
 
