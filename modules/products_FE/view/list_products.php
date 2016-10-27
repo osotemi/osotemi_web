@@ -1,5 +1,5 @@
-<script type="text/javascript" src="modules/products/view/js/jquery.bootpag.min.js"></script>
-<script type="text/javascript" src="modules/products/view/js/list_products.js" ></script>
+<script type="text/javascript" src="modules/products_FE/view/js/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="modules/products_FE/view/js/list_products.js" ></script>
 <div id="results"></div>
 
 <center>
