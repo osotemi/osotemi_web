@@ -65,7 +65,7 @@ if (isset($_GET["idProduct"])) {
     try {
         //throw new Exception();
         $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
-        $arrValue = loadModel($path_model, "products_model_FE", "details_products", $id);
+        $arrValue = loadModel($path_model, "products_FE_model", "details_products_FE", $id);
     } catch (Exception $e) {
         showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
     }
