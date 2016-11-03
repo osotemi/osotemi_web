@@ -9,12 +9,6 @@
 
             if (!method_exists($modelClass, $function)){
               throw new Exception();
-              /*
-              $message = $function . ' function not found in Model ' . $model_name;
-              $arrData = $message;
-              require_once 'view/page/error404.php';
-              die();
-              */
             }
 
             $obj = $modelClass::getInstance();
@@ -24,26 +18,13 @@
             }
         } else {
             throw new Exception();
-            /*
-            //Comprobacion errores
-            $jsondata["success"] = true;
-            $jsondata["position"] = "loadModel->file_don't";
-            $jsondata['resultado']= $model;
-            echo json_encode($jsondata);
-            exit;
 
-            $message = "Model Not Found under Model Folder";
-            $arrData = $message;
-            require_once 'view/page/error404.php';
-            die();
-            die($model_name . ' Model Not Found under Model Folder');
-            */
         }
 
     }
 
 
-    function loadView($rutaVista, $templateName, $arrPassValue = '') {
+    function loadView($rutaVista = "", $templateName = "", $arrPassValue = '') {
     		$view_path = $rutaVista . $templateName;
     		$arrData = '';
 
@@ -52,20 +33,21 @@
       				$arrData = $arrPassValue;
       			include_once($view_path);
     		} else {
+            $result = filter_num_int($rutaVista);
+            if ($result['resultado']) {
+                $rutaVista = $result['datos'];
+            } else {
+                $rutaVista = http_response_code();
+            }
+
             $log = Log::getInstance();
             $log->add_log_general("error loadView general", $_GET['module'], "response ".http_response_code()); //$text, $controller, $function
             $log->add_log_user("error loadView general", "", $_GET['module'], "response ".http_response_code());//$msg, $username = "", $controller, $function
 
 
-            $result = response_code(http_response_code());
+            $result = response_code($rutaVista);
             $arrData = $result;
-            require_once $_SERVER['DOCUMENT_ROOT'].'/view/inc/templates_error/'. "error" .'.php';
-            /*
-            //die($templateName . ' Template Not Found under View Folder');
-      			$message = "NO TEMPLATE FOUND";
-      			$arrData = $message;
-      			require_once 'view/page/error404.php';
-      			die();
-            */
+            require_once 'view/includes/templates_error/error.php';
+            
     		}
   	}
