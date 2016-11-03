@@ -33,5 +33,18 @@ class products_FE_model {
         return $this->bll->total_products_FE_BLL();
     }
 
+    public function select_column_products_FE($arrArgument){
+        return $this->bll->select_column_products_FE_BLL($arrArgument);
+    }
+    public function select_like_products_FE($arrArgument){
+        return $this->bll->select_like_products_FE_BLL($arrArgument);
+    }
+    public function count_like_products_FE($arrArgument){
 
+        return $this->bll->count_like_products_FE_BLL($arrArgument);
+    }
+    public function select_like_limit_products_FE($arrArgument){
+
+         return $this->bll->select_like_limit_products_FE_BLL($arrArgument);
+    }
 }
