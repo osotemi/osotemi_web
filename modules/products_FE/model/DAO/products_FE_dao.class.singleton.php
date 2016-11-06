@@ -46,9 +46,9 @@ class products_FE_dao {
 
     public function select_column_products_FE_DAO($db, $arrArgument) {
         $sql = "SELECT " . $arrArgument . " FROM products ORDER BY " . $arrArgument;
-
-        $stmt = $db->ejecutar($sql);
-        return $db->listar($stmt);
+        return $sql;
+        //$stmt = $db->ejecutar($sql);
+        //return $db->listar($stmt);
     }
 
     public function select_like_products_FE_DAO($db, $arrArgument) {

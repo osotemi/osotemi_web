@@ -8,8 +8,8 @@
             <div class="col-sm-6">
                 <ul class="breadcrumb pull-right">
                     <li><a href="index.php?module=main">Home</a></li>
-                    <li><a href="#">Pages</a></li>
-                    <li class="active">Products</li>
+                    <li><a href="#">Products</a></li>
+                    <li class="active">Create</li>
                 </ul>
             </div>
         </div>

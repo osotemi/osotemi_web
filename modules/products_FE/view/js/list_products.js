@@ -63,7 +63,7 @@ function search(keyword) {
 
 
 function search_product(keyword) {
-    $.get("modules/products_FE/controller/controller_products_FE.class.php?nom_product=" + keyword, function (data, status) {
+    $.get("modules/products_FE/controller/controller_products_FE.class.php?name_product=" + keyword, function (data, status) {
         var json = JSON.parse(data);
         var product = json.product_autocomplete;
 
@@ -73,8 +73,8 @@ function search_product(keyword) {
         var img_product = document.getElementById('img_product');
         img_product.innerHTML = '<img src="' + product[0].avatar + '" class="img-product"> ';
 
-        var nom_product = document.getElementById('nom_product');
-        nom_product.innerHTML = product[0].name;
+        var name_product = document.getElementById('name_product');
+        name_product.innerHTML = product[0].name;
         var desc_product = document.getElementById('desc_product');
         desc_product.innerHTML = product[0].description;
         var price_product = document.getElementById('price_product');
@@ -114,7 +114,7 @@ function count_product(keyword) {
 }
 function reset() {
     $('#img_product').html('');
-    $('#nom_product').html('');
+    $('#name_product').html('');
     $('#desc_product').html('');
     $('#price_product').html('');
     $('#price_product').removeClass("special");
@@ -159,13 +159,13 @@ $(document).ready(function () {
 
     $.get("modules/products_FE/controller/controller_products_FE.class.php?autocomplete=true", function (data, status) {
         var json = JSON.parse(data);
-        var nom_productos = json.nom_productos;
-        //alert(nom_productos[0].nombre);
-        //console.log(nom_productos);
+        var name_product = json.name_product;
+        //alert(name_product[0].nombre);
+        console.log(json);
 
         var suggestions = new Array();
-        for (var i = 0; i < nom_productos.length; i++) {
-            suggestions.push(nom_productos[i].name);
+        for (var i = 0; i < name_product.length; i++) {
+            suggestions.push(name_product[i].name);
         }
         //alert(suggestions);
         //console.log(suggestions);
