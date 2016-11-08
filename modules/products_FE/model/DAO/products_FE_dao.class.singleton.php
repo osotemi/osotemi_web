@@ -29,9 +29,9 @@ class products_FE_dao {
 
     public function page_products_FE_DAO($db,$arrArgument) {
         $position = $arrArgument['position'];
-        $item_per_page = $arrArgument['item_per_page'];
-        $sql = "SELECT * FROM products ORDER BY id ASC LIMIT ".$position." , ".$item_per_page;
-
+        $item_per_page = $arrArgument['limit'];
+        $sql = "SELECT * FROM products ORDER BY id ASC LIMIT ". $position ." , ". $item_per_page;
+        
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
 
@@ -46,9 +46,8 @@ class products_FE_dao {
 
     public function select_column_products_FE_DAO($db, $arrArgument) {
         $sql = "SELECT " . $arrArgument . " FROM products ORDER BY " . $arrArgument;
-        return $sql;
-        //$stmt = $db->ejecutar($sql);
-        //return $db->listar($stmt);
+        $stmt = $db->ejecutar($sql);
+        return $db->listar($stmt);
     }
 
     public function select_like_products_FE_DAO($db, $arrArgument) {

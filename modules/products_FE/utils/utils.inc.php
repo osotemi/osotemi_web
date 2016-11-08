@@ -44,6 +44,7 @@ function paint_template_products($arrData) {
     print ("<br>");
     print ("<br>");
     print ("<br>");
+    print($arrData);
     if (isset($arrData) && !empty($arrData)) {
 
         foreach ($arrData as $product) {
@@ -51,7 +52,7 @@ function paint_template_products($arrData) {
             //echo $productos['descripcion'] . " " . $productos['precio'] . "</br>";
             print ("<div class='prod' id='".$product['id']."'>");
             print ("<img class='prodImg' src='" . $product['avatar'] . "'alt='product' >");
-            print ("<p>" . $product['name'] . "</p>");
+            print ("<p>" . $product['product_name'] . "</p>");
             print ("<p id='p2'>" . $product['price'] . "€</p>");
             print ("</div>");
         }

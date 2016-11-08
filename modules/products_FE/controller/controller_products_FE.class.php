@@ -4,7 +4,6 @@
 include $_SERVER['DOCUMENT_ROOT'] . '/paths.php';
 include(SITE_ROOT . "/modules/products_FE/utils/utils.inc.php");
 include SITE_ROOT . '/classes/Log.class.singleton.php';
-
 include SITE_ROOT . '/utils/common.inc.php';
 include SITE_ROOT . '/utils/filters.inc.php';
 include SITE_ROOT . '/utils/response_code.inc.php';
@@ -14,7 +13,7 @@ $_SESSION['module'] = "products_FE";
 /////////////////////////////////////////Atutocomplete
 if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
     set_error_handler('ErrorHandler');
-    $model_path = SITE_ROOT . 'modules/products_FE/model/model/';
+    $model_path = SITE_ROOT . '/modules/products_FE/model/model/';
     try {
 
         $nameProducts = loadModel($model_path, "products_FE_model", "select_column_products_FE", "product_name");
@@ -37,7 +36,7 @@ if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
     }
 }
 
-if (($_GET["name_product"])) {
+if (isset($_GET["name_product"])) {
     //filtrar $_GET["name_product"]
 
     $result = filter_string($_GET["name_product"]);
@@ -59,7 +58,7 @@ if (($_GET["name_product"])) {
 
         //throw new Exception(); //que entre en el catch
     } catch (Exception $e) {
-        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+        showErrorPage(2, "ERROR en name product - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
     }
     restore_error_handler();
 
@@ -73,7 +72,7 @@ if (($_GET["name_product"])) {
     }
 }
 
-if (($_GET["count_product"])) {
+if (isset($_GET["count_product"])) {
     //filtrar $_GET["count_product"]
     $result = filter_string($_GET["count_product"]);
     if ($result['resultado']) {
@@ -81,7 +80,7 @@ if (($_GET["count_product"])) {
     } else {
         $criteria = '';
     }
-    $model_path = SITE_ROOT . 'modules/products_FE/model/model/';
+    $model_path = SITE_ROOT . '/modules/products_FE/model/model/';
     set_error_handler('ErrorHandler');
     try {
 
@@ -89,10 +88,13 @@ if (($_GET["count_product"])) {
             "column" => "product_name",
             "like" => $criteria
         );
+        $jsondata["result"] = $arrArgument;
+        echo json_encode($jsondata);
+        exit;
         $total_rows = loadModel($model_path, "products_FE_model", "total_products_FE", $arrArgument);
         //throw new Exception(); //que entre en el catch
     } catch (Exception $e) {
-        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+        showErrorPage(2, "ERROR en count- 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
     }
     restore_error_handler();
 
@@ -154,7 +156,7 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
 }
 
 if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "true")) {
-    showErrorPage(0, "ERROR - 503 BD Unavailable");
+    showErrorPage(0, "ERROR get view- 503 BD Unavailable");
 }
 if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "false")) {
     showErrorPage(0, "ERROR - 404 NO DATA");
@@ -177,7 +179,7 @@ if (isset($_GET["idProduct"])) {
         $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
         $arrValue = loadModel($path_model, "products_FE_model", "details_products_FE", $id);
     } catch (Exception $e) {
-        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+        showErrorPage(2, "ERROR id Product - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
     }
     restore_error_handler();
 
@@ -222,10 +224,8 @@ if (isset($_GET["idProduct"])) {
         }
     }
 
-
-
     $position = (($page_number - 1) * $item_per_page);
-    $path_model = SITE_ROOT . 'modules/products_FE/model/model/';
+    $path_model = SITE_ROOT . '/modules/products_FE/model/model/';
     $limit = $item_per_page;
     $arrArgument = array(
         "column" => "product_name",
@@ -239,7 +239,7 @@ if (isset($_GET["idProduct"])) {
 
         $arrValue = loadModel($path_model, "products_FE_model", "page_products_FE", $arrArgument);
     } catch (Exception $e) {
-        showErrorPage(0, "ERROR - 503 BD Unavailable");
+        showErrorPage(0, "ERROR id prod else- 503 BD Unavailable");
     }
     restore_error_handler();
 

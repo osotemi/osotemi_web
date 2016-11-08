@@ -48,6 +48,7 @@ function search(keyword) {
                 reset();
             });
         } else {
+            alert("Fallo en search");
             $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false"); //view_error=false
             $('.pagination_prods').html('');
             reset();
@@ -82,6 +83,7 @@ function search_product(keyword) {
         price_product.setAttribute("class", "special");
 
     }).fail(function (xhr) {
+        alert("Fallo en search");
         $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false");
         $('.pagination_prods').html('');
         reset();
@@ -90,7 +92,8 @@ function search_product(keyword) {
 
 
 function count_product(keyword) {
-    $.get("modules/products_FE/controller/controller_products_FE.class.php?count_product=" + keyword, function (data, status) {
+    alert("modules/products_FE/controller/controller_products_FE.class.php?total_products_FE=" + keyword);
+    $.get("modules/products_FE/controller/controller_products_FE.class.php?total_products_FE=" + keyword, function (data, status) {
         var json = JSON.parse(data);
         var num_products = json.num_products;
         alert("num_products: " + num_products);
@@ -107,6 +110,7 @@ function count_product(keyword) {
             search(keyword);
         }
     }).fail(function () {
+        alert("Fallo en count");
         $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=true"); //view_error=false
         $('.pagination_prods').html('');
         reset();
@@ -165,10 +169,10 @@ $(document).ready(function () {
 
         var suggestions = new Array();
         for (var i = 0; i < name_product.length; i++) {
-            suggestions.push(name_product[i].name);
+            suggestions.push(name_product[i].product_name);
         }
         //alert(suggestions);
-        //console.log(suggestions);
+        console.log(suggestions);
 
         $("#keyword").autocomplete({
             source: suggestions,
