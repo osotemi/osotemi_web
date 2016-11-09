@@ -12,13 +12,13 @@ function refresh() {
 }
 
 function search(keyword) {
-//changes the url to avoid creating another different function
+    //changes the url to avoid creating another different function
     var urlbase = "modules/products_FE/controller/controller_products_FE.class.php";
     if (!keyword)
         url = urlbase + "?num_pages=true";
     else
         url = urlbase + "?num_pages=true&keyword=" + keyword;
-
+    console.log(url);
     $.get(url, function (data, status) {
         var json = JSON.parse(data);
         var pages = json.pages;
@@ -28,9 +28,10 @@ function search(keyword) {
         else
             url = urlbase + "?keyword=" + keyword;
 
+        console.log(url);
         $("#results").load(url);
 
-        if (pages !== 0) {
+        if (pages != 0) {
             refresh();
 
             $(".pagination_prods").bootpag({
@@ -41,10 +42,12 @@ function search(keyword) {
                 prev: 'prev'
             }).on("page", function (e, num) {
                 e.preventDefault();
-                if (!keyword)
+                if (!keyword){
                     $("#results").load("modules/products_FE/controller/controller_products_FE.class.php", {'page_num': num});
-                else
+                }else{
                     $("#results").load("modules/products_FE/controller/controller_products_FE.class.php", {'page_num': num, 'keyword': keyword});
+                    console.log(url);
+                }
                 reset();
             });
         } else {
@@ -66,22 +69,26 @@ function search(keyword) {
 function search_product(keyword) {
     $.get("modules/products_FE/controller/controller_products_FE.class.php?name_product=" + keyword, function (data, status) {
         var json = JSON.parse(data);
+        console.log(json);
         var product = json.product_autocomplete;
-
+        console.log(json.arrArgument);
+        console.log(product);
         $('#results').html('');
-        $('.pagination_prods').html('');
+
 
         var img_product = document.getElementById('img_product');
         img_product.innerHTML = '<img src="' + product[0].avatar + '" class="img-product"> ';
 
         var name_product = document.getElementById('name_product');
-        name_product.innerHTML = product[0].name;
+        name_product.innerHTML = product[0].product_name;
+
         var desc_product = document.getElementById('desc_product');
         desc_product.innerHTML = product[0].description;
+
         var price_product = document.getElementById('price_product');
         price_product.innerHTML = "Precio: " + product[0].price + " €";
         price_product.setAttribute("class", "special");
-
+        $('.pagination_prods').html('');
     }).fail(function (xhr) {
         alert("Fallo en search");
         $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false");
@@ -92,8 +99,8 @@ function search_product(keyword) {
 
 
 function count_product(keyword) {
-    alert("modules/products_FE/controller/controller_products_FE.class.php?total_products_FE=" + keyword);
-    $.get("modules/products_FE/controller/controller_products_FE.class.php?total_products_FE=" + keyword, function (data, status) {
+    $.get("modules/products_FE/controller/controller_products_FE.class.php?count_product=" + keyword, function (data, status) {
+        console.log("modules/products_FE/controller/controller_products_FE.class.php?count_product=" + keyword);
         var json = JSON.parse(data);
         var num_products = json.num_products;
         alert("num_products: " + num_products);
@@ -107,6 +114,7 @@ function count_product(keyword) {
             search_product(keyword);
         }
         if (num_products > 1) {
+            console.log("Mas de 2 products");
             search(keyword);
         }
     }).fail(function () {
@@ -165,7 +173,6 @@ $(document).ready(function () {
         var json = JSON.parse(data);
         var name_product = json.name_product;
         //alert(name_product[0].nombre);
-        console.log(json);
 
         var suggestions = new Array();
         for (var i = 0; i < name_product.length; i++) {

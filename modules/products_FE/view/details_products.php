@@ -12,7 +12,7 @@
                     <h3 class="media-heading title-product"><?php echo $arrData['nombre'] ?></h3>
                     <p class="text-limited"><?php echo $arrData['descripcion'] ?></p>
                     <br>
-                    <h5 class="special"> <strong>Price: <?php echo $arrData['precio'] ?>€</strong> </h5>
+                    <h5 class="special"> <strong>Price of product: <?php echo $arrData['precio'] ?>€</strong> </h5>
 
 
                 </div>

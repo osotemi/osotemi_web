@@ -44,7 +44,6 @@ function paint_template_products($arrData) {
     print ("<br>");
     print ("<br>");
     print ("<br>");
-    print($arrData);
     if (isset($arrData) && !empty($arrData)) {
 
         foreach ($arrData as $product) {

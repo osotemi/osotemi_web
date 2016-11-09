@@ -45,7 +45,7 @@ if (isset($_GET["name_product"])) {
     } else {
         $criteria = '';
     }
-    $model_path = SITE_ROOT . 'modules/products_FE/model/model/';
+    $model_path = SITE_ROOT . '/modules/products_FE/model/model/';
     set_error_handler('ErrorHandler');
     try {
 
@@ -53,8 +53,7 @@ if (isset($_GET["name_product"])) {
             "column" => "product_name",
             "like" => $criteria
         );
-        $producto = loadModel($model_path, "products_FE_model", "total_products_FE", $arrArgument);
-
+        $producto = loadModel($model_path, "products_FE_model", "select_like_products_FE", $arrArgument);
 
         //throw new Exception(); //que entre en el catch
     } catch (Exception $e) {
@@ -64,6 +63,7 @@ if (isset($_GET["name_product"])) {
 
     if ($producto) {
         $jsondata["product_autocomplete"] = $producto;
+        //$jsondata["arrArgument"] = $arrArgument;
         echo json_encode($jsondata);
         exit;
     } else {
@@ -88,10 +88,8 @@ if (isset($_GET["count_product"])) {
             "column" => "product_name",
             "like" => $criteria
         );
-        $jsondata["result"] = $arrArgument;
-        echo json_encode($jsondata);
-        exit;
-        $total_rows = loadModel($model_path, "products_FE_model", "total_products_FE", $arrArgument);
+
+        $total_rows = loadModel($model_path, "products_FE_model", "count_like_products_FE", $arrArgument);
         //throw new Exception(); //que entre en el catch
     } catch (Exception $e) {
         showErrorPage(2, "ERROR en count- 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
@@ -135,7 +133,7 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
             "like" => $criteria
         );
         //throw new Exception();
-        $arrValue = loadModel($path_model, "products_FE_model", "total_products_FE");
+        $arrValue = loadModel($path_model, "products_FE_model", "count_like_products_FE", $arrArgument);
         $get_total_rows = $arrValue[0]["total"]; //total records
         $pages = ceil($get_total_rows / $item_per_page); //break total records into pages
     } catch (Exception $e) {
@@ -145,7 +143,7 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
     //change to defualt work error apache
     restore_error_handler();
 
-    if ($get_total_rows) {
+    if ($get_total_rows != 0) {
         $jsondata["pages"] = $pages;
         echo json_encode($jsondata);
         exit;
@@ -237,13 +235,12 @@ if (isset($_GET["idProduct"])) {
 
     try {
 
-        $arrValue = loadModel($path_model, "products_FE_model", "page_products_FE", $arrArgument);
+        $arrValue = loadModel($path_model, "products_FE_model", "select_like_limit_products_FE", $arrArgument);
     } catch (Exception $e) {
         showErrorPage(0, "ERROR id prod else- 503 BD Unavailable");
     }
     restore_error_handler();
-
-    if ($arrValue) {
+    if ($arrValue != "") {
         paint_template_products($arrValue);
     } else {
         showErrorPage(0, "ERROR - 404 NO PRODUCTS");

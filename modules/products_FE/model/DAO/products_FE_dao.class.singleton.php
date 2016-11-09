@@ -31,10 +31,9 @@ class products_FE_dao {
         $position = $arrArgument['position'];
         $item_per_page = $arrArgument['limit'];
         $sql = "SELECT * FROM products ORDER BY id ASC LIMIT ". $position ." , ". $item_per_page;
-        
+
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
-
     }
 
     public function total_products_FE_DAO($db) {
@@ -58,7 +57,6 @@ class products_FE_dao {
     }
      public function count_like_products_FE_DAO($db, $arrArgument) {
         $sql = "SELECT COUNT(*) as total FROM products WHERE " . $arrArgument['column'] . " like '%" . $arrArgument['like'] . "%'";
-
         $stmt = $db->ejecutar($sql);
         return $db->listar($stmt);
     }

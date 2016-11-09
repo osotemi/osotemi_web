@@ -11,11 +11,11 @@ $(document).ready(function () {
             //alert(product.name);
             console.log(product);
 
-            $("#img_prod").html('<img src="' + product.avatar + '" height="75" width="75"> ');
-            $("#name_prod").html(product.name);
-            $("#description_prod").html("<strong>Description: <br/></strong>" + product.description);
-            $("#titration_prod").html("<strong>Titration:</strong>" + product.titration);
-            $("#price_prod").html("Price: " + product.price + " €");
+            $("#img_product").html('<img src="' + product.avatar + '"class="prodImg"> ');
+            $("#name_product").html(product.product_name);
+            $("#desc_product").html("<strong>Description: <br/></strong>" + product.description);
+            //$("#titration_prod").html("<strong>Provider phone:</strong>" + product.provider_phone);
+            $("#price_product").html("Pricing: " + product.price + " €");
 
             //we do this so that  details_prod  appear
             $("#details_prod").show();
