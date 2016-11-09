@@ -9,7 +9,7 @@ $(document).ready(function () {
             var json = JSON.parse(data);
             var product = json.product;
             //alert(product.name);
-            console.log(product);
+            //console.log(product);
 
             $("#img_product").html('<img src="' + product.avatar + '"class="prodImg"> ');
             $("#name_product").html(product.product_name);
