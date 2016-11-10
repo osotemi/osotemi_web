@@ -22,7 +22,7 @@ function search(keyword) {
     $.get(url, function (data, status) {
         var json = JSON.parse(data);
         var pages = json.pages;
-
+        
         if (!keyword)
             url = urlbase;
         else
@@ -30,7 +30,7 @@ function search(keyword) {
 
         $("#results").load(url);
 
-        if (pages != 0) {
+        if (pages !== 0) {
             refresh();
 
             $(".pagination_prods").bootpag({
@@ -66,8 +66,9 @@ function search_product(keyword) {
     $.get("modules/products_FE/controller/controller_products_FE.class.php?name_product=" + keyword, function (data, status) {
         var json = JSON.parse(data);
         var product = json.product_autocomplete;
-        $('#results').html('');
 
+        $('#results').html('');
+        $('.pagination_prods').html('');
 
         var img_product = document.getElementById('img_product');
         img_product.innerHTML = '<img src="' + product[0].avatar + '" class="img-product"> ';
@@ -81,7 +82,7 @@ function search_product(keyword) {
         var price_product = document.getElementById('price_product');
         price_product.innerHTML = "Precio: " + product[0].price + " €";
         price_product.setAttribute("class", "special");
-        $('.pagination_prods').html('');
+
     }).fail(function (xhr) {
         $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false");
         $('.pagination_prods').html('');
@@ -94,7 +95,7 @@ function count_product(keyword) {
     $.get("modules/products_FE/controller/controller_products_FE.class.php?count_product=" + keyword, function (data, status) {
         var json = JSON.parse(data);
         var num_products = json.num_products;
-        //alert("num_products: " + num_products);
+        alert("num_products: " + num_products);
 
         if (num_products == 0) {
             $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false"); //view_error=false
@@ -141,7 +142,7 @@ $(document).ready(function () {
         var v_keyword = validate_search(keyword);
         if (v_keyword)
             setCookie("search", keyword, 1);
-        //alert("getCookie(search): " + getCookie("search"));
+        alert("getCookie(search): " + getCookie("search"));
         location.reload(true);
 
         //si no ponemos la siguiente línea, el navegador nos redirecciona a index.php
@@ -161,14 +162,14 @@ $(document).ready(function () {
     $.get("modules/products_FE/controller/controller_products_FE.class.php?autocomplete=true", function (data, status) {
         var json = JSON.parse(data);
         var name_product = json.name_product;
-        //alert(name_product[0].nombre);
+        console.log(name_product[0].nombre);
 
         var suggestions = new Array();
         for (var i = 0; i < name_product.length; i++) {
             suggestions.push(name_product[i].product_name);
         }
         //alert(suggestions);
-        //console.log(suggestions);
+        console.log(suggestions);
 
         $("#keyword").autocomplete({
             source: suggestions,

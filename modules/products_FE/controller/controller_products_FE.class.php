@@ -19,10 +19,10 @@ if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
         $nameProducts = loadModel($model_path, "products_FE_model", "select_column_products_FE", "product_name");
 
     } catch (Exception $e) {
-        $jsondata["name_product"] = $nameProducts;
-        echo json_encode($jsondata);
-        exit;
-        //showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+        //$jsondata["name_product"] = $nameProducts;
+        //echo json_encode($jsondata);
+        //exit;
+        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
     }
     restore_error_handler();
 
@@ -83,7 +83,6 @@ if (isset($_GET["count_product"])) {
     $model_path = SITE_ROOT . '/modules/products_FE/model/model/';
     set_error_handler('ErrorHandler');
     try {
-
         $arrArgument = array(
             "column" => "product_name",
             "like" => $criteria
@@ -114,10 +113,10 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
         if ($result['resultado']) {
             $criteria = $result['datos'];
         } else {
-            $criteria = ' ';
+            $criteria = '';
         }
     } else {
-        $criteria = ' ';
+        $criteria = '';
     }
 
     $item_per_page = 3;
@@ -143,8 +142,9 @@ if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
     //change to defualt work error apache
     restore_error_handler();
 
-    if ($get_total_rows != 0) {
+    if ($get_total_rows) {
         $jsondata["pages"] = $pages;
+        //$jsondata["total_rows"] = $arrValue;
         echo json_encode($jsondata);
         exit;
     } else {

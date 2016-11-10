@@ -11,9 +11,11 @@
     <link href="view/css/prettyPhoto.css" rel="stylesheet">
     <link href="view/css/animate.css" rel="stylesheet">
     <link href="view/css/main.css" rel="stylesheet">
+    <link href="modules/products_FE/view/css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
+
     <![endif]-->
 
     <!--form_user-->
@@ -23,7 +25,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        
+
     <!-- Datepicker
     <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
     <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>

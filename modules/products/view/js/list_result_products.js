@@ -62,7 +62,7 @@ function list_products(data) {
     var content = document.getElementById("content");
     var div_product = document.createElement("div");
     var parrafo = document.createElement("p");
-
+    console.log("entrar entra");
     var msje = document.createElement("div");
     msje.innerHTML = "msje = ";
     msje.innerHTML += data.msje;
@@ -94,6 +94,8 @@ function list_products(data) {
     var provider_phone = document.createElement("div");
     provider_phone.innerHTML = "Provider phone = ";
     provider_phone.innerHTML += data.product.provider_phone;
+
+    console.log("Hasta pais");
 
     var country = document.createElement("div");
     country.innerHTML = "country = ";
@@ -129,7 +131,7 @@ function list_products(data) {
     var html = '<img src="' + cad + '" height="75" width="75"> ';
     img.innerHTML = html;
     //alert(html);
-
+    console.log(html);
     div_product.appendChild(parrafo);
     parrafo.appendChild(msje);
     parrafo.appendChild(product_name);
@@ -146,4 +148,5 @@ function list_products(data) {
     parrafo.appendChild(season);
     content.appendChild(div_product);
     content.appendChild(img);
+    console.log(html);
 }
