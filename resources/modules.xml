@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <modules>
     <module>
-        <name>main</name>
-        <uri>main</uri>
+        <name>home</name>
+        <uri>home</uri>
     </module>
     <module>
         <name>users</name>

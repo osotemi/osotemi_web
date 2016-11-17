@@ -131,7 +131,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                            
+                                    </div>
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
@@ -144,7 +144,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                            
+                                    </div>
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">
@@ -187,7 +187,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>                            
+                                    </div>
                                     <div class="col-xs-4">
                                         <div class="portfolio-item">
                                             <div class="item-inner">

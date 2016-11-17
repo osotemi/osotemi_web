@@ -20,7 +20,7 @@
 	    if (!empty($_GET['module'])) {
 			$URI_module = $_GET['module'];
 		} else {
-			$URI_module = 'main';
+			$URI_module = 'home';
 		}
 
 		if (!empty($_GET['function'])) {
