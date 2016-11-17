@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<functions>
+    <function>
+        <name>list_products</name>
+        <uri>list_products</uri>
+    </function>
+</functions>
