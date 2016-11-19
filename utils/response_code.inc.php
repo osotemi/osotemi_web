@@ -57,15 +57,16 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
             die();
             break;
         case 1:
-            
+            header($http, true, $num_http);
             loadView();
             break;
         case 2:
             $log = Log::getInstance();
-            $log->add_log_general($message, "", "response " . http_response_code()); //$text, $controller, $function
-            $log->add_log_user($message, "", "", "response " . http_response_code()); //$msg, $username = "", $controller, $function
+            $log->add_log_general($message, $_SESSION['module'], "response " . http_response_code()); //$text, $controller, $function
+            $log->add_log_user($message, "", $_SESSION['module'], "response " . http_response_code()); //$msg, $username = "", $controller, $function
 
             $jsondata["error"] = $message;
+            header($http, true, $num_http);
             echo json_encode($jsondata);
             exit;
             break;

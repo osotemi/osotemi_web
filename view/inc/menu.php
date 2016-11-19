@@ -10,8 +10,8 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class= <?php if($_GET['module'] == "main"){ echo "active";}else{ echo "";} ?> >
-                        <a href="index.php?module=main">Home</a>
+                    <li class= <?php if($_GET['module'] === "home"){ echo "active";}else{ echo "";} ?> >
+                        <a href="index.php?module=home">Home</a>
                     </li>
                     <li class="dropdown <?php if($_GET['module'] == "products"){ echo "active";}else{ echo "";} ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <i class="icon-angle-down"></i></a>

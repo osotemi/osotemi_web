@@ -1,6 +1,6 @@
 <?php
   //SITE ROOT
-  $path = $_SERVER['DOCUMENT_ROOT'];
+  $path = $_SERVER['DOCUMENT_ROOT'] .'/';
   define('SITE_ROOT', $path);
   //SITE path
   define('SITE_PATH','https://'.$_SERVER['HTTP_HOST']);
@@ -37,12 +37,12 @@
   define('PRODUCTS_CSS_PATH', SITE_PATH . 'modules/products/view/css/');
   //model list products
   define('FUNCTIONS_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/utils/');
-  define('FUNCTIONS_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/');
-  define('FUNCTIONS_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/DAO/');
-  define('FUNCTIONS_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/BLL/');
-  define('FUNCTIONS_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/model/');
-  define('FUNCTIONS_PRODUCTS_FE', SITE_PATH . 'modules/products_fe/view/js/');
-	define('FUNCTIONS_PRODUCTS_FE', SITE_PATH . 'modules/products_fe/view/css/');
+  define('MODEL_PATH_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/');
+  define('DAO_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/DAO/');
+  define('BLL_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/BLL/');
+  define('MODEL_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/model/');
+  define('USERS_JS_PRODUCTS_FE', SITE_PATH . 'modules/products_fe/view/js/');
+	define('USERS_CSS_PRODUCTS_FE', SITE_PATH . 'modules/products_fe/view/css/');
   /*model users
   define('FUNCTIONS_USERS',SITE_ROOT.'modules/users/utils/');
   define('MODEL_PATH_USERS',SITE_ROOT.'modules/users/model/');

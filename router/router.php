@@ -2,6 +2,10 @@
 	require_once("paths.php");
 	require 'autoload.php';
 
+	include(UTILS . "filters.inc.php");
+	include(UTILS . "utils.inc.php");
+	include(UTILS . "response_code.inc.php");
+	include(UTILS . "common.inc.php");
 
 	if(PRODUCTION){ //estamos en producción
 		ini_set('display_errors', '1');
@@ -11,10 +15,8 @@
 		ini_set('error_reporting', '0'); //error_reporting(0);
 	}
 
-
 	session_start();
 	$_SESSION['module'] = "";
-
 
 	function handlerRouter() {
 	    if (!empty($_GET['module'])) {
@@ -26,7 +28,7 @@
 		if (!empty($_GET['function'])) {
 			$URI_function = $_GET['function'];
 		} else {
-			$URI_function = 'begin';
+			$URI_function = 'init';
 		}
 
 	    handlerModule($URI_module, $URI_function);
@@ -37,10 +39,11 @@
 	    $exist = false;
 
 	    foreach ($modules->module as $module) {
-	        if (($URI_module === (String)$module->uri)) {
+	        if (($URI_module === (String) $module->uri)) {
 	            $exist = true;
 
 	            $path = MODULES_PATH . $URI_module."/controller/controller_".$URI_module.".class.php";
+							echo $path;
 				if (file_exists($path)) {
 					require_once($path);
 
