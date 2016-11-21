@@ -43,7 +43,7 @@
 	            $exist = true;
 
 	            $path = MODULES_PATH . $URI_module."/controller/controller_".$URI_module.".class.php";
-							echo $path;
+							
 				if (file_exists($path)) {
 					require_once($path);
 

@@ -8,8 +8,8 @@ function close_session() {
     session_destroy(); // Destruye la sesión
 }
 
-function amigable($url, $return = false) {
-    $amigableson = URL_AMIGABLES;
+function friendly($url, $return = false) {
+    $amigableson = URL_FRIENDLY;
     $link = "";
     if ($amigableson) {
         $url = explode("&", str_replace("?", "", $url));

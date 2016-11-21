@@ -18,7 +18,8 @@
   define('MEDIA_PATH',SITE_ROOT.'media/');
   //utils
   define('UTILS',SITE_ROOT.'utils/');
-
+  //amigables
+  define('URL_FRIENDLY', TRUE);
   //Includes de 2º nivel
   //CSS
 	define('CSS_PATH', SITE_PATH . 'view/css/');
