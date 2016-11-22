@@ -13,33 +13,35 @@ class controller_products {
       loadView( PRODUCTS_FE_VIEW, 'list_products.php');
       require_once(VIEW_PATH_INC."footer.html");
     }
+
+		public function autocomplete_products(){
+			if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
+			    set_error_handler('ErrorHandler');
+
+			    try {
+			        $nameProducts = loadModel(MODEL_PRODUCTS_FE, "products_fe_model", "select_column_products_fe", "product_name");
+
+			    } catch (Exception $e) {
+			        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
+			    }
+			    restore_error_handler();
+
+			    if ($nameProducts) {
+			        $jsondata["name_product"] = $nameProducts;
+			        echo json_encode($jsondata);
+			        exit;
+			    } else {
+
+			        showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
+			    }
+			}
+		}
+
+
 }
 
 /////////////////////////////////////////Atutocomplete
-if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
-    set_error_handler('ErrorHandler');
-    $model_path = SITE_ROOT . '/modules/products_FE/model/model/';
-    try {
 
-        $nameProducts = loadModel($model_path, "products_FE_model", "select_column_products_FE", "product_name");
-
-    } catch (Exception $e) {
-        //$jsondata["name_product"] = $nameProducts;
-        //echo json_encode($jsondata);
-        //exit;
-        showErrorPage(2, "ERROR - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
-    }
-    restore_error_handler();
-
-    if ($nameProducts) {
-        $jsondata["name_product"] = $nameProducts;
-        echo json_encode($jsondata);
-        exit;
-    } else {
-
-        showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
-    }
-}
 
 if (isset($_GET["name_product"])) {
     //filtrar $_GET["name_product"]
