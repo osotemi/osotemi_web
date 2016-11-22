@@ -1,14 +1,19 @@
 <?php
+class controller_products {
 
-//include  with absolute route
-include $_SERVER['DOCUMENT_ROOT'] . '/paths.php';
-include(SITE_ROOT . "/modules/products_FE/utils/utils.inc.php");
-include SITE_ROOT . '/classes/Log.class.singleton.php';
-include SITE_ROOT . '/utils/common.inc.php';
-include SITE_ROOT . '/utils/filters.inc.php';
-include SITE_ROOT . '/utils/response_code.inc.php';
+		public function __construct() {
+			include(UTILS_PRODUCTS_FE . "utils.inc.php");
 
-$_SESSION['module'] = "products_FE";
+			$_SESSION['module'] = "products_fe";
+   		}
+
+ 		public function list_products() {
+      require_once(VIEW_PATH_INC."header.html");
+			require_once(VIEW_PATH_INC."menu.php");
+      loadView( PRODUCTS_FE_VIEW, 'list_products.php');
+      require_once(VIEW_PATH_INC."footer.html");
+    }
+}
 
 /////////////////////////////////////////Atutocomplete
 if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {

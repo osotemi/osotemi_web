@@ -40,14 +40,14 @@
                 $rutaVista = http_response_code();
             }
 
-            $log = Log::getInstance();
+            $log = log::getInstance();
             $log->add_log_general("error loadView general", $_GET['module'], "response ".http_response_code()); //$text, $controller, $function
             $log->add_log_user("error loadView general", "", $_GET['module'], "response ".http_response_code());//$msg, $username = "", $controller, $function
 
 
             $result = response_code($rutaVista);
             $arrData = $result;
-            require_once 'view/includes/templates_error/error.php';
-            
+            require_once VIEW_PATH_INC_ERROR . $result['code'] .'.php';
+
     		}
   	}

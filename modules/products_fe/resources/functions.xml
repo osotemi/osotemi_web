@@ -4,4 +4,8 @@
         <name>list_products</name>
         <uri>list_products</uri>
     </function>
+    <function>
+        <name></name>
+        <uri></uri>
+    </function>
 </functions>

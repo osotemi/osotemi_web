@@ -27,7 +27,7 @@
   define('VIEW_PATH_INC',SITE_ROOT.'view/inc/');
   define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/templates_error/');
   //log
-  define('LOG_DIR', SITE_ROOT.'classes/Log.class.singleton.php');
+  define('LOG_DIR', SITE_ROOT.'classes/log.class.singleton.php');
   define('USER_LOG_DIR', SITE_ROOT.'log/user/Site_User_errors.log');
   define('GENERAL_LOG_DIR', SITE_ROOT.'log/general/Site_General_errors.log');
 
@@ -42,8 +42,9 @@
   define('DAO_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/DAO/');
   define('BLL_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/BLL/');
   define('MODEL_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/model/');
-  define('USERS_JS_PRODUCTS_FE', SITE_PATH . 'modules/products_fe/view/js/');
-	define('USERS_CSS_PRODUCTS_FE', SITE_PATH . 'modules/products_fe/view/css/');
+  define('PRODUCTS_FE_VIEW', SITE_PATH . 'modules/products_fe/view/');
+  define('PRODUCTS_FE_JS', SITE_PATH . 'modules/products_fe/view/js/');
+	define('PRODUCTS_FE_CSS', SITE_PATH . 'modules/products_fe/view/css/');
   /*model users
   define('FUNCTIONS_USERS',SITE_ROOT.'modules/users/utils/');
   define('MODEL_PATH_USERS',SITE_ROOT.'modules/users/model/');

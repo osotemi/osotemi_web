@@ -6,6 +6,7 @@
 	include(UTILS . "utils.inc.php");
 	include(UTILS . "response_code.inc.php");
 	include(UTILS . "common.inc.php");
+	include LOG_DIR;
 
 	if(PRODUCTION){ //estamos en producción
 		ini_set('display_errors', '1');
@@ -43,7 +44,7 @@
 	            $exist = true;
 
 	            $path = MODULES_PATH . $URI_module."/controller/controller_".$URI_module.".class.php";
-							
+
 				if (file_exists($path)) {
 					require_once($path);
 
@@ -60,7 +61,7 @@
 	    }
 	    if (!$exist) {
 	        //die($URI_module . ' - Controlador no encontrado');
-	        showErrorPage(1, "", 'HTTP/1.0 400 Bad Request', 400);
+	        showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
 	    }
 	}
 
@@ -77,7 +78,7 @@
 	    }
 	    if (!$exist) {
 	        //die($URI_function . ' - Funci&oacute;n no encontrada');
-	        showErrorPage(1, "", 'HTTP/1.0 400 Bad Request', 400);
+	        showErrorPage(4, "", 'HTTP/1.0 400 Bad Request', 400);
 	    } else {
 	    	//$obj->$event();
 			call_user_func(array($obj,$event));
