@@ -17,3 +17,28 @@ error paint_template_error | 22.11.2016 04:02:25  |  User:   | products_fe | res
 error loadView general | 22.11.2016 04:11:19  |  User:   | products_fe | response 200
 error loadView general | 22.11.2016 04:15:18  |  User:   | products_fe | response 200
 error loadView general | 22.11.2016 04:17:02  |  User:   | products_fe | response 200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Db.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_fe/model/BLL/products_fe_bll.class.singleton.php
+ | 22.11.2016 05:58:33  |  User:   | products_fe | response 200
+ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Db.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_fe/model/BLL/products_fe_bll.class.singleton.php
+ | 22.11.2016 05:58:33  |  User:   | products_fe | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 22.11.2016 06:00:25  |  User:   | products_fe | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 22.11.2016 06:00:25  |  User:   | products_fe | response 200
+ERROR: [8] Constant SITE_ROOT already defined
+Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 22.11.2016 06:00:25  |  User:   | products_fe | response 200
+ERROR: [8] Constant MODEL_PATH already defined
+Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
+ | 22.11.2016 06:00:25  |  User:   | products_fe | response 200
+ERROR: [2] require_once(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 18 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/db.class.singleton.php
+ | 22.11.2016 06:02:26  |  User:   | products_fe | response 200
+ERROR: [2] require_once(Conf.class.singleton.php): failed to open stream: No such file or directory
+Warning on line 18 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/db.class.singleton.php
+ | 22.11.2016 06:02:26  |  User:   | products_fe | response 200
+error paint_template_error | 22.11.2016 06:05:17  |  User:   | products_fe | response200

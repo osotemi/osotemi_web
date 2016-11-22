@@ -8,4 +8,28 @@
         <name>autocomplete_products</name>
         <uri>autocomplete_products</uri>
     </function>
+    <function>
+        <name>name_product</name>
+        <uri>name_product</uri>
+    </function>
+    <function>
+        <name>count_product</name>
+        <uri>count_product</uri>
+    </function>
+    <function>
+        <name>num_pages_products</name>
+        <uri>num_pages_products</uri>
+    </function>
+    <function>
+        <name>view_error_true</name>
+        <uri>view_error_true</uri>
+    </function>
+    <function>
+        <name>view_error_false</name>
+        <uri>view_error_false</uri>
+    </function>
+    <function>
+        <name>idProduct</name>
+        <uri>idProduct</uri>
+    </function>
 </functions>
