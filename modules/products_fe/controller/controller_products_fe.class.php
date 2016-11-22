@@ -1,8 +1,7 @@
 <?php
-class controller_products {
+class controller_products_fe {
 
 		public function __construct() {
-			include(UTILS_PRODUCTS_FE . "utils.inc.php");
 
 			$_SESSION['module'] = "products_fe";
    		}
@@ -42,7 +41,7 @@ class controller_products {
 
 /////////////////////////////////////////Atutocomplete
 
-
+/*
 if (isset($_GET["name_product"])) {
     //filtrar $_GET["name_product"]
 
@@ -253,3 +252,4 @@ if (isset($_GET["idProduct"])) {
         showErrorPage(0, "ERROR - 404 NO PRODUCTS");
     }
 }
+*/

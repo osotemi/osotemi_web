@@ -57,7 +57,7 @@ function showErrorPage($code = 0, $message = "", $http = "", $num_http = 0) {
             die();
             break;
         case 1:
-            header($http, true, $num_http);
+            //header($http, true, $num_http);
             loadView();
             break;
         case 2:

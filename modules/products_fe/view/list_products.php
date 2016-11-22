@@ -1,5 +1,5 @@
-<script type="text/javascript" src="modules/products_FE/view/js/jquery.bootpag.min.js"></script>
-<script type="text/javascript" src="modules/products_FE/view/js/list_products.js" ></script>
+<script type="text/javascript" src="modules/products_fe/view/js/jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="modules/products_fe/view/js/list_products.js" ></script>
 <section id="title" class="emerald">
     <div class="container">
         <div class="row">

@@ -1,4 +1,5 @@
 <?php
+/*
 function redirect($url) {
     die('<script>window.location.href="' . $url . '";</script>');
 }
@@ -25,14 +26,11 @@ function friendly($url, $return = false) {
     }
     echo SITE_PATH . $link;
 }
-
-
-
-
+*/
 function paint_template_error($message) {
     $log = log::getInstance();
-    $log->add_log_general("error paint_template_error", "products", "response" . http_response_code()); //$text, $controller, $function
-    $log->add_log_user("error paint_template_error", "", "products", "response" . http_response_code()); //$msg, $username = "", $controller, $function
+    $log->add_log_general("error paint_template_error", "products_fe", "response" . http_response_code()); //$text, $controller, $function
+    $log->add_log_user("error paint_template_error", "", "products_fe", "response" . http_response_code()); //$msg, $username = "", $controller, $function
 
     $arrData = response_code(http_response_code());
 
@@ -63,7 +61,7 @@ function paint_template_error($message) {
 }
 
 function paint_template_products($arrData) {
-    print ("<script type='text/javascript' src='modules/products_FE/view/js/modal_products.js' ></script>");
+    print ("<script type='text/javascript' src='modules/products_fe/view/js/modal_products.js' ></script>");
     print ("<section >");
     print ("<div class='container'>");
     print ("<div id='list_prod' class='row text-center pad-row'>");

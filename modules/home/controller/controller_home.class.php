@@ -7,7 +7,7 @@
 
         public function init() {
             $_SESSION['module'] = "home";
-            require_once(VIEW_PATH_INC."header.php");
+            require_once(VIEW_PATH_INC."header.html");
 			      require_once(VIEW_PATH_INC."menu.php");
 
             loadView('modules/home/view/', 'home.php');

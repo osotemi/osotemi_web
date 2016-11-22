@@ -1,7 +1,7 @@
 <?php
 
-//require (MODEL_PATH . "Db.class.singleton.php");
-//require(SITE_ROOT . "/modules/products_FE/model/DAO/products_FE_dao.class.singleton.php");
+require (MODEL_PATH . "Db.class.singleton.php");
+require(SITE_ROOT . "/modules/products_FE/model/DAO/products_FE_dao.class.singleton.php");
 
 class products_fe_bll {
 

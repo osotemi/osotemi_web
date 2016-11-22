@@ -8,6 +8,39 @@
 	spl_autoload_register('loadClasses');
 
 	function loadClasses($className){
+		//Get module name
+    $porciones = explode("_", $className);
+    $module_name = $porciones[0];
+
+    $model_name = "";
+
+    //we need have this because if not exist $porciones[1], app will have problems when we sent error (showErrorPage(2..)).
+    if(isset($porciones[1])){
+        $model_name = $porciones[1];
+        $model_name = strtoupper($model_name);
+    }
+
+    //users && products
+    if (file_exists('modules/' . $module_name . '/model/'.$model_name.'/' . $className . '.class.singleton.php')) {//require(BLL_USERS . "user_bll.class.singleton.php");
+				require(MODEL_PATH . "db.class.singleton.php");
+        set_include_path('modules/' . $module_name . '/model/'.$model_name.'/');
+        spl_autoload($className);
+    }
+
+    //model
+    elseif (file_exists('model/' . $className . '.class.singleton.php')) {//
+				require(MODEL_PATH . "db.class.singleton.php");
+        set_include_path('model/');
+        spl_autoload($className);
+    }
+    //log
+    elseif (file_exists('classes/' . $className . '.class.singleton.php')) {//require(MODEL_PATH . "db.class.singleton.php");
+
+        set_include_path('classes/');
+        spl_autoload($className);
+    }
+
+		/*
 		if( file_exists('modules/products/model/DAO/'.$className.'.class.singleton.php' ) ){//require(DAO_USERS . "user_dao.class.singleton.php");
 			set_include_path('modules/products/model/DAO/');
 			spl_autoload($className);

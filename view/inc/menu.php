@@ -16,8 +16,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?module=products&view=create_products">Create</a></li>
-                            <li><a href="index.php?module=products_FE&view=list_products">View</a></li>
+                            <li><a href="index.php?module=products&function=create_products">Create</a></li>
+                            <li><a href="index.php?module=products_fe&function=list_products">View</a></li>
                         </ul>
                     </li>
                     <!--
