@@ -6,7 +6,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src="view/img/logo.png" alt="logo"></a>
+                <a class="navbar-brand" href="<?php friendly('?module=home'); ?>"><img src="view/img/logo.png" alt="logo"></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -16,8 +16,8 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <i class="icon-angle-down"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a href="index.php?module=products&function=create_products">Create</a></li>
-                            <li><a href="index.php?module=products_fe&function=list_products">View</a></li>
+                            <li><a href="<?php friendly('?module=products_fe&function=create_products'); ?>">Create</a></li>
+                            <li><a href="<?php friendly('?module=products_fe&function=list_products'); ?>">View</a></li>
                         </ul>
                     </li>
                     <!--

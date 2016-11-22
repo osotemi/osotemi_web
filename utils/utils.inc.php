@@ -27,7 +27,7 @@
             $link = "index.php" . $url;
         }
         if ($return) {
-            return SITE_PATH . $link;
+            return "/" . $link;
         }
-        echo SITE_PATH . $link;
+        echo "/" . $link;
     }

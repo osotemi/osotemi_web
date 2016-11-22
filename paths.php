@@ -22,7 +22,7 @@
   define('URL_FRIENDLY', TRUE);
   //Includes de 2º nivel
   //CSS
-	define('CSS_PATH', SITE_PATH . 'view/css/');
+	define('CSS_PATH', '/view/css/');
   //view
   define('VIEW_PATH_INC',SITE_ROOT.'view/inc/');
   define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/templates_error/');
