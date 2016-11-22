@@ -42,3 +42,6 @@ Warning on line 18 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotem
 Warning on line 18 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/db.class.singleton.php
  | products_fe | response 200
 22/11/16 06:05:17 AM | error paint_template_error | products_fe | response200
+22/11/16 06:25:48 AM | error loadView general | products_fe | response 200
+22/11/16 06:25:58 AM | error loadView general | products_f | response 200
+22/11/16 06:49:09 AM | error loadView general | products_fe | response 200

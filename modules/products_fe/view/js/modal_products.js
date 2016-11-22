@@ -4,8 +4,8 @@ $(document).ready(function () {
     $('.prod').click(function () {
         var id = this.getAttribute('id');
         //alert(id);
-
-        $.get("modules/products_FE/controller/controller_products_FE.class.php?idProduct=" + id, function (data, status) {
+        //$.get("modules/products_FE/controller/controller_products_FE.class.php?idProduct=" + id, function (data, status) {
+        $.get("index.php?module=products_fe&function=idProduct&idProduct="+id, function(data, status){
             var json = JSON.parse(data);
             var product = json.product;
             //alert(product.name);
@@ -44,14 +44,16 @@ $(document).ready(function () {
                 }
             });
         })
-                .fail(function (xhr) {
-                    //if  we already have an error 404
-                    if (xhr.status === 404) {
-                        $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false");
-                    } else {
-                        $("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=true");
-                    }
-                    ;
-                });
+        .fail(function (xhr) {
+            //if  we already have an error 404
+            if (xhr.status === 404) {
+                //$("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false");
+                $("#results").load("index.php?module=products_fe&function=view_error_false&view_error=false");
+            } else {
+                //$("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=true");
+                $("#results").load("index.php?module=products_fe&function=view_error_false&view_error=true");
+            }
+            ;
+        });
     });
 });
