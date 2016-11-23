@@ -1,6 +1,6 @@
 <?php
   //SITE ROOT
-  $path = $_SERVER['DOCUMENT_ROOT'] .'/';
+  $path = $_SERVER['DOCUMENT_ROOT'] ;
   define('SITE_ROOT', $path);
   //SITE path
   define('SITE_PATH','https://'.$_SERVER['HTTP_HOST'] .'/');
@@ -11,21 +11,26 @@
   //model
   define('MODEL_PATH', SITE_ROOT.'model/');
   //modules
-  define('MODULES_PATH',SITE_ROOT.'modules/');
+  define('MODULES_PATH', SITE_ROOT.'modules/');
   //resources
-  define('RESOURCES',SITE_ROOT.'resources/');
+  define('RESOURCES', SITE_ROOT.'resources/');
   //media
-  define('MEDIA_PATH',SITE_ROOT.'media/');
+  define('MEDIA_PATH', SITE_ROOT.'media/');
   //utils
-  define('UTILS',SITE_ROOT.'utils/');
+  define('UTILS', SITE_ROOT.'utils/');
   //amigables
   define('URL_FRIENDLY', TRUE);
+
   //Includes de 2º nivel
   //CSS
 	define('CSS_PATH', '/view/css/');
+  //IMG
+  define('IMG_PATH', '/view/img/');
+  //JS
+  define('JS_PATH', '/view/js/');
   //view
-  define('VIEW_PATH_INC',SITE_ROOT.'view/inc/');
-  define('VIEW_PATH_INC_ERROR',SITE_ROOT.'view/inc/templates_error/');
+  define('VIEW_PATH_INC', SITE_ROOT.'view/inc/');
+  define('VIEW_PATH_INC_ERROR', SITE_ROOT.'view/inc/templates_error/');
   //log
   define('LOG_DIR', SITE_ROOT.'classes/log.class.singleton.php');
   define('USER_LOG_DIR', SITE_ROOT.'log/user/Site_User_errors.log');
@@ -37,14 +42,14 @@
 	define('PRODUCTS_JS_PATH', SITE_PATH . 'modules/products/view/js/');
   define('PRODUCTS_CSS_PATH', SITE_PATH . 'modules/products/view/css/');
   //model list products
-  define('UTILS_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/utils/');
-  define('MODEL_PATH_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/');
-  define('DAO_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/DAO/');
-  define('BLL_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/BLL/');
-  define('MODEL_PRODUCTS_FE',SITE_ROOT.'modules/products_fe/model/model/');
+  define('UTILS_PRODUCTS_FE', SITE_ROOT.'modules/products_fe/utils/');
+  define('MODEL_PATH_PRODUCTS_FE', SITE_ROOT.'modules/products_fe/model/');
+  define('DAO_PRODUCTS_FE', SITE_ROOT.'modules/products_fe/model/DAO/');
+  define('BLL_PRODUCTS_FE', SITE_ROOT.'modules/products_fe/model/BLL/');
+  define('MODEL_PRODUCTS_FE', SITE_ROOT.'modules/products_fe/model/model/');
   define('PRODUCTS_FE_VIEW', SITE_ROOT . 'modules/products_fe/view/');
-  define('PRODUCTS_FE_JS', SITE_PATH . 'modules/products_fe/view/js/');
-	define('PRODUCTS_FE_CSS', SITE_PATH . 'modules/products_fe/view/css/');
+  define('PRODUCTS_FE_JS', '/modules/products_fe/view/js/');
+	define('PRODUCTS_FE_CSS', '/modules/products_fe/view/css/');
   /*model users
   define('FUNCTIONS_USERS',SITE_ROOT.'modules/users/utils/');
   define('MODEL_PATH_USERS',SITE_ROOT.'modules/users/model/');

@@ -1,5 +1,5 @@
-<script type="text/javascript" src="modules/products_fe/view/js/jquery.bootpag.min.js"></script>
-<script type="text/javascript" src="modules/products_fe/view/js/list_products.js" ></script>
+<script type="text/javascript" src="<?php echo PRODUCTS_FE_JS ?>jquery.bootpag.min.js"></script>
+<script type="text/javascript" src="<?php echo PRODUCTS_FE_JS ?>list_products.js" ></script>
 <section id="title" class="emerald">
     <div class="container">
         <div class="row">
@@ -9,7 +9,7 @@
             </div>
             <div class="col-sm-6">
                 <ul class="breadcrumb pull-right">
-                    <li><a href="index.php?module=main">Home</a></li>
+                    <li><a href="<?php friendly('?module=home&function=init'); ?>index.php?module=main">Home</a></li>
                     <li><a href="#">Products</a></li>
                     <li class="active">View</li>
                 </ul>

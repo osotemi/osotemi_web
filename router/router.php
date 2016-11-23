@@ -2,9 +2,9 @@
 	require_once("paths.php");
 	require 'autoload.php';
 
+	include(UTILS . "response_code.inc.php");
 	include(UTILS . "filters.inc.php");
 	include(UTILS . "utils.inc.php");
-	include(UTILS . "response_code.inc.php");
 	include(UTILS . "common.inc.php");
 	include(UTILS_PRODUCTS_FE . "utils.inc.php");
 	include LOG_DIR;
@@ -47,7 +47,7 @@
 	            $path = MODULES_PATH . $URI_module."/controller/controller_".$URI_module.".class.php";
 
 				if (file_exists($path)) {
-				
+
 					require_once($path);
 
 					$controllerClass = "controller_" . $URI_module;
