@@ -62,10 +62,8 @@ class products_fe_dao {
     }
     public function select_like_limit_products_fe_DAO($db, $arrArgument) {
 
-        $sql="SELECT DISTINCT * FROM products WHERE ".$arrArgument['column']." like '%". $arrArgument['like']. "%' ORDER BY id ASC LIMIT ". $arrArgument['position']." , ". $arrArgument['limit'];
-
+        $sql="SELECT DISTINCT * FROM products WHERE ".$arrArgument['column']." like '%". $arrArgument['like']. "%' ORDER BY id DESC LIMIT ". $arrArgument['position']." , ". $arrArgument['limit'];
         $stmt=$db->ejecutar($sql);
-
         return $db->listar($stmt);
     }
 }

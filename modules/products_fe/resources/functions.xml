@@ -32,4 +32,8 @@
         <name>idProduct</name>
         <uri>idProduct</uri>
     </function>
+    <function>
+        <name>obtain_products</name>
+        <uri>obtain_products</uri>
+    </function>
 </functions>

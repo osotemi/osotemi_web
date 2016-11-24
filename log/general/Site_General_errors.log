@@ -1,47 +1,46 @@
-22/11/16 02:56:48 AM | error loadView general | products_FE | response 200
-22/11/16 02:58:18 AM | error loadView general | products_FE | response 200
-22/11/16 03:28:11 AM | error loadView general | products_FE | response 200
-22/11/16 03:29:35 AM | error loadView general | products_FE | response 200
-22/11/16 03:31:42 AM | error loadView general | products_FE | response 200
-22/11/16 03:33:36 AM | error loadView general | products_FE | response 200
-22/11/16 03:35:25 AM | error loadView general | products_FE | response 200
-22/11/16 03:45:04 AM | error paint_template_error | products_fe | response200
-22/11/16 03:45:52 AM | error paint_template_error | products_fe | response200
-22/11/16 03:46:14 AM | error paint_template_error | products_fe | response200
-22/11/16 03:51:29 AM | error paint_template_error | products_fe | response200
-22/11/16 03:54:31 AM | error paint_template_error | products_fe | response200
-22/11/16 03:55:51 AM | error paint_template_error | products_fe | response200
-22/11/16 04:00:48 AM | error paint_template_error | products_fe | response200
-22/11/16 04:02:20 AM | error paint_template_error | products_fe | response200
-22/11/16 04:02:25 AM | error paint_template_error | products_fe | response200
-22/11/16 04:11:19 AM | error loadView general | products_fe | response 200
-22/11/16 04:15:18 AM | error loadView general | products_fe | response 200
-22/11/16 04:17:02 AM | error loadView general | products_fe | response 200
-22/11/16 05:58:33 AM | ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Db.class.singleton.php): failed to open stream: No such file or directory
-Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_fe/model/BLL/products_fe_bll.class.singleton.php
+24/11/16 01:54:10 AM | error loadView general | products_fe | response 200
+24/11/16 01:55:38 AM | error loadView general | products_fe | response 200
+24/11/16 01:56:04 AM | error loadView general | products_fe | response 200
+24/11/16 01:57:28 AM | error loadView general | products_fe | response 200
+24/11/16 01:57:45 AM | error loadView general | products_fe | response 200
+24/11/16 02:17:48 AM | error loadView general | products_fe | response 200
+24/11/16 02:20:09 AM | error loadView general | products_fe | response 200
+24/11/16 02:20:11 AM | error loadView general | products_fe | response 200
+24/11/16 02:21:08 AM | error loadView general | products_fe | response 200
+24/11/16 02:21:16 AM | error loadView general | products_fe | response 200
+24/11/16 02:21:48 AM | error loadView general | products_fe | response 200
+24/11/16 02:23:24 AM | error loadView general | products_fe | response 200
+24/11/16 02:24:13 AM | error loadView general | products_fe | response 200
+24/11/16 02:28:07 AM | error loadView general | products_fe | response 200
+24/11/16 02:28:11 AM | error loadView general | products_fe | response 200
+24/11/16 02:28:39 AM | error loadView general | products_fe | response 200
+24/11/16 02:28:45 AM | error loadView general | products_fe | response 200
+24/11/16 02:30:00 AM | error loadView general | products_fe | response 200
+24/11/16 02:32:18 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 02:32:18 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:32:18 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:38:41 AM | ERROR: [4096] Object of class mysqli_result could not be converted to string
+Unknown Error on line 68 in file /var/www/osotemi_web/modules/products_fe/model/DAO/products_fe_dao.class.singleton.php
  | products_fe | response 200
-22/11/16 05:58:33 AM | ERROR: [2] require(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Db.class.singleton.php): failed to open stream: No such file or directory
-Warning on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/modules/products_fe/model/BLL/products_fe_bll.class.singleton.php
- | products_fe | response 200
-22/11/16 06:00:25 AM | ERROR: [8] Constant SITE_ROOT already defined
-Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
- | products_fe | response 200
-22/11/16 06:00:25 AM | ERROR: [8] Constant MODEL_PATH already defined
-Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
- | products_fe | response 200
-22/11/16 06:00:25 AM | ERROR: [8] Constant SITE_ROOT already defined
-Notice on line 3 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
- | products_fe | response 200
-22/11/16 06:00:25 AM | ERROR: [8] Constant MODEL_PATH already defined
-Notice on line 4 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php
- | products_fe | response 200
-22/11/16 06:02:26 AM | ERROR: [2] require_once(/home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/Conf.class.singleton.php): failed to open stream: No such file or directory
-Warning on line 18 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/db.class.singleton.php
- | products_fe | response 200
-22/11/16 06:02:26 AM | ERROR: [2] require_once(Conf.class.singleton.php): failed to open stream: No such file or directory
-Warning on line 18 in file /home/osotemi/Documentos/DAS/DES/osotemiWebGit/osotemi_web/model/db.class.singleton.php
- | products_fe | response 200
-22/11/16 06:05:17 AM | error paint_template_error | products_fe | response200
-22/11/16 06:25:48 AM | error loadView general | products_fe | response 200
-22/11/16 06:25:58 AM | error loadView general | products_f | response 200
-22/11/16 06:49:09 AM | error loadView general | products_fe | response 200
+24/11/16 02:45:42 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 02:45:42 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:45:42 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:47:11 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 02:47:11 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:47:11 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:48:17 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 02:48:17 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 02:48:17 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 03:00:53 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 03:00:53 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 03:00:53 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 03:00:53 AM | error loadView general | products_fe/list_products | response 200
+24/11/16 06:34:33 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 06:34:33 AM | error loadView general | var/www/osotemi_web/media | response 200
+24/11/16 06:34:33 AM | error loadView general | var/www/osotemi_web/media | response 200
+24/11/16 06:34:33 AM | error loadView general | var/www/osotemi_web/media | response 200
+24/11/16 06:35:28 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 06:35:46 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 06:35:51 AM | error loadView general | products_fe/list_products/modules/products_fe/view | response 200
+24/11/16 06:37:22 AM | error loadView general | products_fe | response 200
+24/11/16 06:37:38 AM | error loadView general | products_fe | response 200

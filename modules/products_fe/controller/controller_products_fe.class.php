@@ -14,7 +14,7 @@ class controller_products_fe {
     }
 		/////////////////////////////////////////Atutocomplete
 		public function autocomplete_products(){
-			if ((isset($_GET["autocomplete"])) && ($_GET["autocomplete"] === "true")) {
+			if ((isset($_POST["autocomplete"])) && ($_POST["autocomplete"] === "true")) {
 			    set_error_handler('ErrorHandler');
 
 			    try {
@@ -37,10 +37,10 @@ class controller_products_fe {
 		}
 
 		function name_product(){
-			if (isset($_GET["name_product"])) {
+			if (isset($_POST["name_product"])) {
 			    //filtrar $_GET["name_product"]
 
-			    $result = filter_string($_GET["name_product"]);
+			    $result = filter_string($_POST["name_product"]);
 			    if ($result['resultado']) {
 			        $criteria = $result['datos'];
 			    } else {
@@ -73,9 +73,9 @@ class controller_products_fe {
 		}
 
 		function count_product(){
-			if (isset($_GET["count_product"])) {
+			if (isset($_POST["count_product"])) {
 			    //filtrar $_GET["count_product"]
-			    $result = filter_string($_GET["count_product"]);
+			    $result = filter_string($_POST["count_product"]);
 			    if ($result['resultado']) {
 			        $criteria = $result['datos'];
 			    } else {
@@ -110,9 +110,9 @@ class controller_products_fe {
 
 		function num_pages_products(){
 			//obtain num total pages
-			if ((isset($_GET["num_pages"])) && ($_GET["num_pages"] === "true")) {
-			    if (isset($_GET["keyword"])) {
-			        $result = filter_string($_GET["keyword"]);
+			if ((isset($_POST["num_pages"])) && ($_POST["num_pages"] === "true")) {
+			    if (isset($_POST["keyword"])) {
+			        $result = filter_string($_POST["keyword"]);
 			        if ($result['resultado']) {
 			            $criteria = $result['datos'];
 			        } else {
@@ -156,13 +156,13 @@ class controller_products_fe {
 		}
 
 		function view_error_true() {
-			if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "true")) {
+			if ((isset($_POST["view_error"])) && ($_POST["view_error"] === "true")) {
 					showErrorPage(0, "ERROR get view- 503 BD Unavailable");
 			}
     }
 
     function view_error_false() {
-				if ((isset($_GET["view_error"])) && ($_GET["view_error"] === "false")) {
+				if ((isset($_POST["view_error"])) && ($_POST["view_error"] === "false")) {
 						//showErrorPage(0, "ERROR - 404 NO DATA");
 						showErrorPage(3, "RESULTS NOT FOUND");
 				}
@@ -170,10 +170,10 @@ class controller_products_fe {
 
 		function idProduct() {
 				////////////////////////details_products
-				if (isset($_GET["idProduct"])) {
+				if (isset($_POST["idProduct"]) && ($_POST["idProduct"] !== "")) {
 				    $arrValue = null;
 				    //filter if idProduct is a number
-				    $result = filter_num_int($_GET["idProduct"]);
+				    $result = filter_num_int($_POST["idProduct"]);
 				    if ($result['resultado']) {
 				        $id = $result['datos'];
 				    } else {
@@ -184,6 +184,8 @@ class controller_products_fe {
 				    try {
 				        //throw new Exception();
 				        $arrValue = loadModel(MODEL_PRODUCTS_FE, "products_fe_model", "details_products_fe", $id);
+								echo json_encode($arrValue);
+				        exit;
 				    } catch (Exception $e) {
 				        showErrorPage(2, "ERROR id Product - 503 BD", 'HTTP/1.0 503 Service Unavailable', 503);
 				    }
@@ -196,61 +198,55 @@ class controller_products_fe {
 				    } else {
 				        showErrorPage(2, "ERROR - 404 NO DATA", 'HTTP/1.0 404 Not Found', 404);
 				    }
-				} else {
-
-				    $item_per_page = 3;
-
-				    //filter to $_POST["page_num"]
-				    if (isset($_POST["page_num"])) {
-				        $result = filter_num_int($_POST["page_num"]);
-				        if ($result['resultado']) {
-				            $page_number = $result['datos'];
-				        }
-				    } else {
-				        $page_number = 1;
-				    }
-
-				    if (isset($_GET["keyword"])) {
-				        $result = filter_string($_GET["keyword"]);
-				        if ($result['resultado']) {
-				            $criteria = $result['datos'];
-				        } else {
-				            $criteria = '';
-				        }
-				    } else {
-				        $criteria = '';
-				    }
-
-				    if (isset($_POST["keyword"])) {
-				        $result = filter_string($_POST["keyword"]);
-				        if ($result['resultado']) {
-				            $criteria = $result['datos'];
-				        } else {
-				            $criteria = '';
-				        }
-				    }
-				    $position = (($page_number - 1) * $item_per_page);
-				    $limit = $item_per_page;
-				    $arrArgument = array(
-				        "column" => "product_name",
-				        "like" => $criteria,
-				        "position" => $position,
-				        "limit" => $limit
-				    );
-				    set_error_handler('ErrorHandler');
-
-				    try {
-
-				        $arrValue = loadModel(MODEL_PRODUCTS_FE, "products_fe_model", "select_like_limit_products_fe", $arrArgument);
-				    } catch (Exception $e) {
-				        showErrorPage(0, "ERROR id prod else- 503 BD Unavailable");
-				    }
-				    restore_error_handler();
-				    if ($arrValue != "") {
-				        paint_template_products($arrValue);
-				    } else {
-				        showErrorPage(0, "ERROR - 404 NO PRODUCTS");
-				    }
 				}
+			}
+
+			function obtain_products(){
+			    $item_per_page = 3;
+
+			    //filter to $_POST["page_num"]
+			    if (isset($_POST["page_num"])) {
+			        $result = filter_num_int($_POST["page_num"]);
+			        if ($result['resultado']) {
+			            $page_number = $result['datos'];
+			        }
+			    } else {
+			        $page_number = 1;
+			    }
+
+			    if (isset($_POST["keyword"])) {
+			        $result = filter_string($_POST["keyword"]);
+			        if ($result['resultado']) {
+			            $criteria = $result['datos'];
+			        } else {
+			            $criteria = '';
+			        }
+			    } else {
+			        $criteria = '';
+			    }
+
+			    $position = (($page_number - 1) * $item_per_page);
+			    $limit = $item_per_page;
+			    $arrArgument = array(
+			        "column" => "product_name",
+			        "like" => $criteria,
+			        "position" => $position,
+			        "limit" => $limit
+			    );
+			    set_error_handler('ErrorHandler');
+
+			    try {
+			        $arrValue = loadModel(MODEL_PRODUCTS_FE, "products_fe_model", "select_like_limit_products_fe", $arrArgument);
+
+			    } catch (Exception $e) {
+			        showErrorPage(0, "ERROR id prod else- 503 BD Unavailable");
+			    }
+			    restore_error_handler();
+			    if ($arrValue != "") {
+
+			        paint_template_products($arrValue);
+			    } else {
+			        showErrorPage(0, "ERROR - 404 NO PRODUCTS");
+			    }
 			}
 }

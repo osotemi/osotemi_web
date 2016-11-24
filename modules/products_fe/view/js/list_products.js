@@ -13,23 +13,13 @@ function refresh() {
 
 function search(keyword) {
     //changes the url to avoid creating another different function
-    var urlbase = "index.php?module=products_fe&function=num_pages_products";
-    if (!keyword)
-        url = urlbase + "&num_pages=true";
-    else
-        url = urlbase + "&num_pages=true&keyword=" + keyword;
-
-    $.get(url, function (data, status) {
+    console.log("al search");
+    $.post("../../products_fe/num_pages_products/", {'num_pages': true, 'keyword': keyword}, function (data, status) {
         var json = JSON.parse(data);
         var pages = json.pages;
 
-        if (!keyword)
-            url = "index.php?module=products_fe&function=idProduct";
-        else
-            url ="index.php?module=products_fe&function=idProduct&keyword=" + keyword;
-
-        $("#results").load(url);
-
+        $("#results").load("../../products_fe/obtain_products/", {'keyword': keyword});
+        console.log("obtain_products");
         if (pages !== 0) {
             refresh();
 
@@ -43,20 +33,20 @@ function search(keyword) {
                 e.preventDefault();
                 if (!keyword)
 
-                    $("#results").load("index.php?module=products_fe&function=idProduct", {'page_num': num});
+                    $("#results").load("../../products_fe/obtain_products/", {'page_num': num});
                 else
-                    $("#results").load("index.php?module=products_fe&function=idProduct", {'page_num': num, 'keyword': keyword});
+                    $("#results").load("../../products_fe/obtain_products/", {'page_num': num, 'keyword': keyword});
                 reset();
             });
         } else {
-            $("#results").load("index.php?module=products_fe&function=view_error_true&view_error=false"); //view_error=false
+            $("#results").load("../../products_fe/view_error_false/", {'view_error': false}); //view_error=false
             $('.pagination_prods').html('');
             reset();
         }
         reset();
 
     }).fail(function (xhr) {
-        $("#results").load("index.php?module=products_fe&function=view_error_true&view_error=true");
+        $("#results").load("../../products_fe/view_error_true/", {'view_error': true});
         $('.pagination_prods').html('');
         reset();
     });
@@ -65,7 +55,7 @@ function search(keyword) {
 
 function search_product(keyword) {
     //$.get("modules/products_FE/controller/controller_products_FE.class.php?name_product=" + keyword, function (data, status) {
-    $.get("index.php?module=products_fe&function=name_products&name_product="+keyword, function(data, status){
+    $.post("../../products_fe/name_product/", {'name_product': keyword}, function(data, status){
         var json = JSON.parse(data);
         var product = json.product_autocomplete;
 
@@ -87,7 +77,7 @@ function search_product(keyword) {
 
     }).fail(function (xhr) {
         //$("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false");
-        $("#results").load("index.php?module=products_fe&function=view_error_false&view_error=false");
+        $("#results").load("../../products_fe/view_error_false/", {'view_error': false});
         $('.pagination_prods').html('');
         reset();
     });
@@ -96,14 +86,14 @@ function search_product(keyword) {
 
 function count_product(keyword) {
     //$.get("modules/products_FE/controller/controller_products_FE.class.php?count_product=" + keyword, function (data, status) {
-    $.get("index.php?module=products_fe&function=count_products&count_product="+keyword, function(data, status){
+    $.post("../../products_fe/count_products/", {'count_product': keyword}, function(data, status){
         var json = JSON.parse(data);
         var num_products = json.num_products;
         //alert("num_products: " + num_products);
 
         if (num_products == 0) {
             //$("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false"); //view_error=false
-            $("#results").load("index.php?module=products_fe&function=view_error_false&view_error=false");
+            $("#results").load("../../products_fe/view_error_false/", {'view_error': false});
             $('.pagination_prods').html('');
             reset();
         }
@@ -115,7 +105,7 @@ function count_product(keyword) {
         }
     }).fail(function () {
         //$("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=true"); //view_error=false
-        $("#results").load("index.php?module=products_fe&function=view_error_false&view_error=true");
+        $("#results").load("../../products/view_error_true/", {'view_error': true});
         $('.pagination_prods').html('');
         reset();
     });
@@ -138,6 +128,7 @@ $(document).ready(function () {
         count_product(keyword);
         //alert("Load page getCookie(search): " + getCookie("search"));
         //("#keyword").val(keyword) if we don't use refresh(), this way we could show the search param
+
         setCookie("search","",1);
     } else {
         search();
@@ -166,7 +157,7 @@ $(document).ready(function () {
     });
 
     //$.get("modules/products_FE/controller/controller_products_FE.class.php?autocomplete=true", function (data, status) {
-    $.get("index.php?module=products_fe&function=autocomplete_products&autocomplete=true", function(data, status){
+    $.post("../../products_fe/autocomplete_products/", {'autocomplete': true}, function(data, status){
         var json = JSON.parse(data);
         var name_product = json.name_product;
         //console.log(name_product[0].nombre);
@@ -190,7 +181,7 @@ $(document).ready(function () {
         });
     }).fail(function (xhr) {
         //$("#results").load("modules/products_FE/controller/controller_products_FE.class.php?view_error=false"); //view_error=false
-        $("#results").load("index.php?module=products_fe&function=view_error_false&view_error=false");
+        $("#results").load("../../products_fe/view_error_true/", {'view_error': true});
         $('.pagination_prods').html('');
         reset();
     });
